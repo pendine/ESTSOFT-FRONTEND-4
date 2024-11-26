@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iframe</title>
+</head>
+<body>
+    <!-- iframe : 지양하는추세. 보안상의 이유
+    해당 웹페이지 안에 제한없이 또다른 웹페이지를 삽입하는 요소 
+    - 주의사항 : 우회접속등의 여러 보안이슈 유발.
+    -->
+
+    <h1>iframe을 이용한 웹 페이지</h1>
+    <iframe src="../2024-11-21/img.html" frameborder="0"
+    style="width:60%; height:400px;" name="target"></iframe>
+
+    <br>iframe응용
+    <a href="../2024-11-21/form2.html" target="target">폼</a>
+    <a href="../2024-11-21/link.html" target="target">링크</a>
+    <a href="../2024-11-21/img.html" target="target"> image</a>
+    <a href="4-frame.html" target="target"> this</a>
+</body>
+</html>

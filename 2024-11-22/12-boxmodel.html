@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/boxmodel.css">
+</head>
+<body>
+
+    <!-- 
+    박스모델 : 대부분의 html 요소들의 기본적인 틀
+    1. 컨텐츠 :
+    2. 패딩 : 컨텐츠와 선의 간격 
+       - 요소에 적용된 배경색, 이미지는 패딩영역까지 적용됨.
+    3. 보더 : 컨텐츠와 패딩을 감싸는 테두리.
+    4. 마진 : 테두리와 이웃하는 요소 사이의 간격
+       - 배경색 지정은 불가능.
+
+        box-sizing 속성(프로퍼티)
+        - width, height 속성의 대상영역을 변경.
+        - 기본값 : content-box (대상영역이 컨텐츠 영역)
+                  border-box  (컨텐츠 + padding + border 영역 )
+        - 현업에서는 border-box를 자주 사용함.
+          이론상으로 레이아웃을 직관적으로 사용할 수 있기 때문에 자주 설정됨.
+    -->
+    <!-- <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae explicabo minus perferendis dolor similique sed quisquam rem neque voluptatem distinctio! Doloremque molestiae tenetur eaque neque rem aperiam? Quibusdam, qui rem.</h1>
+    <a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus sequi non explicabo, alias mollitia repellendus consequatur assumenda vel quisquam tenetur facere odio repellat vero, sit fugit porro eligendi cum quidem?</a>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi voluptate perferendis exercitationem dolor deserunt fuga deleniti excepturi nesciunt delectus ea ab quo, hic soluta maxime laudantium animi sapiente vitae velit?</p> -->
+
+    <!-- 
+    <h1> box model </h1>
+
+    <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus adipisci vitae a fugiat iste ratione culpa magni nihil facilis necessitatibus corrupti rem aliquam, fuga non laudantium saepe voluptas dolorum aliquid.
+    </div>
+    -->
+
+    <div class="contents-box">contents-box</div>
+    <div class="border-box">border-box</div>
+</body>
+</html>

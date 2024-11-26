@@ -1,0 +1,39 @@
+/* 크기가 비슷하거나 속성이 비슷한 요소들은
+클래스명으로 묶어서 컨트롤하면 용이함
+
+특별하게 개별컨트롱이 필요한 요소들은
+id값을 활용하는것이 
+추후 자바스크립트와 연계했을때 용이함
+*/
+
+#one{
+    width:150px;
+    height: 150px;
+    background-color: blanchedalmond;
+}
+
+.abs{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+}
+.red{
+    background-color: red;
+    left:50px;
+    top:50px;
+    z-index: -1;
+}
+
+.blue{
+    background-color: blue;
+    left:100px;
+    top:100px;
+    z-index: -2;
+}
+
+.green{
+    background-color: green;
+    left:150px;
+    top:150px;
+    z-index: -3;
+}

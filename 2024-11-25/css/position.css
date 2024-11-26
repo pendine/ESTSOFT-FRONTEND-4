@@ -1,0 +1,36 @@
+.box{
+    width:150px;
+    height:150px;
+    /* display:inline-block; */
+    margin:20px;
+}
+
+.box1 {
+    background-color : blue;
+    position: relative;
+    /* top : 50px; */
+    /* left : 100px; */
+    /* right : 100px; */
+    /* bottom : 0px; */
+}
+
+.box2 { 
+    background-color : pink;
+    position: absolute;
+    top : 30px;
+    left : 30px;
+}
+
+.parents{
+    background-color: blue;
+    position: relative;
+    /* position: absolute; */
+    /* top: 230px; */
+}
+
+.abs{
+    position : absolute;
+    /* top: 50px;
+    left: 50px; */
+    background-color: red;
+}

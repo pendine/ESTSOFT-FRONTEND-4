@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        
+        h1{
+            color : red;
+        } 
+       
+    </style>
+    <!-- 외부 스타일 시트 연결 -->
+    
+</head>
+<body>
+    <!-- 
+CSS(Cascading Style Sheet)
+ - 웹 페이지의 디자인과 레이아웃을 정의하는 스타일 시트 언어
+  HTML과 함께 웹을 구성하는 기본적인 요소로, 웹 문서의 시각적 표현을 담당
+  (html, xml)
+
+  CSS 관련 용어
+    1. 셀렉터 (선택자)
+        - CSS를 통해 HTML 요소의 스타일을 적용하고자 할 때, 
+        그 요소를 선택하는 방법
+        1-1 선택자 종류
+         - html 선택자(태그 선택자)
+         - id 선택자 : # id 명
+         - class 선택자 : . class 명
+         - 그룹선택자 : 여러개의 태그나 id, 클래스를 작성 후 공백으로 구분
+
+    2. 프로퍼티 (속성)
+     - css 문법 작성방식
+
+     선택자 선언시작    속성명  선언구분자  속성값  선언구분자   선언종료
+        h1  {         color    :        red     ;           }
+
+css 적용 방식
+1. 인라인 선택(인라인 스타일 / 인라인 스타일시트) = 해당 태그에 작성
+ <h1 style="color:red;">
+    스타일 속성을 선언 후 내부(속성값)에 css 문법을 작성
+    - 해당 태그에만 스타일 적용.
+    내부,외부스타일 시트보다 우선 적용.
+
+2. 내부(내부 스타일 시트)
+3. 외부(외부 스타일 시트)
+    내부, 외부 스타일시트는 동일한 우선순위를 가지지만
+    나중에 선언된 스타일 시트가 덮어씌움.
+
+    우선순위
+    인라인 > 내부 = 외부 (선언순서에 따라 덮어씌움) > 기본
+
+
+설렉터(선택자)
+프로퍼티 유닛(단위)
+box model
+position(정렬)
+기본문법
+트랜지션, 트랜스폼
+레이아웃완성(flexable box, grid)
+반응형 웹앱 구현
+ -->
+
+ <h1 style="color:rgba(0, 0, 255, 0.7);"> CSS 시작 </h1>
+ <h1> CSS 시작 </h1>
+</body>
+</html>

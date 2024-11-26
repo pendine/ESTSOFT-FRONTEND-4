@@ -1,0 +1,7 @@
+각 메뉴를 클릭할때 마다 해당 이미지를 view 시키세요
+
+HOME, page3 = test3.jpg
+page1 = test2.jpg
+page2 = test4.jpg
+
+힌트 : iframe으로 하셔도 되지만 iframe 없이 의외로 간단하게 처리하실수 있습니다.

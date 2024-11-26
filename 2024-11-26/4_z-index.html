@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/z-index.css">
+</head>
+<body>
+    <!-- 
+    다른 요소에 position:absolute가 선언되도
+    position:static(기본값)의 포지션을 침범하지않음 
+    static의 영역은 relative나 absolute가 침범하지 못함
+    z-index도 position이 static이면 적용되지 않음
+    -->
+    <div id="one"> 1번</div>
+    <div class="abs red">abs red</div>
+    <div class="abs blue">abs blue</div>
+    <div class="abs green">abs green</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+div {
+    width: 250px;
+    height : 250px;
+    background-color:aquamarine;
+    display: inline-block;
+    opacity: 0.2;
+
+}
+
+/* 
+a{
+    width: 250px;
+    height : 250px;
+    background-color:crimson;
+    display: inline-block;
+}
+*/
+
+#test1{
+    /* display : none; */
+    /* visibility: hidden; */
+}
+
+#test2{
+    /* opacity: 0.5; */
+}
+
+div:hover{
+    opacity :1;
+}

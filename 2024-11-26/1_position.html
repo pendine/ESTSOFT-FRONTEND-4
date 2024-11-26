@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/position.css">
+</head>
+<body>
+<!--     
+    position 
+      - 요소의 위치를 정의하는 속성 (property)
+      top, left, right, bottom 프로퍼티를 이용하여
+      요소의 위치를 조정
+      포지션의 값이 static인 경우, 조정해도 적용안됨
+
+    1. static : 기본값
+       - 모든 요소들은 부모요소 위치를 기준으로 배치됨.
+       최상위 요소 = body
+       직접 static 을 선언하는 경우는 적음
+       (javascript를 이용하여 postion을 무력화
+       사용하는경우는 간혹 있음.)
+       좌표 프로퍼티를 적용해도 static일 경우는 무시됨.
+    2. relative : 기본위치를 기준으로 좌표프로퍼티를 사용해 위치를 이동시키는 속성.
+                  static과 차이점은 좌표프로퍼티 적용가능 차이
+    3. absolute : 부모요소 혹은 가장 가까운 상위요소를 기준으로 좌표만 이동시키는 속성
+    4. fixed : 요소를 고정시키는 속성
+      - 부모요소 상관없이 브라우저의 viewport를 기준으로
+        좌표프로퍼티를 사용하여 위치를 고정
+      - fixed사용시 block요소가 inline요소와 같이변함
+    5. z-index : position이 static이 아닌 요소에 대해
+                z축 사용.
+    6. sticky : 처음에는 relative처럼 동작하다가
+                스크롤시 지정 지점에서 요소를 고정시키는 요소
+          사용조건까다로움
+      6-1. sticky 사용조건
+        - 자신의 부모요소 안에서만 작동
+        - 부모태그에 무조건 height가 필요.
+          (부모의 높이만큼 sticky가 고정되기 때문)
+        - 부모요소 중 overflow가 적용되어있으면 사용 불가능.
+-->
+
+    <!-- 
+    <div class="box box1"> 사각형 1 </div>
+    <div class="box box2"> 사각형 2 </div> 
+    -->
+
+    <div class="box parents">
+        <div class="box abs"> 
+            absolute 적용(상위요소 있음)
+        </div>
+    </div>
+
+    <div class="box abs">
+        absolute 적용(상위요소 없음)
+    </div>
+
+</body>
+</html>

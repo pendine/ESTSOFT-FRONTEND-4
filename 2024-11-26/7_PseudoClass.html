@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/pseudo.css">
+</head>
+<body>
+    <!-- 가상(의사)클래스 : 요소의 특정 상태에 따라 스타일 정의시 사용하는 개념
+    (특정한 상태 : 이벤트)
+    이벤트 상황이란?
+    1. 마우스가 해당 요소에 올라와있을때(hover)
+    2. 방문상태 여부
+    3. 포커스 상태
+    
+    가상(의사) 클래스의 종류(선언 방법 = 선택자:속성)
+    자주쓰이는 속성 위주로
+    1. 링크(동적 셀렉터)
+       :link (미방문 링크)
+       :visited (방문 링크)
+       :hover (마우스 올렸을때)
+       :active (클릭된 상태)
+       :focus (포커스 상태)
+       
+     <a href="#"> 마우스 올리면~ </a>
+     <input type="text" value="포커스란?">
+
+    2. 상태(checkbox, radio)
+      :checked (선택된 상태)
+      :enabled (선택 가능한 상태)
+      :disabled(선택 불가능한 상태)
+    <input type="radio" name="animal" id="" value="dog"><span>dog</span>
+    <input type="radio" name="animal" id="" value="cat"><span>cat</span>
+    <input type="radio" name="animal" id="" value="both"><span>both</span>
+    <hr>
+    <input type="checkbox" name="" id="" value="자동차"><span>자동차</span>
+    <input type="checkbox" name="" id="" value="자전거" disabled><span>자전거</span>
+    <input type="checkbox" name="" id="" value="지하철" checked><span>지하철</span>
+ 
+      3. 구조 의사 클래스
+      - :first-child : 셀렉터에 해당한 모든 요소중 첫번째 자식 요소 선택
+      - :last-child : 셀렉터에 해당한 모든 요소중 마지막자식(html구조에서)을 선택
+      - :nth-child(n) : 앞에서 n번째의 자식요소 선택
+      - :nth-last-child(n) : 뒤에서 n번째 자식요소 선택
+    4. 부정
+    5. 정합성 체크
+    6. 가상 요소
+     -->
+    
+     <p>1번 p</p>
+    <h1>제목 1</h1>
+    <p> 2번 p</p>
+    <p> 3번 p</p>
+    <p> 4번 p</p>
+    <p> 5번 p</p>
+    <div>
+        <p>div inner no.1 p</p>
+        <p>div inner no.2 p</p>
+        <p>div inner no.3 p</p>
+        <p>div inner no.4 p</p>
+        <p>div inner no.5 p</p>
+    </div>
+    <div>
+        <p>div 2 inner no.1 p</p>
+        <p>div 2 inner no.2 p</p>
+        <p>div 2 inner no.3 p</p>
+        <p>div 2 inner no.4 p</p>
+        <p>div 2 inner no.5 p</p>
+        <div>
+            <p>div 2 inner-inner no.1 p</p>
+            <p>div 2 inner-inner no.2 p</p>
+            <p>div 2 inner-inner no.3 p</p>
+            <p>div 2 inner-inner no.4 p</p>
+            <p>div 2 inner-inner no.5 p</p>
+        </div>
+    </div>
+    <p>2번 p</p>
+    <p>2번 p</p>
+    
+</body>
+</html>

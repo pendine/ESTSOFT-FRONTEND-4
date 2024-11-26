@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #text{
+            margin : 1px;
+        }
+        table{
+            padding : none;
+            margin : none;
+            border : black 1px solid;
+        }
+        td {
+            border : black 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>주석을 테스트하자</h1>
+
+    라이브서버 단축키는 alt + l + o (l, o 는 순차적으로 눌러도 된다) <br>
+    <br>
+    과제 제출시 : 제출기준 - 주석 잘 달기<br>
+    모르는건 어느부분을 모르겠다고 작성하고 되는데로 작성해서 제출하기<br>
+    <!-- 과제 제출시 : 제출기준 - 주석 잘 달기
+     모르는건 어느부분을 모르겠다고 작성하고 되는데로 작성해서 제출하기 -->
+    텍스트 태그<br>
+    제목, 단락, 서식<br>
+    <br>
+    제목 태그(요소) : h (h1 ~ h6)<br>
+    <h1 id="text">글자 텍스트 123</h1>
+    <h2 id="text">글자 텍스트 123</h2>
+    <h3 id="text">글자 텍스트 123</h3>
+    <h4 id="text">글자 텍스트 123</h4>
+    <h5 id="text">글자 텍스트 123</h5>
+    <h6 id="text">글자 텍스트 123</h6>
+    제목 태그는 일반적으로 제목의 크기를 조정하지만 <br>
+    웹페이지 제작시에는 각각 태그에 기본 스타일을 적용해서 <br>
+    다른 글꼴들을 표현하거나 혹은  <br>
+    라인별 다른 스타일을 적용하고 싶을때 사용하기도 함. <br>
+    <br>
+    글자 형태(단락, 서식) 태그 <br>
+    글자 형태를 정하는 태그들은 css 때문에 요즘에는 자주 안쓰이는 경향 <br>
+    css를 사용하는 것이 편함<br>
+    (string, i, p 제외)<br>
+    i 태그의 경우 웹페이지의 외부 아이콘 호출시 사용<br>
+    <br>
+    b, strong, i, em, mark, del, p, br, hr, pre <br>
+    <br>
+
+    b, Strong 태그  => 크롤링과 연관<br>
+    i, em 태그      => 크롤링과 연관<br>
+
+    <table>
+        <tr><td> 태그 적용 효과 </td>                <td>태그</td> </b></td></tr>
+        <tr><td><b> b 태그 </b></td>                <td>b 태그</td></tr>
+        <tr><td><strong> Strong 태그</strong></td>  <td>Strong 태그</td></tr>
+        <!-- b태그와 기능은 같지만 중요함을 강조함 -->
+        <tr><td><i> i 태그</i></td>                 <td>i 태그</td></tr>
+        <tr><td><em> em 태그</em></td>              <td>em 태그</td></tr>  
+        <!-- i태그와 기능은 같지만 텍스트를 강조하는 의미 i는 시각적, em은 시멘틱 요소-->
+        <tr><td><mark>mark 태그</mark></td>         <td>mark 태그</td></tr>
+        <tr><td><del>del 태그</del></td>            <td>del 태그</td></tr>
+        <tr><td><p> p 태그 </p></td>                <td>p 태그</td></tr>
+        <tr><td><br> br 태그</td>                   <td>br 태그</td></tr>
+        <tr><td><hr></td>                           <td> hr 태그 </hr></td></tr>
+        <tr><td><pre> lorem </pre></td>             <td>pre 태그 </td></tr>
+    </table>
+
+    lorem 이라고 치면 아래와 같은 무작위 문장이 나열됨<br>
+    <pre>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam consequatur accusamus, neque delectus dolorem reprehenderit similique obcaecati nemo minima porro inventore hic adipisci deserunt a! Iusto, numquam. Eum, minus numquam!</pre>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti obcaecati, cum a distinctio eum quaerat harum perspiciatis laborum consequatur voluptates, dicta corrupti minima quam optio. Voluptates impedit labore architecto id.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Laboriosam vitae beatae esse officia a harum id maiores mollitia nemo possimus voluptas,
+    odio odit quia tempora aperiam excepturi. Culpa, quia incidunt.<br>
+    <br>
+    p : 단락은 표현하는 태그는 <br>
+     - p 태그를 포함하는 html 내에서 작성된 띄어쓰기, 줄 나누기는 오직 한 칸만 인식<br><br><br>
+
+    종료태그가 없음 : empty태그 <br>
+    br : html 의 강제 개행<br>
+    hr : html 의 줄긋기<br>
+     - br, hr, img, input, link <br><br>
+
+    entity : html 예약어<br>
+    html에서 자주 사용하는 엔티티
+    <!-- 
+    &nbsp; : 줄바꿈 없는 공백
+    &lt; : 보다 작은 ( < )
+    &gt; : 보다 큰( > )
+    &amp; : AND 기호
+    &quot; : 큰따옴표
+    &apos; : 작은따옴표
+
+    엔티티로 표현하는 특수문자(심볼 문자)
+    &reg; : 등록상표
+    &cent; : 센트
+    &pound : 파운드
+    &euro : 유로
+    -->
+
+</body>
+</html>

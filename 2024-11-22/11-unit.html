@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/unit.css">
+</head>
+<body>
+    <!-- 
+    css 단위
+    px, em, %
+    px : 절대값
+    em, % : 상대값
+     -->
+
+    <!-- 
+    <div style="background-color:rgba(222,222,22,1); width:850px;" >
+        즐거운 불금이다!
+    </div> 
+    -->
+
+<!-- 
+가시영역(viewport) : 사용자 눈에 보이는 영역
+-->
+
+    <!-- 
+    <div style="background-color:rgba(222,222,22,1); width : 80%;" >
+        즐거운 불금이다!
+    </div> 
+    -->
+
+    <!-- 인라인 속성은 넓이 지정 불가능 -->
+    <!-- 
+    em : 배수단위 상대 지정
+    - 요소에 지정된 사이즈를 기반한 상대적 사이즈 설정
+
+    em의 부작용과 단점
+     - 상위 요소의 영향을 받음 (중첩됨)
+     
+     - 상위 요소의 영향을 피하기 위해서는 rem이라는 단위를 사용할것.
+     rem = (root)em
+
+
+    viewport 단위 (vh, vw, vmin, vmax)
+    vh = view height
+    vw = view width
+    vmin = view port 넓이나 높이중 작은쪽의 백분율 
+    vmax = view port 넓이나 높이중 큰쪽의 백분율
+
+    %는 부모속성에 영향을 받지만
+    뷰포트 단위는 뷰포트 크기가 기준임.
+     -->
+
+    <!-- 
+     <div>
+        1111111111111
+        <div>
+            222222222222222
+            <div>
+                3333333333333333333
+            </div>
+        </div>
+    </div> 
+    -->
+
+    <div class="item item1"> 첫번째 </div>
+    <div class="item item2"> 두번째 </div>
+
+</body>
+</html>

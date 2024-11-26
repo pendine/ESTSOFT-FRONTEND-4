@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>homework5</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    h1 img {
+      width: 100px;
+    }
+
+    /* 위 버튼들 레이아웃 스타일 지정 */
+    .btns {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 30px;
+      padding: 0;
+    }
+
+    /* 이미지 사이즈 지정 및 초기 없애기 */
+    .view img {
+      display: none;
+      width: 600px;
+      height: 300px;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+
+    /* 앵커로 연결된 요소에 접근하는 선택자 */
+    #page1:target,
+    #page2:target,
+    #page3:target {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1><img src="img/logo.jpg" alt="amazon"></h1>
+  
+  <!-- 링크와 해당하는 각 이미지의 id 연결 -->
+  <ul class="btns">
+    <li><a href="#page3">HOME</a></li>
+    <li><a href="#page1">Page1</a></li>
+    <li><a href="#page2">Page2</a></li>
+    <li><a href="#page3">Page3</a></li>
+  </ul>
+
+  <!-- 각 이미지에 id 값 부여 -->
+  <div class="view">
+    <img id="page1" src="img/test2.jpg" alt="">
+    <img id="page2" src="img/test4.jpg" alt="">
+    <img id="page3" src="img/test3.jpg" alt="">
+  </div>
+</body>
+</html>

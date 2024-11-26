@@ -1,0 +1,29 @@
+.modal-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height : 100vh;
+    background-color: black;
+    opacity: 30%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-container{
+    position: relative;
+    background-color: aliceblue;
+    width: 350px;
+    padding : 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-close{
+    position:absolute;
+    top:10px;
+    right:10px; /*해당 요소의 우측에서 10px 만큼 떨어트림*/
+    font-size:24px;
+    cursor: pointer;
+}

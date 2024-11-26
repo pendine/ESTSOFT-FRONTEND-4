@@ -1,0 +1,36 @@
+* { 
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #e3f2fd;
+}
+
+.container{
+    position: relative;
+    max-width: 320px;
+    width : 100%;
+    margin : 50px auto 30px;
+}
+
+.select-btn{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor : pointer;
+    background-color: #fff;
+    box-shadow:  0 5px 10px rgba(0, 0, 0, 0.1);   
+}
+
+.select-btn .btn-text{
+    font-size: 17px;
+    font-weight: 400;
+    color: #333;
+}
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-22_1</title>
+    <style>
+        table body th,td { 
+            border : black 1px solid;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>김개발의 포트폴리오</h1>
+        <nav>
+            <ul>
+                <li><a href="#portfolio">소개</a></li> </label>
+                <li><a href="#project">프로젝트</a></li>
+                <li><a href="#call">연락처</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="portfolio">
+        <h2>개발자 소개</h2>
+        <article>
+            <h4>프로필</h4>
+            <img src="" alt="김개발 프로필 이미지">
+        </article>
+    </section>
+        
+    <section id="project">
+        <h2>프로젝트 이력</h2>
+        <article>
+            <div style="width: 500px; text-align: center;">개발 프로젝트 상세 이력</div>
+            <table border="1" style="width: 500px;">
+                <thead>
+                    <tr>
+                        <th>프로젝트명</th>
+                        <th>기간</th>
+                        <th>역할</th>
+                        <th>기술 스택</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">AI 추천 서비스</td>
+                        <td>2022.03-2022.08</td>
+                        <td>백엔드 개발</td>
+                        <td>Python, Django</td>
+                    </tr>
+                    <tr>
+                        <td>2022.09-2023.02</td>
+                        <td>머신러닝 모델링</td>
+                        <td>TensorFlow, Keras</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+    </section>
+
+    <section>
+        <h2>프로젝트 제안</h2>
+        <article>
+            <form action="#">
+                <fieldset>
+                    <legend>개인정보</legend>
+                    <label for="name"> 이름: </label><input type="text" id="name">
+                    <label for="email"> 이메일: </label><input type="email" id="email">
+                </fieldset>
+                <fieldset>
+                    <legend>프로젝트 정보</legend>
+                    <label for="projecttype"> 프로젝트 유형: </label>
+                    <select size="4" id="projecttype">
+                        <ul>
+                            <option><li>웹개발</li></option>
+                            <option><li>모바일 앱</li></option>
+                            <option><li>AI/ML</li></option>
+                        </ul>
+                    </select>
+                    <label for="asset"> 예상 예산:</label><input type="range" id="asset" step="1" max="100" min="0">
+                    <label for="projectInfo">프로젝트 제안:</lable><textarea name="projectInfo" id="projectInfo" cols="20" rows="4"></textarea>
+                        <br>
+                    <label for="projectFile">프로젝트 관련 파일 : <input type="file" id="projectFile">
+                </fieldset>
+                <button type="submit"> 제안서 제출 </button>
+            </form>
+        </article>
+    </section>
+
+
+    <footer id="call">
+        <em>연락처 : 김개발@개발새발.com </em>
+        <br>
+        <em> &copy; 2024 김개발. all rights reserved.</em>
+    </footer>
+
+</body>
+</html>

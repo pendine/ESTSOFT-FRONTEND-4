@@ -1,0 +1,55 @@
+/* *{
+    font-size : 16px;
+} */
+
+/* 
+속성선택자 예시 1
+a[href]{
+    color: rgba(51, 255, 0, 0.979);
+}
+
+속성선택자 예시 2
+input[type="text"]{
+    color:hotpink;
+} 
+
+속성선택자 예시 3
+.head[class~="fir"]{
+    color:brown;
+}
+
+
+속성선택자 예시 4
+.head[class|="fir"]{
+    color:brown;
+}
+
+속성선택자 예시 5
+
+.head[class$="fir"]{
+    color:brown;
+}
+
+자식선택자 예시
+div > p{
+    color:seagreen
+}
+
+자손선택자 예시
+div p{
+    color:seagreen
+}
+
+자식 > 자식
+div > span > p{
+    color:seagreen
+}
+
+인접 동위 선택자 A요소 + B요소
+일반 동위 선택자 A요소 ~ B요소
+
+*/
+div + p {
+    font-size:35px;
+    background-color: coral;
+}

@@ -1,0 +1,45 @@
+.container{
+    border : black 2px solid;
+    margin : 20px;
+    padding : 20px;
+    width : 450px;
+}
+
+.title {
+    box-sizing: border-box;
+    background-color: rgba( 188,188,188,0.5);
+    padding : 20px;
+    border-bottom : rgba( 188,188,188,0.5)1px solid;
+    height : auto;
+
+}
+
+.titleName{
+    margin : 0px;
+    padding : 0px;
+}
+
+.time{
+    border-left : rgba(0,0,255,0.8) 3px solid;
+    padding : 10px 5px;
+    font-size : 25px;
+    box-sizing: border-box;
+    color : gray;
+    margin : 0px;
+}
+
+.detail{
+    border:black 1px dashed;
+    box-sizing: border-box;
+    margin-top : 15px;
+    padding : 15px;
+}
+
+.detail p{
+    font-size: 25px;
+    margin : 3px;
+}
+
+.detail hr{
+    border:rgba( 188,188,188,0.5) 1px solid;
+}

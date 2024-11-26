@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/position.css">
+</head>
+<body>
+<!--     
+    position 
+      - 요소의 위치를 정의하는 속성 (property)
+      top, left, right, bottom 프로퍼티를 이용하여
+      요소의 위치를 조정
+      포지션의 값이 static인 경우, 조정해도 적용안됨
+
+    1. static : 기본값
+       - 모든 요소들은 부모요소 위치를 기준으로 배치됨.
+       최상위 요소 = body
+       직접 static 을 선언하는 경우는 적음
+       (javascript를 이용하여 postion을 무력화
+       사용하는경우는 간혹 있음.)
+       좌표 프로퍼티를 적용해도 static일 경우는 무시됨.
+    2. relative : 기본위치를 기준으로 좌표프로퍼티를 사용해 위치를 이동시키는 속성.
+                  static과 차이점은 좌표프로퍼티 적용가능 차이
+    3. absolute : 부모요소 혹은 가장 가까운 상위요소를 기준으로 좌표만 이동시키는 송성
+
+    4. fixed : 
+
+    5. z-index :
+    6. sticky : 
+
+    넓이와 높이가 150px인 정사각형 상자 2개 만들기
+    (색상 : 임의)
+ -->
+
+    <!-- 
+    <div class="box box1"> 사각형 1 </div>
+    <div class="box box2"> 사각형 2 </div> 
+    -->
+
+    <div class="box parents">
+        <div class="box abs"> 
+            absolute 적용(상위요소 있음)
+        </div>
+    </div>
+
+    <div class="box abs">
+        absolute 적용(상위요소 없음)
+    </div>
+
+</body>
+</html>

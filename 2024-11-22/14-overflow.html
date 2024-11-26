@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>overflow</title>
+
+    <style>
+        div{
+            font-size: 10px;
+            width: 250px;
+            height: 130px;
+            border : solid 3px red;
+            /* background-color: aqua; */
+            overflow: scroll; 
+        }
+        div::-webkit-scrollbar{
+            width:30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    overflow : 컨텐츠 영역이 요소보다 커질때(맞출 수 없을때) 대한 처리법을 기술하는 속성
+        overflow-x, overflow-y 의 속성값으로 별도로 수정할 수 도있음.
+     - visible : 기본값
+     - hidden : 컨텐츠가 요소를 벗어나는 것들은 숨김. (잘림)
+     - clip : 
+     - scroll : 컨텐츠가 요소를 벗어나면 스크롤바를 생성
+     - auto : 스크롤바가 필요하다 판단되면 생성.
+     - overlay : 
+    -->
+
+    <!-- 컨텐츠 영역이 요소보다 커지는경우 사용하는 옵션  -->
+    <div>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae placeat esse, deserunt illo inventore nostrum cum quidem fugit eius magni sequi eum exercitationem, pariatur expedita aliquam, fuga consequatur unde vero.
+        Possimus blanditiis repudiandae non facere deserunt! Nesciunt velit non sequi, repudiandae repellat cum, magni voluptatum harum cumque blanditiis error voluptates autem vitae ipsa culpa laudantium impedit accusantium quia saepe deserunt!
+        Facilis consequatur harum et, sequi eum ducimus itaque illo asperiores, debitis autem nam labore optio odit veniam, quisquam quod iusto? Reprehenderit, adipisci dolore nisi est vero saepe magnam quaerat aspernatur.
+        Error fugit deserunt, officiis, maiores ad voluptates et qui, ipsa animi voluptate tempora soluta inventore accusamus molestias! Non nihil cum dolorum quaerat veritatis deleniti unde. Placeat deleniti ipsum excepturi cupiditate.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem delectus nihil repellat perferendis ut eaque aspernatur at eos beatae tempore, non voluptatum sapiente fugit. Tempore blanditiis ipsa quis veniam numquam?
+        Dicta nihil vel ut eligendi, debitis labore sed maiores! Sunt debitis alias quis asperiores qui corrupti, architecto voluptates error eos porro itaque, repellat, odit eum! Inventore vero nam necessitatibus accusamus.
+        Eum, provident quidem repudiandae natus quae tempora rerum optio dignissimos tempore odit. Voluptatum maxime suscipit qui recusandae omnis atque rem ab? Iste ut sapiente nemo qui quia, sint voluptas asperiores.
+        Distinctio pariatur cumque esse, beatae amet culpa dolore quaerat voluptatum molestias minus, ducimus fugit vero debitis itaque sapiente sed sunt. Cumque eos id odit corrupti ipsa, animi earum nemo quod?
+        Voluptatem quisquam animi sunt ratione inventore, magni reprehenderit quas eius? Itaque recusandae maxime optio blanditiis quis praesentium, labore omnis at nostrum aliquam ad, minus dicta aut. Enim quod quo nulla!
+        Minus sequi laborum, maxime temporibus, vitae corrupti voluptas modi in porro provident eaque, a sapiente nemo consequuntur quia quibusdam odit eos rerum nostrum sunt dolorum fugit dolores! Debitis, voluptate? Aut.
+    </div>
+</body>
+</html>

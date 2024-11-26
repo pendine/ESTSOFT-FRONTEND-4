@@ -1,0 +1,22 @@
+body{
+    background-color:bisque;
+    opacity: .5;
+    
+}
+#fix{
+    background-color: antiquewhite;
+    /* background-attachment: fixed; */
+    /* opacity: 0.3; */
+    width:150px;
+    height :250px;
+    margin-left : auto;
+    margin-right: auto;
+    position: fixed;
+    top :150px;
+    left : 150px;
+    z-index: 3;
+}
+h1{
+    position:relative;
+    z-index: 10;
+}

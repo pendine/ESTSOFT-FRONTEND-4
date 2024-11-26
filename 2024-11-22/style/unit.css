@@ -1,0 +1,24 @@
+/* body{
+    font-size : 20px;
+}
+
+div{
+    font-size: 1.5em;
+} 
+*/
+
+.item{
+    width : 70vw;
+    height : 100vh;
+    text-align: center;
+    line-height : 100vmin;
+    font-size : 4rem;
+}
+
+.item1{
+    background-color:wheat;
+}
+
+.item2{
+    background-color: greenyellow;
+}

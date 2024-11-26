@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>font</title>
+    <link rel="stylesheet" href="style/font.css">
+</head>
+<body>
+    <!-- 
+    font 
+    1. font-size : 글자크기 지정
+    2. font-family : 글꼴 지정 - 기본 글꼴 : Serif, Sans-Serif, Mono Space
+     - 주의사항 : 컴퓨터에 해당 폰트가 설치되어있지 않으면 적용x
+     글꼴 적용시, 적힌 글꼴 순서에 따라 우선순위 적용. 마지막에는 기본 글꼴 중 하나를 작성
+    3. font-style : 글꼴 기울임 적용여부 지정 속성.
+    4. font-weight : 글꼴 굵기 지정.
+    5. font shorthand : 
+      font-style, font-weight font-size [/line-height] font-family
+     -->
+
+    <!--      
+    <p> 글자의 기본크기 16px (크롬 기준) </p>
+    
+    <p class="size-px"> px단위로 글자조정(30px)</p>
+    <p class="size-em"> em단위로 글자조정(1.5em)</p>
+    <p class="size-per"> per단위로 글자조정(150%)</p>
+    <p class="size-prop"> property 단위로 글자조정(large)</p> 
+    -->
+
+    <!-- 
+    <p>글꼴 스타일과 굵기</p>
+    <p class="italic"> 스타일 지정된 p 태그 </p>
+    <p class="light"> 글꼴 굵기 1번 </p>
+    <p class="bold"> 글꼴 굵기 2번 </p>
+    <p class="bold2"> 글꼴 굵기 3번 </p> 
+    -->
+
+    <!-- font 관련 추가 속성들(줄 간격, 칸 설정, view) -->
+<!-- 
+    1. line-height
+    <h1>버튼 꾸미기</h1>
+
+    <div class="btn">
+        <a href="#">button</a>
+    </div> -->
+
+    <!-- <button>버튼1</button>
+    <input type="button"> -->
+
+<!-- 
+    2. letter-spacing(자간 조정)
+    <h1 >아무말이나쓰기1</h1>
+    <h1 class="spacing1">아무말이나쓰기2</h1>
+    <h1 class="spacing2">아무말이나쓰기3</h1> -->
+
+    <!-- 
+    3. text-align (문자 정렬)
+     - left
+     - right
+     - center -->
+
+<!--      
+    <h1>뉴스 특보</h1>
+    <h3>2024.11.25</h3>
+    <p id="left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum veniam sequi corporis blanditiis molestiae deserunt magnam, eveniet laboriosam, rem vel, ipsa laborum beatae quam accusamus? Tempore debitis molestiae esse dolores.</p>
+    <p id="just">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum veniam sequi corporis blanditiis molestiae deserunt magnam, eveniet laboriosam, rem vel, ipsa laborum beatae quam accusamus? Tempore debitis molestiae esse dolores.</p>
+    <span id="test1">center text span</span> 
+    -->
+
+<!-- 
+    4.text-decoration(텍스트 밑줄 설정)
+    none : 줄 제거
+    overline : 윗줄
+    line-through : 중간줄(del 태그와 동일한 효과)
+    underline : 밑줄
+ -->
+
+    <!-- 
+    <br>
+    <a href="#">text-decoration:none</a>
+    <p> p tag - text-decoration:on like link </p> 
+    -->
+    
+    5. white-space : 글자의 공백이나 개행등을 처리하는 기준을 만드는 속성
+    normal : 기본값
+    nowrap : 한 줄로 표출
+    pre : 공백은 개발자가 입력한 만큼 적용, 자동 줄바꿈은 지원하지 않음
+    pre-wrap : 공백과 줄바꿈을 입력한만큼 적용, 자동줄바꿈 지원. 
+    pre-line : 입력한 개행과 자동줄바꿈 지원하지만 입력한만큼의 공백지원 X. 
+
+    <!-- 자동 줄 바꿈-->
+    <!-- <div class="d nor"> 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perspiciatis officia voluptate placeat neque autem aliquam qui ea voluptas, aut architecto sit ducimus ut ipsam, consequatur omnis. Expedita, optio excepturi?
+    </div> -->
+
+    <!-- 자동 줄 바꿈 X -->
+    <!-- <div class="d no-wrap">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perspiciatis officia voluptate placeat neque autem aliquam qui ea voluptas, aut architecto sit ducimus ut ipsam, consequatur omnis. Expedita, optio excepturi?
+    </div> -->
+
+    <!-- 개행 + 들여쓰기 + 자동 줄바꿈 X -->
+    <!-- <div class="d pre">Lorem ipsum dolor sit amet
+         consectetur adipisicing elit. Voluptatem perspiciatis officia
+          voluptate placeat neque autem aliquam qui ea voluptas, aut architecto sit ducimus ut ipsam,
+           consequatur omnis. Expedita, optio excepturi?
+    </div> -->
+
+    <!-- 개행 + 들여쓰기 + 자동 줄바꿈 -->
+    <!-- <div class="d p-wrap"> 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita laborum ipsum incidunt, voluptatum iste, doloribus eos consequatur pariatur sunt, provident repudiandae dolor architecto perspiciatis illo sed saepe consectetur tempora modi!
+    </div> -->
+
+    <!-- 개행 + 자동 줄바꿈 -->
+    <!-- <div class="d p-line"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita laborum ipsum incidunt, voluptatum iste, doloribus eos consequatur pariatur sunt, provident repudiandae dolor architecto perspiciatis illo sed saepe consectetur tempora modi!    
+    </div> -->
+
+    <!-- 복습시 개행해둔 요소와 아닌 요소들을 비교할 것.
+    <div class="d p-wrap">
+        Lorem ipsum dolor sit amet
+         consectetur adipisicing elit. Voluptatem perspiciatis officia
+          voluptate placeat neque autem aliquam qui ea voluptas, aut architecto sit ducimus ut ipsam,
+        consequatur omnis. Expedita, optio excepturi?
+    </div>
+    <div class="d p-line">
+        Lorem ipsum dolor sit amet
+         consectetur adipisicing elit. Voluptatem perspiciatis officia
+          voluptate placeat neque autem aliquam qui ea voluptas, aut architecto sit ducimus ut ipsam,
+        consequatur omnis. Expedita, optio excepturi?
+    </div> -->
+
+<!-- 
+    6. text-overflow()
+     - 부모의 영역을 벗어난 텍스트 처리 방법 정의 속성
+     다음 조건을 충족할 경우 사용 가능
+     (해당 요소의 넓이가 지정되어있어야함.
+     자동 줄바꿈 방지를 위해서 white-space가 nowrap이어야함.
+     overflow 속성이 visible 외의 값이어야함)
+     6-1 clip : 기본 값
+     6-2 ellipsis : 영역을 벗어난 내용은 사용자들에게 내용이 더 있다는 것을 말 줄임표로 표현함
+    7. word-wrap : 단어의 길이가 길어서 부모의 영역을 벗어난 텍스트의 처리 방법을 정의하는 속성
+    8. word-break : : word-wrap과 거의 비슷하지만 단어를 고려하지 않고 부모영역에 무조건 맞추는 특징이 있음.
+     -->
+
+    <h1> text-overflow 설명</h1>
+    <!-- <div class="clip">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolorem itaque hic iste ipsa molestias, praesentium incidunt eaque corporis aspernatur atque officia nesciunt fugit sunt, vel vitae, sapiente quaerat sequi.
+    </div>
+    <div class="ell">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores corrupti inventore tenetur labore ullam excepturi. Facere, atque enim temporibus magni aliquam distinctio minus neque soluta placeat labore nisi. Et, nobis?
+    </div> -->
+    <div class="w-wrap">
+        Lorem ipsum, dolor sit amet ㅁㅁ consectetur adipisicing elit.
+    </div>
+    <div class="w-break">
+        Lorem ipsum, dolor sit amet ㅁㅁ consectetur adipisicing elit.
+    </div>
+
+</body>
+</html>

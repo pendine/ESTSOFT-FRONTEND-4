@@ -1,0 +1,162 @@
+/* 
+.size-px{
+    font-size : 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.size-em{
+    font-size : 1.5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.size-per{
+    font-size: 150%;
+    font-family: 'Courier New', Courier, monospace;
+}
+.size-prop{
+    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+} 
+*/
+
+*{
+    font-size : 25px;
+}
+
+.italic{
+    font-style: italic;
+}
+
+.light{
+    font-weight : lighter;
+}
+
+.bold{
+    font-weight : 500;
+}
+
+.bold2{
+    /* font-weight : 900; */
+    font : italic bolder 40px times;
+}
+
+.btn{
+    width : 160px;
+    height : 40px;
+    background-color: palevioletred;
+    border-radius: 30px;
+}
+
+.btn a{
+    display:block;
+    font-size: 25px;
+    color:whitesmoke;
+    text-align: center; /* 글꼴 수평 정렬 */
+    line-height: 40px; /* 글꼴 수직 정렬 
+    요소의 높이와 동일하게 하면 수직정렬됨.*/
+}
+
+.spacing1{
+    letter-spacing: 5px;
+    display:inline-block;
+}
+
+.spacing2{
+    letter-spacing: -23px; 
+}
+
+.spacing2:hover{
+    letter-spacing: 1px; 
+}
+
+/* 
+h1{
+    text-align:right
+}
+
+h3{
+    text-align:right
+} 
+    */
+
+#left{
+    text-align:center;
+}
+
+#just{
+    text-align:justify;
+    /* 줄 내리기 전 한줄에 꽉 맞춤. */
+}
+
+#test1{
+    text-align:center;
+}
+
+/* a{
+    text-decoration:none;
+} */
+
+/* p{
+    text-decoration: underline overline line-through;
+    color : blue;
+    cursor : pointer;
+} */
+
+/* 
+.d{
+    width : 250px;
+    height : 250px;
+    padding : 10px;
+    margin: 20px;
+    border : 3px solid black;
+
+}
+
+.nor{
+    white-space: normal;
+}
+
+.no-wrap{
+    white-space: nowrap;
+    overflow: scroll;
+}
+
+.pre{
+    white-space: pre;
+    overflow: scroll;
+}
+
+.p-wrap{
+    white-space:pre-wrap;
+    overflow: scroll;
+}
+
+.p-line{
+    white-space:pre-line;
+    overflow: scroll;
+} 
+*/
+
+div{
+    width: 125px;
+    height : 150px;
+    padding : 15px;
+    margin : 30px;
+    border : 5px solid black;
+    /* white-space: nowrap; */
+    /* overflow : hidden; */
+}
+
+.clip{
+/* 기본값 */
+}
+
+.ell{
+    text-overflow: ellipsis;
+}
+
+.w-wrap{
+    text-overflow: break-word;
+}
+
+.w-break{
+    text-overflow: break-all;
+}

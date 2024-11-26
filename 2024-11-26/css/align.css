@@ -1,0 +1,32 @@
+.container{
+    width : 1259px;
+    border : black 1px solid;
+    height : 600px;
+    margin : 0 auto;
+}
+
+.box{
+    color:white;
+    font-weight: bold;
+    font-size:40px;
+    width : 150px;
+    height: 150px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.m1{
+    float:left;
+    background-color: lawngreen;
+}
+
+.m2{
+    float:right;
+    background-color: tomato;
+}
+
+.m3{
+    /* float:right; */
+    margin : 0 auto;    
+    background-color: palevioletred;
+}

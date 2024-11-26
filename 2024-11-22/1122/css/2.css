@@ -1,0 +1,23 @@
+#developerSkillAnal{
+    width : 100%;
+    border : black 1px solid;
+    border-collapse: collapse;
+}
+#developerSkillAnal th,#developerSkillAnal td{
+    border : black 1px solid;
+}
+
+#nestingTable, #nestingTable tr,#nestingTable td{
+    border : black 1px solid;
+}
+
+.project , .project tr, .project td, .project th{
+    border : black 1px solid;
+}
+
+.projectName{
+    background-color: rgba(0,50,255,0.3);
+}
+.projectState{
+    background-color: rgba(0, 255, 50,0.3);
+}
