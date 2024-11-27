@@ -1,0 +1,38 @@
+/* 4. 부정
+부정선택자
+input[type=text]:not{
+
+}
+*/
+/* 5. 정합성 체크
+input[type=text]:valid{
+    background-color: greenyellow;
+}
+
+input[type=text]:invalid{
+    background-color: crimson;
+    color:aliceblue;
+} 
+*/
+/* 
+p::first-letter{
+    font-size: 4rem;
+}
+p::first-line{
+    color:blue;
+} 
+*/
+
+h1::before{
+    content:"군침이 ";
+    color: blue;
+}
+
+h1::after{
+    content: " 싹도노";
+    color: red;
+}
+
+::selection{
+    background-color: yellow;
+}

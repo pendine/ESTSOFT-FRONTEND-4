@@ -1,0 +1,39 @@
+h1:nth-child(1){
+    text-shadow: 5px 5px;
+    
+}
+h1:nth-child(2){
+    color:black;
+    text-shadow : 15px 15px 5px gray;
+}
+h1:nth-child(3):hover{
+    text-shadow: 0 0 5px red, 0 0 3px blue;
+}
+h1:nth-child(4){
+    color : white;
+    text-shadow: 1px 1px 3px black
+                , 0 0 15px crimson
+                , 0 0 8px blueviolet;
+}
+
+div{
+    width : 250px;
+    height : 125px;
+    padding: 10px;
+    margin: 20px;
+    background-color: aquamarine;
+}
+
+/* div:nth-child(1){ */
+div:nth-of-type(1){
+    /* 그림자 효과를 부여를 위해서 기본적으로 수평 수직 이동 필수 */
+    box-shadow: 10px 10px 10px;
+}
+div:nth-of-type(2){
+    /* inset 선언을 해야 효과 적용 */
+    box-shadow: inset 10px 10px 15px;
+}
+div:nth-of-type(3){
+    /* inset 선언을 해야 효과 적용 */
+    box-shadow: 10px 10px 5px 5px blue;
+}

@@ -1,0 +1,71 @@
+/* div{
+    width : 150px;
+    height : 150px;
+    background-color: #777;
+    transition : all 0.2s;
+}
+
+div:hover{
+    border-radius: 50%;
+    background-color: brown;
+}
+
+.hover-btn{
+    width : 150px;
+    height : 100px;
+    background-color: violet;
+    columns: white;
+    border : none;
+    cursor : pointer;
+    transition: all 0.3s;
+}
+
+.hover-btn:hover{
+    background-color: greenyellow;
+    transform: scale(1.1) rotate(900deg);
+} */
+/* 
+div{
+    width: 150px;
+    height: 50px;
+    background-color: steelblue;
+    transition: width 3s;
+    
+}
+
+div:hover{
+    width: 100%;
+    background-color: chocolate;
+}
+*/
+
+
+div {
+    font: bold 16px/50px "Open Sans";
+    color: white;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    background-color: red;
+    margin-bottom: 10px;
+    transition: width 1s;
+    transition-delay: 0.5s;
+  }
+  div:nth-child(1) {
+    transition-timing-function: ease;
+  }
+  div:nth-child(2) {
+    transition-timing-function: linear;
+  }
+  div:nth-child(3) {
+    transition-timing-function: ease-in;
+  }
+  div:nth-child(4) {
+    transition-timing-function: ease-out;
+  }
+  div:nth-child(5) {
+    transition-timing-function: ease-in-out;
+  }
+  div:hover {
+    width: 300px;
+  }

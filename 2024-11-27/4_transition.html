@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition</title>
+    <link rel="stylesheet" href="css/transition.css">
+</head>
+<body>
+<!-- 
+    transition
+     - CSS 속성 값이 변화할때 변화가 
+       일정시간에 걸쳐서 일어나도록 처리하는 속성
+     - 불필요한 효과라 볼 수 있으나 부드러운 요소의 전환을 통해
+       사용자의 시각적 피로도를 기대할 수 있음.
+     - 사용자 중심의 ui/ux 구현중 고려해야할 
+       다른 사항은 인간의 특성을 고려하면 편함
+       (인지 심리학적 접근)
+       
+       -->
+    <!-- <div></div> -->
+
+    <!-- <button class="hover-btn">마우스 올리면 변함</button> -->
+<!-- 
+    1. transition 예시
+    transition-property : 트랜지션 대상 지정. 지정하지 않으면 모든 프로퍼티가 대상
+    transition-duration : 트랜지션 지속시간 설정. (단위: s, ms) 지정하지 않으면 0초
+    transition-timing-function : 트랜지션 효과 흐름 리듬을 제어하는 속성
+     - ease : 기본값(느리게 시작 -> 점점빨라짐 -> 느려지며 종료)
+     - linear : 시작부터 끝까지 일정
+     - ease-in : 느리게 시작 -> 일정속도에 닿으면 그 상태로 일정
+     - ease-out : 일정속도의 등속 시작 -> 느려지며 종료
+     - ease-in-out : 느리게 시작 -> 느려지며 종료 
+    transition-delay : 실질적 트랜지션 시작 시간 설정 (트랜지션 지연)
+    transition shorthand : 
+      property duration function delay (duration은 작성 필요)
+     - 트랜지션 주의사항
+        : 트랜지션은 자바스크립트나 
+          의사클래스같은 부수적 이벤트에서 동작함
+     - 모든 프로퍼티에서 동작하진 않음 
+    (아래 프로퍼티들은 동작함 - 특징 : 대부분 레이아웃에 영향을 주는 프로퍼티)
+       width, height, padding, margin, border, backgound-color
+       top, left, right, bottom, color, font-size, font-weight,
+       letter-spacing, line-height, text-indent, text-shadow,
+       vertical-align, word-spacing,
+       opacity, visiblilty, z-index
+     - 레이아웃의 구성을 망치는 트랜지션의 효과는 만들지 말 것.
+     -->
+
+     <h3>transition-timing-function</h3>
+     <div>ease</div>
+     <div>linear</div>
+     <div>ease-in</div>
+     <div>ease-out</div>
+     <div>ease-in-out</div>
+     
+</body>
+</html>

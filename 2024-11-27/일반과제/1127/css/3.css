@@ -1,0 +1,30 @@
+.container{
+    margin : 0 auto;
+    padding: 30px;
+    width: 500px;
+    height: 250px;
+    border : black 3px solid;
+}
+
+/* .divider{
+    border-top : deepskyblue 3px solid ;
+} */
+
+hr{
+    border:deepskyblue 2px solid ;
+}
+em{
+    margin-top: 10px;
+    padding-top : 10px;
+    color:#888;
+    font-size: 25px;
+}
+
+/* em::before{
+    border-top : deepskyblue 3px solid ;
+} */
+
+p::first-letter{
+    font-size: 35px;
+    color:deepskyblue;
+}
