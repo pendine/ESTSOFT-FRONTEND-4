@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding: 0;
+    color:black;
+}
+
+/* 문법 규칙이 엄격함 and (max-width:~px) 에서 
+and 뒤에 공백이 없으면 안됨.*/
+/* @media only screen and (max-width:800px){
+    *{
+        color:blue;
+    }
+}
+
+@media only screen and (max-width:480px){
+    *{
+        color:crimson;
+    }
+} */
+
+/* 화면의 가로와 세로를 구분하면서
+반응형으로 동작시키는 예시
+*/
+/* @media only screen and (max-device-width:760px)
+              and (orientation:landscape)
+{
+    *{
+        color:chocolate !important;
+    }
+} */
+
+/* 아래의 내용은 반응형 웹앱 개발에
+ 공식처럼 사용할 수 있는 미디어 쿼리 설정
+ 모바일 우선일경우 320 -> 1200 적용
+ pc 우선일경우 1200 -> 320 적용 */
+@media only screen and (min-width:320){}
+@media only screen and (min-width:480){}
+@media only screen and (min-width:786){}
+@media only screen and (min-width:992){}
+@media only screen and (min-width:1200){}
+

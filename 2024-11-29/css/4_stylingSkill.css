@@ -1,0 +1,9 @@
+:root{
+    --testA : #29aabb;
+    --testB : #97abab;
+}
+
+h1{
+    color:var(--testA);
+    background-color: var(--testB);
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/3_grid.css">
+</head>
+<body>
+    <!-- grid 
+     - flexable box 의 약점을 보완하고자 나옴
+       (flex약점 : 1차원 레이아웃, 정렬 제한성)
+     - 2차원 레이아웃 시스템
+     - 행과 열을 동시에 제어
+     - 과거 크로스 브라우징 이슈에 취약(IE)
+     - 좌표기반 레이아웃
+     - 수학적 그리드 시스템과 유사한 논리
+     그리드 트랙 계산 알고리즘
+     트랙 크기 = (전체 컨테이너 크기 - 고정간격 ) / 가변트랙수
+    주의사항 : 유지보수성 낮음 
+
+    그리드 컨테이너 : 그리드의 전체 영역을 정의
+    그리드 아이템 : 컨테이너의 자식요소 GRID 규칙에 의해 배치됨
+    그리드 트랙 : 그리드의 행이나 열
+    그리드 셀 : 드리드의 한칸(아이템 하나가 들어가는 공간)
+    그리드 라인 : 그리드의 셀을 구분하는 선
+    그리드 갭 : 셀 사이의 간격
+    그리드 에어리어 : 그리드 셀의 집합
+
+    그리드 속성 (컨테이너)
+    grid-template-rows : 명시적으로 행(row, track)의 크기를 정의
+     - repeat(반복진행함수 / 반복횟수, 크기(단위 1fr))
+     - fr(fraction 공간 비율)
+    grid-template-columns : 명시적으로 열(column,cell)의 크기를 정의
+    grid-template-areas : 지정된 그리드 영역이름을 참조해 그리드 템플릿을 생성
+     - 정확히는 item 속성
+    grid-template(short hand)
+     - 
+    
+    gap(shorthand)
+    row-gap : 
+    column-gap : 
+
+    grid
+    grid-auto-rows : 암시적으로 행의 크기를 지정하는 속성
+    grid-auto-columns : 암시적으로 열의 크기를 지정하는 속성
+    grid-auto-flow (shorthand?)
+     - 배치하지 않은 아이템을 어떻게 처리할지 정의하는 속성
+     1. row : 각 행 축을 따라 차례로 배치
+     2. column : 각 열 축을 따라 차례로 배치
+     3. row dense : 각 행 축을 따라 차례로 배치, 빈 영역 메워 줌
+     4. column dense : 각 열 축을 따라 차례로 배치, 빈 영역을 메워 줌
+
+    align-content : flex의 align-content와 동일
+     - 그리드 컨텐츠의 세로너비가 그리드 컨테이너 보다 작아야함
+     1. start
+     2. center
+     3. end
+     4. space-around : 각 행 위아래에 여백을 고르게 정렬
+     5. space-between : 첫행은 시작점, 끝행은 끝점에 나머지 여백 고르게
+     6. space-evenly : 모든 여백을 고르게 정렬
+     7. stretch : (기본값인 normal과 동일)
+                   열축 스트레칭(열 축을 채우기 위해 그리드를 늘림)
+    justify-content
+     - align-content와 동일한 속성
+    place-content : align-content + justify-content 
+    - place-content : <align-content> <justify-content >
+        하나를 쓰면 두속성에 동시 적용, 순서대로 쓰면 따로 적용
+    align-items : 아이템을 기준으로 수직 정렬 관리
+    justify-items : 아이템을 기준으로 수평 정렬 관리
+    place-items : 사용x  (사용방법은 place-content 사용하는것처럼 사용)
+        (엣지에서 작동 안함 크로스브라우저 이슈)
+
+    grid functions
+     - repeat : 행이나 열의 크기 정의 반복
+       repeat( 반복횟수, 크기정의 / 반복횟수, 크기정의)
+       ex) repeat(5 1fr 2fr) 
+     - minmax : 행이나 열의 최소, 최대 크기 정의
+       grid-template-rows, grid-template-columns,
+       auto-rows, auto-column에서 사용가능
+       ex) minmax(100px, 1fr) / auto 사용가능 그리드 아이템 크기에 따라 확장됨           
+     - fit-content : 행과 열의 크기를 그리드 아이템이 포함하는 내용에 맞춘다.
+        (컨텐츠 영역에 행이나 열을 맞춘다.)
+       ex) fit-content(크기,)
+
+    
+    grid item
+    order : flex와 같읕 동작원리
+    z-index : position과 같은 원리
+    -->
+
+    <!-- <div class="grid-container">
+        <header>헤더</header>
+        <nav>네비</nav>
+        <main>메인</main>
+        <footer>푸터</footer>
+    </div> -->
+
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <!-- <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div> -->
+        <!-- 
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div> -->
+    </div>
+
+
+</body>
+</html>

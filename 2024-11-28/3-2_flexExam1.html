@@ -8,26 +8,38 @@
 </head>
 <body>
 
-    <header>
-        
-        <div class="logo">logo</div>
-        <nav class="navigation">
-            <a href="#">home</a>
-            <a href="#">profile</a>
-            <a href="#">setting</a>
-        </nav>
-        <div class="aaa">user</div>
-    </header>
-    <main>
-        <aside>
+    <div class="dashboard">
+        <header>
+            <div class="logo">logo</div>
+            <nav class="navigation">
+                <a href="#">home</a>
+                <a href="#">profile</a>
+                <a href="#">setting</a>
+            </nav>
+            <div class="aaa">user</div>
+        </header>
+        <main class="main-content">
+            <aside class="sidebar">
+                <div class="sidebar-item">1번 메뉴</div>
+                <div class="sidebar-item">2번 메뉴</div>
+                <div class="sidebar-item">3번 메뉴</div>
+            </aside>
 
-        </aside>
-        <section>
+            <section class="content-area">
+                <!-- 
+                . => div class=""
+                .card => div class="card" -->
+                <div class="card">card 1</div>
+                <div class="card">card 2</div>
+                <div class="card">card 3</div>
 
-        </section>
-    </main>
-    <footer>
-
-    </footer>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-column">column 1</div>
+            <div class="footer-column">column 2</div>
+            <div class="footer-column">column 3</div>
+        </footer>
+    </div>
 </body>
 </html>

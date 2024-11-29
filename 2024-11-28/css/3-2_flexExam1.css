@@ -1,17 +1,19 @@
-
+.dashboard{
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+    border : 3px yellow solid;
+}
 header{
-    height: 120px;
+    /* height: 120px; */
+    /* flex : 1; */
     border: 3px solid red;
 }
 
 main{
-    height: 750px;
+    /* height: 750px; */
+    /* flex : 5; */
     border: 3px solid black;
-}
-
-footer{
-    height: 125px;
-    border: 3px solid blue;
 }
 
 header{
@@ -20,8 +22,65 @@ header{
     align-items: center;
     background-color: #2c3e4d;
     padding: 15px;
+    color : #f0f4f9;
 }
 
-aside{
-    
+.navigation{
+    display: flex;
+    gap : 20px;
+    a{
+        text-decoration: none;
+        color : whitesmoke;
+    }
+}
+
+main{
+    display : flex;
+    flex:1;
+}
+.sidebar{
+    display : flex;
+    flex-direction: column;
+    width:200px;
+    background-color: #949ef5;
+    color:#f0f3f9;
+}
+
+.sidebar-item{
+    padding : 15px;
+    border-bottom: 1px solid #2c3e50;
+}
+
+.content-area{
+    display:flex;
+    flex-wrap:wrap;
+    padding: 20px;
+    gap : 20px;
+    flex : 1;
+    background-color: #f0f3f9;
+}
+
+/* calc(33.333% - 20px); -> 11-29 과제 1 */
+.card{
+    flex:1 1 calc(33.333% - 20px);
+    min-width:250px;
+    background-color: white;
+    padding:20px;
+    box-shadow: 0 4px 6px rgba(0,0,0, 0.2);
+}
+
+
+footer{
+    /* height: 125px; */
+    /* flex : 1; */
+    border: 3px solid blue;
+    display: flex;
+    color: #f0f4f9;
+    background-color: #2c3e4d;
+}
+
+.footer-column{
+    flex : 1;
+    padding: 20px;
+    text-align:center;
 }

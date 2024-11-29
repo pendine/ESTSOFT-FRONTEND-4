@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/2-2_hambergerIcon.css">
+    <style>
+        .navicon{
+            cursor: pointer;
+            height: 60px;
+            padding : 30px 15px;
+            position: absolute;
+            top:0; 
+            right: 0;
+        }
+        .navicon-bar{
+            display: block;
+            width: 20px;
+            height: 3px;
+            background-color: #333;
+            position:relative;
+            transition: all .2s;
+        }
+        .navicon-bar::before , .navicon-bar::after{
+            content:"";
+            display: block;
+            width: 20px;
+            height: 3px;
+            background-color: #333;
+            position:absolute;
+            transition: all .2s;
+        }
+                
+        .navicon-bar::before {
+            top: -7px;
+        }
+
+        .navicon-bar::after {
+            top: 7px;
+        }
+
+        .navicon{
+            /* display:none; */
+        }
+        .nav-toggle{
+            /* display:none; */
+        }
+        .nav-toggle:checked ~ .navicon > .navicon-bar{
+            background : transparent;
+            /* transparent : 배경 투명도 변경 - 투명화*/
+        }
+
+        .nav-toggle:checked ~ .navicon > .navicon-bar::before{
+            transform :rotate(45deg);
+            top:0;
+        }
+        .nav-toggle:checked ~ .navicon > .navicon-bar::after{
+            transform :rotate(-45deg);
+            top:0;
+        }
+
+        .nav-toggle:checked ~ .navicon .navicon-bar {
+            background: transparent;
+        }
+
+        .nav-toggle:checked ~ .navicon .navicon-bar::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .nav-toggle:checked ~ .navicon .navicon-bar::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    
+        <input type="checkbox" class="nav-toggle" id="nav-toggle" name="nav-toggle">
+        <label class="navicon"for="nav-toggle">
+            <span class="navicon-bar"></span>
+        </label>
+    
+</body>
+</html>
