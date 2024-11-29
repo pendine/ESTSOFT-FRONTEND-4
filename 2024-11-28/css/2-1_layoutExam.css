@@ -1,0 +1,142 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-style : 'Arial', 'sans-serif';
+    line-height: 1.6;
+    background-color: #f0f4f8;
+    color:#333;
+}
+/* 초기화 종료 */
+
+/* 헤더 영역 스타일 지정 */
+header{
+    background-color: #4ecdc4;
+    color:#ffffff;
+    text-align:center;
+    padding : 20px 0;
+}
+
+header h1{
+    margin: 10px 0;
+    font-size : 2.5rem;
+
+}
+/* 헤더 영역 스타일 지정 종료*/
+
+/* 네비 영역 스타일 지정 */
+nav {
+    text-align: center;
+    padding : 10px 0;
+}
+nav > ul{
+    list-style-type: none;
+    display: inline-block;
+}
+nav > ul > li{
+    display: inline-block;
+    margin : 0 15px;
+}
+nav > ul > li > a{
+    text-decoration: none;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+/* 네비 영역 스타일 지정 종료*/
+
+/* 섹션 시작 */
+section {
+    width: 80vw;
+    max-width: 1200px; 
+    margin : 40px;
+    background-color: #ffffff;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 12px;
+}
+section h2{
+    color: #4ecdc4;
+    border-bottom : #4ecdc4 2px solid;
+    padding-bottom : 10px;
+    margin-bottom : 10px;
+}
+/* 섹션 끝*/
+
+.profile-image{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border : #4ecdc4 4px solid;
+    object-fit: cover; /* 이미지 핏 비율 유지를 위한 속성 */
+}
+
+.skills-overview{
+    display: inline-block;
+    width : 100%;
+    text-align: center;
+}
+.skill-card{
+    display: inline-block;
+    width : 30%;
+    margin : 15px;
+    background-color: #e9f5f9;
+    padding : 20px;
+    border-radius: 10px;
+    border : #b0e0e6 1px solid;
+    text-align: center;
+}
+
+.skill-card h3{
+    color : #4ecdc4;
+    border-bottom: #4ecdc4 2px solid;
+    margin-bottom: 15px;
+}
+
+.skill-card ul {
+    list-style-type: none;
+}
+
+.skill-card ul li{
+    margin-bottom: 10px;
+}
+
+/* 경력 */
+.experience-timeline{
+    width: 100%;
+    h3{
+        margin-bottom: 4px;
+    }
+
+}
+
+.timeline-item{
+    width: 100;
+    margin-bottom: 15px;
+    padding:15px;
+    background-color : #f0f9ff;
+    border-radius: 8px;
+    border: 1px solid #a7c7df;
+}
+
+.timeline-item span{
+    color: #4ecdc4;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* 경력 끝 */
+
+/* 푸터 */
+footer{
+    text-align: center;
+    background-color:#4ecdc4;
+    color:#f0f4f8;
+    padding:20px;
+    width: 100%;
+}
+/* 푸터 끝 */

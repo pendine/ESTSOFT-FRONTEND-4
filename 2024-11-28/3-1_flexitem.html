@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/3-1_flexitem.css">
+</head>
+<body>
+<!--     
+    item 속성의 종류
+    - order : flex item의 배치순서 지정
+    (요소의 간단한 재배치를 통해 다양한 UX를 제공하는것이 가능해짐.
+     - 기본값 0. 숫자가 낮을수록 앞으로 배치)
+    - flex-grow : 넓이에 대한 영역 분배 속성 - 넓이 확대
+       (기본값 : 0  음수지정 불가)
+    - flex-shrink : 넓이 축소
+       (flex로 균등하게 분배된 넓이를 특정요소만 해제할때는 0을 삽입)
+    - flex-basis : 넓이 기본값을 지정.
+       (기본값 : auto 개발자가 임의로 지정이 가능.)
+    - align-self : align-items보다 우선하여 개별적으로 아이템을 정렬하는속성
+       (기본값 : auto /  flex-start, flex-end, center, baseline, stretch)
+    - flex shorthand : grow shrink basis 
+      ( w3c 에서는 shorthand 사용 미권장 )
+
+     -->
+     <div class="row">
+        <div class="item one">1</div>
+        <div class="item two">2</div>
+        <div class="item">3</div>
+        <!-- <div class="item">4</div> -->
+        <!-- <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div> -->
+    </div> 
+
+</body>
+</html>

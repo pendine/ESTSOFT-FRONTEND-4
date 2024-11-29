@@ -1,0 +1,16 @@
+
+
+.box{
+    width: 150px;
+    height: 100px;
+    background-color: yellow;
+    transition-duration: 0.5s;
+}
+
+.box:hover{
+    background-color: deepskyblue;
+    transform: rotateX(30deg);
+    /* transform : skew(150deg); */
+     
+}
+

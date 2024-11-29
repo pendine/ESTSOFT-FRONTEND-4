@@ -51,3 +51,13 @@ body {
     }
 }
 
+.box{
+    width: 100px;
+    height: 100px;
+    transition: width 1s;
+    background-color: white;
+}
+
+.box:hover{
+    width: 1000px;
+}

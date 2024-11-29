@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/1_animation.css">
+</head>
+<body>
+<!--     
+    애니메이션 - 트랜지션 강화판
+     - 무한으로 움직이는 요소 등 트랜지션과 비교하여
+       더 다양한 스타일을 구현 할 수 있음.
+     - CSS의 애니메이션이 javascript 기반의 이벤트 구현보다
+       더 나은 성능을 제공
+     - 간단한 내용은 CSS로 구축하고 난해한 내용은
+       javascript를 사용하는것이 일반적
+     - 부드러운 효과를 제공하는것이 애니메이션의 궁극적 목적이기 때문에
+       효과작성에 소요되는 시간과 노력등을 고려하여 기능을 사용하거나 CSS, JS 중 무엇을 사용할지
+       결정하는것이 필요
+      주의사항 : 
+         - 불필요한 애니메이션을 지양해야함
+    
+    @ ←–– at-role이라고 불림
+    
+    @keyframes
+    애니메이션 프로퍼티 
+    animation-name : @keyframes 이름 지정
+    animation-duration : 한사이클의 애니메이션 소요시간 지정(s, ms)
+    animation-timing-function : 애니메이션 효과를 위한 타이밍 함수 지정
+    (트랜지션과 원리가 동일)
+    animation-delay : 애니메이션 지연 시간 설정
+    animation-iteration-count : 애니메이션 재생횟수(기본값 1회)
+    animation-direction : 애니메이션이 종룔된 이후 반복될때 진행하는 방향 지정
+     - normal : 기본값
+     - reverse : to -> from
+     - alternate : 홀수번째는 normal, 짝수번째는 reverse
+     - alternate-reverse : 홀수번째는 reverse, 짝수번째는 normal
+    animation-fill-mode : 애니메이션 미 실행시(종료, 대기) 요소 스타일 지정
+    animation-play-state : 애니메이션 재생 상태(재생이나 중지) 지정
+     - running : 기본값 (애니메이션실행)
+     - paused : 정지
+    animation shorthand : 모든 애니메이션 프로퍼티를 한번에 지정
+     - name duration timing-function delay iteration-count direction fill-mode play-state
+    -->
+
+    <div class="animation"></div>
+
+</body>
+</html>

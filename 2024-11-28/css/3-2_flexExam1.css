@@ -1,0 +1,27 @@
+
+header{
+    height: 120px;
+    border: 3px solid red;
+}
+
+main{
+    height: 750px;
+    border: 3px solid black;
+}
+
+footer{
+    height: 125px;
+    border: 3px solid blue;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e4d;
+    padding: 15px;
+}
+
+aside{
+    
+}

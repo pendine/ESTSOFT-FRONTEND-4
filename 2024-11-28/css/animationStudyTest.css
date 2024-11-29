@@ -1,0 +1,41 @@
+div{
+    width: 100px;
+    height: 100px;
+    background-color: lemonchiffon;
+    animation : boxmove;
+    animation-duration: 3s ;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    position: absolute;
+}
+
+@keyframes boxmove {
+    0%{
+        left:0;
+        top:0;
+    }
+
+    25%{
+        left:50%;
+        top:0;
+        background-color: blue;
+    }
+    
+    50%{
+        left:50%;
+        top: 50%;
+        background-color: brown;
+    }
+
+    75%{
+        top: 50%;
+        left:0;
+        background-color: aqua;
+    }
+
+    100%{
+        left:0;
+        top:0;
+        background-color: white;
+    }
+}

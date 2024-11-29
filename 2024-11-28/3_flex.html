@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/3_flex.css">
+</head>
+<body>
+<!--  
+    flexable box : 레이아웃 작성을 돕는 속성
+    - 기존 레이아웃 작성 방식보다 
+      좀 더 니즈에 부합하기위한 새로운 레이아웃 작성방식
+    - 수평, 수직, 가운데 정렬이나 요소의 위치를 잡을때 탁월한 기능을 제공
+    - 서로 다른 화면과 기기에서도 html 요소의 자동 재정렬을 돕는 속성.
+    - flex가 적용되는 순간 기본적으로 컨테이너 내부의 아이템들은
+      컨테이너 넓이 / 아이템 수 만큼 적절하게 분배
+       (아이템 수 * 아이템 너비가 컨테이너 너비 보다 큰 경우)
+    
+    fleable box는 크개 2가지 개념으로 설명할 수 있음.
+    1. container
+      - flex-direction : 요소가 배치될 방향설정
+        1. row : 기본값
+        2. row-reverse : 아이템 배치가 우 -> 좌
+        3. column : 수직 기본값
+         (item의 높이가 컨테이너를 초과할 경우 오버플로우됨.)
+        4. column-reverse : 수직 역방향 배치
+
+      - justify-content : 수평 정렬 관련 속성
+        1. flex-start : 기본값
+        2. flex-end : 아이템을 컨테이너의 뒤쪽부터 배치
+        3. center : 아이템을 컨테이너 중간부터 배치
+        4. space-between : 아이템들 사이에 여유공간을 두고 배치
+        5. space-around : 아이템들 사이에 앞뒤에도 여유공간을 두고 배치 
+      - align-items : 수직설정
+        1. stretch : 기본설정
+        아이템은 기본적으로 컨테이너의 높이를 따라감
+        높이를 제한하고싶으면 높이를 설정
+        2. flex-start :컨테이너의 상단부에 아이템을 배치
+        3. flex-end : 컨테이너 하단부에 아이템을 배치
+        4. center : 컨테이너 중앙에 아이템을 배치
+      - flex-wrap : flex속성은 기본적으로 다음라인으로
+                    요소를 넘기지 않는 특성이 존재
+        (아이템 넓이의 총합이 컨테이너 너비보다 크게되면 
+         컨테이너의 너비에 맞게 아이템의 넓이를 재분배)
+         1. nowrap:기본설정
+         2. wrap : 아이템이 여유공간이 없다면 아래라인으로 배치
+         3. wrap-reverse : wrap과 유사하지만 윗라인으로 배치(반대방향 배치)
+      - align-content : 아이템 수직정렬
+        (align-items와의 차이점은 기준점이 다름.
+        , flex-wrap을 강요하는 속성 / wrap, wrap-reverse)
+      - 컨테이너의 목적에 따라 items와 content의 사용 기준을 두면 편함.
+      -  align-content는 space-between과 space-around도 제공
+
+      flex-flow : flex shorthand
+       - flex-direction flex-wrap
+    2. item
+      - 
+ -->
+
+    실습
+    <!-- <div class="row flexd">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div> -->
+    <!-- <div class="row just">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>  -->
+    <!-- <div class="row a-items">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>  -->
+    <!-- <div class="row flex-wrap">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+    </div>  -->
+    <div class="row a-content">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+    </div> 
+</body>
+</html>

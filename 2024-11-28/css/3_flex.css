@@ -1,0 +1,54 @@
+.row{
+    background-color: burlywood;
+    width: 600px;
+    height: 500px;
+    display:flex;
+}
+
+.item{
+    background-color: aquamarine;
+    width: 150px;
+    height: 100px;
+    margin: 15px;
+    /* padding: 25px; */
+    text-align: center;
+}
+
+/* flex-derection 설정 */
+.flexd{
+    /* flex-direction: row-reverse; */
+    flex-direction : column-reverse;
+}
+
+/* justify-content */
+/* .just{
+    display: flex;
+    justify-content: flex-start;
+    justify-content: center;
+    justify-content: space-between;
+    justify-content: space-around;
+} */
+
+.a-items{
+    /* align-items가 설정되지 않으면 padding으로도
+    아이템의 높이 컨트롤은 불가.
+    */
+    /* align-items: flex-start; */
+    align-items: center;
+    /* align-items: flex-end; */
+}
+
+.flex-wrap{
+    /* flex-wrap: wrap; */
+    flex-wrap: wrap-reverse;
+    /* flex-wrap: nowrap; */
+}
+
+.a-content{
+    flex-wrap: wrap;
+    /* flex-wrap이 선언,적용되지 않으면
+    nowrap -> 적용되지 않음
+    wrap, wrap-reverse -> 적용됨
+    align-content 속성의 값이 적용되지 않음 */
+    align-content: space-around;
+}
