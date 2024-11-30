@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    @import url(https://fonts.googleapis.com/css?family=Lato:300);
+    -> https://fonts.googleapis.com/css?family=Lato:300
+    에서 폰트 정보를 호출함
+    
+    .container{ // 컨테이너클래스 속성 지정
+        text-align: center; // 텍스트 중앙 정렬
+        background-color: #e74c3c; // 배경색 지정
+        overflow: hidden; // 화면을 벗어날 경우 자름
+    }
+    
+    .box:nth-child(2n-1){ 
+        // 박스클래스로 선언된 요소들을 (2n-1 )홀수번째 요소들의 대한 속성 지정
+        background-color: rgba(0,0,0,0.05); //배경색 지정
+        //컨테이너 색상과 박스의 색상을 별개로 취급하여 색상 겹침
+    }
+  
+
+    .box p{ // box클래스의 p태그 속성 지정
+        color: #777; //폰트 색상
+        font-family:  Lato,"Helvetica Neue" ; // 폰트 글꼴
+        font-weight: 300; // 폰트 굵기
+        position: absolute; // 위치
+        font-size: 20px; // 폰트 크기
+        width: 100%; // 너비
+        height: 25px; // 높이
+        text-align: center; // 텍스트 중앙 정렬
+        bottom: 0px; //부모요소에서 아래로부터의 거리
+        margin: 0; // 패딩 속성 지정(border 바깥부분)
+        top:160px; // 부모요소의 위로부터의 거리
+        background-color: #fff; // 배경색상 지정
+        opacity: 0; // 불투명도 지정 0 -> 투명
+        text-transform: uppercase; // 글자를 대문자로 출력
+        transition: all .2s ease; // 0.2초동안 모든 속성을 처음엔 느리게 -> 빠르게 -> 느리게 변환
+    }
+    
+    .box:hover p{ // box클래스의 p태그에 마우스를 올렸을때 속성 지정
+        bottom:0px; //부모요소의 아래로부터의 거리 지정
+        top:175px; //부모요소의 위로부터의 거리 지정
+        opacity: 1; // 불투명도 지정 -> 1 불투명
+        transition: all .2s ease; //모든 속성을 0.2초동안 느림-빠름-느림으로 변화시킴
+        z-index: 2; // z-index 속성 변경 (화면상 z축을 높임. 기본 설정 0)
+    }
+    
+    ... 전부하기에는 너무 많아서...
+
+    @-webket-keyframes = 벤더속성 크로스브라우저를 지원하기위한 애니메이션 속성 지정
+    @keyframes = 애니메이션 지정
+    
+</body>
+</html>

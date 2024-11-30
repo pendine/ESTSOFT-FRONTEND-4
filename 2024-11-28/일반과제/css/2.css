@@ -1,0 +1,139 @@
+:root{
+    --photocolor:#8f8f8f;
+}
+
+*{
+    margin: 0;
+    padding : 0;
+}
+
+.container{
+    display: flex;
+    flex-direction:column;
+    width: 100vw;
+    height : 100vh;
+    justify-content: flex-start;
+}
+
+.resize-notice{
+    background-color: yellow;
+    width: 100%;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    font-weight: 600;
+}
+
+.title{
+    background-color: rgb(0, 223, 148);
+    text-align: center;
+    color:#ffffff;
+    width: 100%;
+    height: 120px;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation{
+    width: 100%;
+    height:40px;
+    background-color: black;
+    display: flex;
+    flex-direction:row;
+    justify-content: start;
+    align-items: center;
+}
+
+.linkbar{
+    display: flex;
+    flex-direction:row;
+    list-style-type: none;
+    /* gap:20px; */
+    li{
+        /* position속성을 부여하니
+         flex안에 원하는 형태로 정렬이 안됌 */
+        /* position: absolute; */
+        display: block;
+        /* width:40px; */
+        padding:10px;
+        a{
+            text-decoration: none;
+            color:white;
+            padding: inherit;
+        }
+    }
+}
+/* 
+컨텐츠 박스에 flex선언 후 진행방향 row
+aside와 section을 넣고
+수평정렬하면 
+왼쪽에 aside, 오른쪽에 section이
+들어갈줄알았는데 안된다. 
+ = 오타 문제 (html = contents-box, css = .content-box)
+ 
+about me 정렬 문제
+content의 내용이 추가될 때 마다
+점점 내려감
+-> flex 정렬시 주축, 교차축의 개념 부족
+주축 - flex의 진행방향
+교차축 - flex의 진행방향에 대한 수직
+justify-content : 주축에 대한 정렬
+align-items : 교차축에 대한 정렬
+ex) justify-content : start
+ -> 주축의 시작 부분에 정렬
+
+ */
+.contents-box{
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-start;
+
+}
+aside{
+    display:flex;
+    flex:1;
+    border:1px solid blue;
+    background-color: #ddd;
+    padding :10px;
+    justify-self: flex-start;
+}
+.introduce{
+    flex:1;
+    display:flex;
+    flex-direction: column;
+}
+
+section{
+    display:flex;
+    flex:3;
+    border:1px solid red;
+    background-color: #f9f9f9;
+    padding : 10px;
+}
+.main-contents{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.title-description{
+    font-weight: 700;
+}
+
+.footer{
+    display:flex;
+    width: 100%;
+    background-color: #ccc;
+    justify-content: center;
+    align-items: center;
+    font-weight:700;
+    font-size:45px;
+}
+
+.photo{
+    width:100%;
+    height:45px;
+    background-color: var(--photocolor);
+    margin : 10px 0;
+}

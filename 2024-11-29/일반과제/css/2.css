@@ -1,0 +1,20 @@
+div{
+    background-color: black;
+    width : 240px;
+    height : 200px;
+}
+
+.text{
+    color : white;
+    text-shadow: 0 0 3px gray;
+}
+
+.text:hover{
+    position: relative;
+    color : red;
+    left : 4px;
+    top : -4px;
+    text-shadow: -2px 2px 0px blue,
+     -4px 4px 0px white;
+    transition: 0.5s;
+}
