@@ -4,38 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/1.css">
 </head>
 <body>
+    flex: 1 1 calc(33.333% - 20px)의 의미 조사해보기
+
+    flex의 shorthand로써
+    flex-grow, flex-shrink, flex-basis를 정의하는 속성
+    flex-grow : 크기를 비율로써 얼마나 늘릴지 정의
+    flex-shrink : 크기를 비율로써 얼마나 줄일지 정의
+    flex-basis : 아이템의 길이를 정의(사용 가능한 값 auto, inherit, 또는 숫자 + ($,px,em 혹 은 그외의 단위))
+
+    calc = 계산
+    calc(33.333% - 20px)
+    -> html에 적힌 content="width=device-width" 너비의 길이가 화면으로 정의되어있으므로 
+    요소길이를 화면의 비율 33.333% 에서 20px만큼을 뺀 길이로 정의
     
-    <div class="container">
-        <header>과제 1번</header>
-
-        <div class="contents">
-            <nav>
-                <a href="#challenge">과제의 내용</a>
-                <a href="#answer"></a>
-            </nav>
-
-            <section>
-                <article>
-                    <h3 id="challenge">
-                        flex: 1 1 calc(33.333% - 20px)의 의미 조사해보기
-                    </h3>
-                </article>
-                <article>
-                    <h3 id="answer">
-                        조사 내용
-                    </h3>
-                    <p>
-                        calc() CSS 함수를 사용하면 CSS 속성의 값으로 계산식을 지정할 수 있습니다. <length>, <frequency>, <angle>, <time>, <percentage>, <number>, 또는 <integer>를 받는 속성의 값으로 사용할 수 있습니다.
-                    </p>
-                </article>
-            </section>
-        </div>
-        <footer>
-
-        </footer>
-    </div>
 </body>
 </html>
