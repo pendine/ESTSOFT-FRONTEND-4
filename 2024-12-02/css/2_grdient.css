@@ -1,0 +1,6 @@
+body{
+    background-color: steelblue;
+    background: linear-gradient(110deg, #b3cae5 15%
+                                , #dbdded 45%
+                                , #efcab2 100%);
+}

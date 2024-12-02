@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/1_3d.css">
+</head>
+<body>
+<!--     
+    3D(Dimention):
+    perspective : 3d 공간감을 주기 위한 개념
+
+    3d는 어디서 어떻게 보느냐가 가장 중요한 개념
+
+    3d는 주로 css에서 transform 속성과 연계하여 진행
+    3d 고려를 위해서는 z축에 대한 값 설정이 필요
+    3d 고려시 주의사항
+     - 크로스 브라우징 이슈 고려.
+     - 3d작성시 벤더프리픽스가 필요.
+     -webkit-(속성)
+
+    3d 작업시 tip
+     - 어차피 한번에 맞출 수 없음 ->화면 직접보면서 조금씩 조정해야함.
+
+    3d 관련 속성
+     - perspective : 3d 공간에 깊이감을 결정하는 속성
+     (관찰자와 요소간의 거리를 정의함)
+     (값이 작을수록 극적인 효과)
+
+     자식요소의 3d 공각 렌더링 방식 제어
+     - transform-style: preserve-3d 3d효과를 유지
+                        자식요소들에게도 3d효과를 적용.
+
+    3d 사용시 주의사항
+     - GPU 가속 지원 
+     - 성능에 주의할 필요가 있음(성능을 해치는 주 원인 중 하나)
+     -->
+    <div>
+        <h1>aaaaaaa</h1>
+    </div>
+
+    <nav class="menu">
+        <div class="menu-item">홈</div>
+        <div class="menu-item">소개</div>
+        <div class="menu-item">서비스</div>
+    </nav>
+</body>
+</html>

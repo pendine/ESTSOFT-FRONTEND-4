@@ -1,0 +1,21 @@
+.img-list{
+    display:flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+}
+
+.coffee-image{
+    object-fit:cover;
+    width: 300px;
+    height: 200px;
+}
+
+.description-image{
+    visibility: hidden;
+    
+}
+
+.coffee-image:hover .description-image{
+    visibility : visible;
+}
