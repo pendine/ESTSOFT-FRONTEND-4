@@ -7,10 +7,32 @@
     <link rel="stylesheet" href="css/1.css">
 </head>
 <body>
-    <div class="img-list">
-        <img src="img/blog-1.jpeg" alt="coffee image1" class="coffee-image"><span class="description-image">설명1</span>
-        <img src="img/blog-2.jpeg" alt="coffee image2" class="coffee-image"><span class="description-image">설명2</span>
-        <img src="img/blog-3.jpeg" alt="coffee image3" class="coffee-image"><span class="description-image">설명3</span>
+    <!-- 이미지 확대시 자르기 안됌,
+      설명 추가시 추가된 설명으로 인해 확대시 중앙 벗어남
+      grid-template-columns 정렬사용해도 세로 정렬됨.  -->
+
+      <!-- box에 적용한 overflow : hidden만 적용됨. -->
+    <div class="image-container">
+        <div class="box">
+            <div class="image">
+                <img src="img/blog-1.jpeg" alt="coffee image1" class="coffee-image">
+                <span class="description-image">설명1</span>
+            </div>
+        </div>
+        
+        <div class="box">
+            <div class="image">
+                <img src="img/blog-2.jpeg" alt="coffee image2" class="coffee-image">
+                <span class="description-image">설명2</span>
+            </div>
+        </div>
+        <div class="box">
+            <div class="image">
+                <img src="img/blog-3.jpeg" alt="coffee image3" class="coffee-image">
+                
+                <span class="description-image">설명3</span>
+            </div>
+        </div>
     </div>
 </body>
 </html>
