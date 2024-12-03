@@ -1,6 +1,9 @@
 *{
     margin:0;
     padding : 0;
+    color:#fff;
+    list-style-type: none;
+    text-decoration: none;
 }
 
 body{
@@ -9,54 +12,65 @@ body{
 
 nav{
     background-color: #222;
+    /* padding: 1rem 1rem; 
+    여기가 문제였네.
+    여기서 패딩을 줘버리니까
+    네비게이션 li가 문제인줄 알고 엉뚱한곳에서 문제를 찾고있었네.
+    */
+    
 }
+
 .container{
     display:flex;
     flex-direction: row;
     align-self: start;
     justify-content: start;
+    /* margin: 1rem 1rem; */
+    /* padding : 1rem 1rem; */
+    /* gap : 1rem; */
 }
 
-/*
-실제로는 각 메뉴마다 css를 적용시켜줘야 할 것 같지만
-일단 보이는 부분만 따라하면 될 것 같으니까
-a태그 전체 적용.
-*/
-a{
-    text-decoration: none;
-    color:#f8f8f8;
-    margin: 0.3rem;
+.container > li{
+    display:block;
+    padding: 1rem 1rem;
+    /* top:0; bottom:0; */
+    /*  */
+    /* border: 1px solid #fff; */
+
 }
 
-a:hover{
+.container > li a:hover{
     text-decoration: underline;
 }
 
-/* .container a  */
-.drop-menu-list{
-    /* visibility: hidden; */
-    color:f8f8f8;
+.drop-menu{
+    position: absolute;
+    top:3.5rem;
+    display: none;
 }
 
-.menu{
-    display:inline-block;
-    margin : 1rem 1rem;
+/* 드랍메뉴에서 display : none으로 하면 같이 안보이긴한다. */
+.drop-menu .elements{
+    background-color: #33ff33;
+    display:block;
+    /* display: none; */
+    padding:0.7rem;
+    margin-bottom:0.1rem;
 }
 
-ul{
-    list-style-type: none;
+.container > li:hover .drop-menu{
+/* .drop-menu 호버할 때,
+    드랍메뉴를 블록으로 바꿔야 하는데 안먹네 
+    뭐지?
+    => 잘못썻음 부모노드인 li에 호버할때 보여줘야하는데
+    동일레벨의 노드인 menu를 호버할때
+    동일레벨인 drop-menu를 자식 노드처럼 호출하니 안먹음
+    동일 레벨의 노드한테 자식선택자를 쓰니 안먹지
+    쓸꺼라면 인접 선택자를 써야함
+*/
+    display:block;
 }
 
-.drop-menu-list{
-    list-style-type: none;
-    position: relative;
-    margin : 0.3rem;
-}
-
-.elements{
-    background-color: #33dd33;
-}
-
-.menu:hover > *{
-    visibility: visible;
-}
+/* .menu:hover .drop-menu .elements{
+    display:block;
+} */

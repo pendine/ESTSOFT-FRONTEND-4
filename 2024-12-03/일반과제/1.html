@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="css/1.css">
 </head>
 <body>
+<!-- 강사님이 알려준 방법이랑 다르게 
+ ul안에 li(메인메뉴) 구성하고 다시 li(메인메뉴)속에 ul > li(하위메뉴) 구성으로 해보려고했는데
+ 너무 어렵다.
+ 반복 -> 숙달 -> 이해 > 응용 의 순서를 거스를순 없다... 
+ 일단 하위메뉴 전부 보인다면 blog와 games의 하위메뉴는 겹쳐져야한다
+ position : absolute로 가보자
+
+ 와 a 태그에 호버할때만 메뉴가 보이고 텍스트 벗어나니까 드랍메뉴가 사라짐
+
+ -->
     <nav class="nav-list">
         <ul class="container">
             <li>
@@ -14,23 +24,20 @@
             </li>
             <li>
                 <a class="menu" href="#"><span>Blog</span></a>
-                    <ul class="drop-menu-list">
-                        <li class="drop-menu-list elements"><a href="#"><span>Technology</span></a></li>
-                        <li class="drop-menu-list elements"><a href="#"><span>Educational</span></a></li>
-                        <li class="drop-menu-list elements"><a href="#"><span>A.I</span></a></li>
-                    </ul>
+                <div class="drop-menu">
+                    <a class="drop-menu-list elements" href="#"><span>Technology</span></a>
+                    <a class="drop-menu-list elements" href="#"><span>Educational</span></a>
+                    <a class="drop-menu-list elements" href="#"><span>A.I</span></a>
                 </div>
             </li>
             <li>
                 <a class="menu" href="#"><span>Games</span></a>
-                <div class="menu drop-menu">
-                    <ul class="drop-menu-list">
-                        <li class="drop-menu-list elements"><a href="#"><span>Action</span></a></li>
-                        <li class="drop-menu-list elements"><a href="#"><span>Adventure</span></a></li>
-                        <li class="drop-menu-list elements"><a href="#"><span>Puzzle</span></a></li>
-                        <li class="drop-menu-list elements"><a href="#"><span>Role-Playing</span></a></li>
-                        <li class="drop-menu-list elements"><a href="#"><span>Strategy</span></a></li>
-                    </ul>
+                <div class="drop-menu">
+                    <a class="drop-menu-list elements" href="#"><span>Action</span></a>
+                    <a class="drop-menu-list elements" href="#"><span>Adventure</span></a>
+                    <a class="drop-menu-list elements" href="#"><span>Puzzle</span></a>
+                    <a class="drop-menu-list elements" href="#"><span>Role-Playing</span></a>
+                    <a class="drop-menu-list elements" href="#"><span>Strategy</span></a>
                 </div>
             </li>
             <li>
@@ -38,15 +45,16 @@
             </li>
             <li>
                 <a class="menu" href="#"><span>Help & Support</span></a>
-                <div class="menu drop-menu">
-                    <ul class="drop-menu-list">
-                        <li class="drop-menu-list elements"><a href="#"><span>Discord</span></a></li>
-                        <li class="drop-menu-list elements"><a href="#"><span>Chat Support</span></a></li>
-                        <li class="drop-menu-list elements"><a href="#"><span>Chreate A Ticket</span></a></li>
-                    </ul>
+                <div class="drop-menu">
+                    <a class="drop-menu-list elements" href="#"><span>Discord</span></a>
+                    <a class="drop-menu-list elements" href="#"><span>Chat Support</span></a>
+                    <a class="drop-menu-list elements" href="#"><span>Chreate A Ticket</span></a>
                 </div>
             </li>
         </ul>
     </nav>
+    <section>
+        <h1 style="color:white; margin:1rem;">나는 본문. 하위메뉴가 보인다면 위치가 겹치나?</h1>
+    </section>
 </body>
 </html>
