@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+
+</head>
+<body>
+    tailwind css : CSS 프레임 워크 (유틸리티 퍼스트)
+     - 기존 css 방식으로 스타일을 적용할때에는 코드가 매우 길어지는 점이 있음
+     - tailwind를 사용하게 될 경우는 한줄로 매우 긴 css를 정리하느것 또한
+       가능하다는 장점이 있음
+     - 처음 코드를 볼때에는 거부감이 들 수 있음
+
+    tailwind 장점 : 클래스 명을 만들때 편함, CSS 경량화, 안정성
+     - 클래스명 : 현업에서는 10명이 보면, 8.5명은 바로 이해가 가능한 네이밍이 필요
+       (테일 윈드를 사용하면 네이밍 고민이 적어짐)
+     - css 경량화 : 전통적인 css를 사용할 경우 새 기능 추가마다 css파일이
+                   점점커지게 됨 -> 테일윈드같은 유틸리티성 개발을 진행하면
+                   재사용성을 증가시킬 수 있음
+     - 안정성 : css는 기본적으로 전역
+               -> 파일이 많아지면 어떤 요소에 어떻게 영향을 미치는지 알 수 없음
+                  (테일윈드를 사용하게 되면 다른 파일에 영향을 줄 걱정이 없음)
+
+    
+    bootstrap과의 차이점
+     - bootstrap = 속도에 초점을 맞춘 프레임 워크
+      (자바스크립트를 고려를 많이함 / 플러그인 제공)
+     - tailwind = 유연성에 초점을 맞춘 프레임 워크
+
+    테일윈드는 인라인 스타일 시트로 착각할 수 있지만 핵심은 유틸리티 클래스 타입
+    
+    - 반응형 디자인, hover, focus, darkmode, style 재사용, 함수, 사용자 정의
+    
+    tailwind 속성정리(클래스명으로 적용)
+    1. display
+     - block(display:block), inline, flex, grid, hidden(display:none) , ...
+    2. positioning
+     - static, relative, absolute, fixed, sticky(position:sticky)
+       top-0, right-4(1rem), botteom1/2(bottem:50%), left-full(100%)
+    3. flex
+     - flex-row(flex-direction:row)
+     - flex-column(flex-direction:column)
+     - justify-center(justify-content:center)
+     - items-center(align-items:center)
+     - flex-grow(flex-grow:1 / flex-grow-3 = flex-grow:3)
+     - flex-shrink(flex-shrink:1/ flex-shrink-3 = flex-shrink:3)
+     번외 : grid-cols-3 (3개의 열)
+           grid-rows-4(4개의 행)
+           gap-4(간격)
+           grid-cols-aut-fit()
+    4. 너비 높이
+     - w-full(100% 너비)
+     - h-screen(화면 높이)
+     - max-w-md(최대 너비)
+     - min-h-screen(최소 화면 높이)
+    
+     - w-1/2 (50%)
+     - h-3/4 (75%)
+
+    5. 여백(박스모델)
+     - p-4(패딩 전체 1rem 만큼 ~> 16px )
+     - px-6(수평 패딩 1.5rem 만큼 ~> 24px)
+
+    6. 텍스트
+      text-red-500 : color:red
+     - 폰트 크기, 스타일
+        - text-xs : font-size : 0.75rem
+        - text-sm : font-size : 0.875rem
+        - text-base : font-size : 1rem
+        - text-lg : font-size : 1.125rem
+
+        - font-bold : font-weight:700
+        - underline : text-decoration:underline
+        - text-center : text-align:center
+
+    7. 배경
+     - bg-gray : background-color:gray
+     - bg-opacity-50 : background-opacity:50%
+    8. 테두리
+     - border
+     - rounded : border-radius:0.25rem
+     - rounded-full : border-radius:9999px
+    9. 그림자
+     - shadow : box-shadow (shadow-50)
+    
+
+    
+</body>
+</html>

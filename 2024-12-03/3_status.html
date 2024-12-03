@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+</head>
+<body>
+    pseudo-class, hover, focus
+    tailwind 사용법
+     - class명을 통해 이미 구현되어있는 스타일 시트를 활성화
+     - 원하는 조건을 명시하는 클래스 이름 앞에 추가하여 조건부로 적용
+     - 가상클래스의 경우 개념은 css와 같음
+        :hover, :focus, :first-child
+        ::before, ::after, ::placeholder, ::selection
+
+     - tailwind를 통해 미디어쿼리 없이 모바일 퍼스트 환경 구축도 가능
+    1. tailwind 중단점
+     - tailwind는 접두사를 통해 반응형을 제공한다
+        - sm(최소너비 640px (min-width:640px)),
+          md(최소너비 758px (min-width:768px)),
+          lg(최소너비 1024px (min-width:1024px),
+          xl(최소너비 1280px (min-width:1280px),
+          2xl(최소너비 1536px (min-width:1536px)
+
+        - max-sm(최대너비 640px (min-width:640px)),
+          max-md(최대너비 758px (min-width:768px)),
+          max-lg(최대너비 1024px (min-width:1024px)),
+          max-xl(최대너비 1280px (min-width:1280px)),
+          max-2xl(최대너비 1536px (min-width:1536px))
+    
+
+        <button class="bg-sky-500 hover:bg-sky-700">
+            save
+        </button>
+    
+        <button class="bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 ...">
+            Save changes
+        </button>
+    
+        <form>
+            <label class="block">
+              <span class="block text-sm font-medium text-slate-700">Username</span>
+              <!-- 폼 상태 수정자를 사용하면, 모든 입력에 대해 클래스를 동일하게 사용할 수 있습니다 -->
+              <input type="text" value="tbone" disabled class="block w-full px-3 py-2 mt-1 text-sm bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 "/>
+            </label>
+            <!-- ... -->
+        </form>
+
+    
+</body>
+</html>

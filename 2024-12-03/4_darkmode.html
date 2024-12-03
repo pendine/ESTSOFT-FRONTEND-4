@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // tailwind css의 셀렉터 전략
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+</head>
+<body class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
+
+    <!--
+    다크모드 : 사용자의 시력보호를 위한 웹 사이트의 편의기능
+     - 필수는 아니지만 사용자들의 사이트 평균 이용시간이 길다면
+       기능추가를 권장.
+     - 다크모드 제작은 자바스크립트를 이용하며 css 클래스를 swap 하는 형태로 많이 작성
+    -->
+
+    <div class="container mx-auto p-10 text-center">
+        <!-- container : 해당 요소를 컨테이너로 지정
+             mx-auto : 수평 margin : auto로 설정 
+             p-10 : pading : 2.5rem 으로 설정 => 숫자 4 -> 1rem
+             text-center : text-align : center
+             -->
+        <h1 class="text-4xl font-bold mb-6 dark:text-blue-300">
+            Tailwind Dark Mode
+        </h1>
+        <!-- 
+        text-4xl : 글자는 반응형
+        font-bold : 폰트 굵기-굵게 
+        dark:text-blue-300 : 다크모드일경우 텍스트 색상  
+        -->
+        
+        <button 
+            onclick="document.documentElement.classList.toggle('dark')"
+            class="bg-blue-500 text-white px-6 py-3 rounded-lg 
+                   dark:bg-blue-700 
+                   hover:bg-blue-600 
+                   dark:hover:bg-blue-800 
+                   transition-colors">
+            Toggle Dark Mode
+        </button>
+        <!-- 
+        -->
+    </div>
+</body>
+</html>

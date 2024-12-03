@@ -1,0 +1,62 @@
+*{
+    margin:0;
+    padding : 0;
+}
+
+body{
+    background-color: #555;
+}
+
+nav{
+    background-color: #222;
+}
+.container{
+    display:flex;
+    flex-direction: row;
+    align-self: start;
+    justify-content: start;
+}
+
+/*
+실제로는 각 메뉴마다 css를 적용시켜줘야 할 것 같지만
+일단 보이는 부분만 따라하면 될 것 같으니까
+a태그 전체 적용.
+*/
+a{
+    text-decoration: none;
+    color:#f8f8f8;
+    margin: 0.3rem;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+/* .container a  */
+.drop-menu-list{
+    /* visibility: hidden; */
+    color:f8f8f8;
+}
+
+.menu{
+    display:inline-block;
+    margin : 1rem 1rem;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.drop-menu-list{
+    list-style-type: none;
+    position: relative;
+    margin : 0.3rem;
+}
+
+.elements{
+    background-color: #33dd33;
+}
+
+.menu:hover > *{
+    visibility: visible;
+}
