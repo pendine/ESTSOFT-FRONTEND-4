@@ -1,0 +1,245 @@
+@import url( "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" );
+
+*{
+    margin : 0;
+    padding : 0;
+    font-family: 'Lato' , 'sans-serif';
+    text-decoration: none;
+}
+
+:root{
+    --main-color:#ecb500bb;
+    --text-color:#665300;
+}
+
+body{
+    background-color: #f9f9f9;
+}
+
+.container{
+    border: 2px solid red;
+    display : flex;
+    flex-direction:column;
+    justify-content: start;
+    align-items: center;
+    width : 100%;
+    padding : 0;
+    margin : 0;
+}
+
+.head{
+    border: 2px solid brown;
+    width : 100%;
+    display:flex;
+    justify-content: center;
+    /* left:0;
+    right:0; */
+    /* 어라 패딩을 없애니까 
+    설정값 이상으로 튀어나오는 현상이 사라짐 */
+    padding : 0rem;
+    /* 패딩을 줬던 이유
+    -> top-nav를 flex로 주고, 
+    양쪽이 너무 벽에 딱붙어서 줬음. 
+    top-nav에 padding이나 margin을 주면
+    우측메뉴가 벽에 그냥 붙다못해 아이콘이 서로 겹침
+    -> head에는 너비 100% 
+    flex정렬 후 주축 중앙정렬해서 좌우메뉴들을 담는
+    top-nav를 담아서, top-nav 자체를 중앙 정렬하니까
+    원하는대로 됐다.
+    */
+}
+
+
+.top-nav{
+    /* border : 2px solid yellow; */
+    width:80%;
+    height: 5rem;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    /* margin : 0 3rem; */
+}
+
+::selection{
+    background-color: #ccc;
+}
+
+.top-nav > * {
+    line-height:5rem;
+    height : 100%;
+}
+
+/* .top-nav > div {
+    border : 1px solid black;
+}
+
+.top-nav > div > a{
+    border : 1px dashed green;
+} */
+
+
+.top-menu-left > a > span{
+    position: absolute;
+    left:-1.3rem;
+    top:1.7rem;
+    /* bottom:-1rem; */
+}
+
+
+.top-menu-right{
+    position: relative;
+    /* border : 1px solid black; */
+}
+.top-menu-right > a{
+    position: relative;
+    /* border : 1px solid palegreen; */
+    display : inline-block;
+}
+
+.top-menu-right > a > span{
+    position: relative;
+    top:0.3rem;
+}
+
+.menu-element{
+    font-weight:700;
+    height: 100%;
+    color:var(--text-color);
+    display:inline-block;
+    /* border:1px solid black; */
+    margin : 0 0.3rem;
+}
+
+/* 이상하다. 메뉴요소의 하위요소인 a태그를 지정하면
+first-letter가 안먹고
+메뉴요소의 first-letter를 지정하니 원하는대로 적용된다...
+ -> 이건 ul>li 구성을 취했을때.
+ a태그로만 만드니까 안됐었는데
+ 알고보니 
+ ::first-letter 의사 요소는 블록 레벨 요소에만 적용됨
+ menu-element가 a태그니 기본적으로 인라인 요소인데
+ 이걸 인라인 블록으로 바꿔주니 제대로 적용됨.
+ */
+.menu-element::first-letter{
+    text-transform: uppercase;
+}
+
+.logo{
+    text-transform: uppercase;
+    font-weight:700;
+    color:var(--text-color)
+}
+
+ul > li:hover > a{
+    color:var(--text-color);
+    transition: 0.2s;
+    position: relative;
+    
+}
+
+a:hover{
+    color:var(--main-color);
+}
+
+section{
+    border : 2px solid blue;
+    height:30rem;
+    width:85%;
+    margin : 0;
+    padding : 0;
+}
+
+
+/* 이거 위쪽으로 어떻게 넓이를 좀 해줘야하는데.. 
+=> 이 컨테이너의 크기만 변경하고 내부의 요소들의 padding을 주면됨
+최하위 노드에 공간을 더 분할하고 색을 최하위단에서 칠해버리기*/
+.signboard{
+    display:flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    height:35rem;
+    padding : 0rem;
+    /* border-top:5rem; */
+
+}
+
+.signboard_sns{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex:1;
+    height:100%;
+}
+
+.sns-text{
+    display:block;
+    color:black;
+    transform: rotate(-90deg);
+    margin: 2rem 0;
+}
+
+.signboard_content{
+    display:flex;
+    flex-direction: row;
+    flex : 20;
+    height:100%;
+}
+
+.content_text_container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    flex:1;
+    border : 1px solid blueviolet;
+}
+.content_text_container h1{
+    font-size:2rem;
+    font-weight:900;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+.content_text_container p{
+    font-weight: 700;
+    color:#999;
+    margin-bottom:2rem;
+}
+
+.price::before{
+    content: '$';
+    color:var(--main-color);
+}
+.price{
+    color:var(--main-color);
+}
+
+.btn-list{
+    
+}
+
+.content_image_container{
+    flex:1;
+    border : 1px solid beige;
+    background-color: var(--main-color);
+    padding-top:5rem;
+}
+.content_image_container img{
+    background-position:center;
+    height:100%;
+    width: 100%;
+    object-fit :cover;
+    overflow-x: hidden;
+    overflow-y: visible;
+    position:relative;
+    /* background-color: var(--main-color); */
+}
+
+
+
+footer{
+    border : 2px solid yellowgreen;
+}
