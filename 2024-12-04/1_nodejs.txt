@@ -1,0 +1,19 @@
+ => 설치할때 파워쉘이 아니라 cmd로 열어서 입력해야함
+npm install express-generator -g
+express 관련 패키지 설치
+ -> 설치할 때 mkdirp버전이 낮아서 경고메시지가 출력되지만
+    새로운 터미널에서 확인하면 버전 출력되는걸로 확인 가능
+
+
+express githubT --no-view
+--no-view 아무것도 참조하지 않음
+
+-> 프레임워크에 의해 리액트 및 
+웹 관련 프로젝트 폴더들이 자동생성됨
+
+터미널에서 githubT 디렉토리로 이동.
+ 명령어 실행 : npm install
+ - 필요한 모듈들을 설치해줌
+
+npm start : 웹서버 실행
+
