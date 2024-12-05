@@ -1,5 +1,6 @@
 @import url( "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" );
-
+/* css파일이 너무 길어지는데..
+부분별로 나눠서 관리해도 괜찮을것같은데 */
 *{
     margin : 0;
     padding : 0;
@@ -8,16 +9,16 @@
 }
 
 :root{
-    --main-color:#ecb500bb;
+    --main-color:#ffd651bb;
     --text-color:#665300;
 }
 
 body{
-    background-color: #f9f9f9;
+    background-color: #fff7d157;
 }
 
 .container{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display : flex;
     flex-direction:column;
     justify-content: start;
@@ -26,9 +27,23 @@ body{
     padding : 0;
     margin : 0;
 }
+.utilbutton{
+    color:var(--main-color);
+    border-radius: .1rem;
+    background-color: #fff;
+    /* border:1px solid #ccc; */
+    box-shadow : 0.3rem 0.3rem 1rem #bbb;
+}
+.gotop{
+    position: fixed;
+    right :1rem;
+    top : 50%;
+    z-index: 100;
+}
+
 
 .head{
-    border: 2px solid brown;
+    /* border: 2px solid brown; */
     width : 100%;
     display:flex;
     justify-content: center;
@@ -47,6 +62,7 @@ body{
     top-nav를 담아서, top-nav 자체를 중앙 정렬하니까
     원하는대로 됐다.
     */
+    background-color: #ffffff;
 }
 
 
@@ -65,6 +81,23 @@ body{
 
 ::selection{
     background-color: #ccc;
+}
+
+.top-nav > a{
+    position: relative;
+}
+
+.favicon{
+/*  파비콘 색상을 덧씌워야하는데 
+    필터 속성 말고는 방법이 없음.
+    정확생 색상은 좀 힘듬.
+*/
+    
+    /* filter: sepia(80%) saturate(80%) brightness(40%) hue-rotate(80deg); */
+    filter: invert(70%) sepia(22%) saturate(3179%) hue-rotate(25deg) brightness(92%) contrast(101%);
+    position: relative;
+    top: 0.7rem;
+    left : 0;
 }
 
 .top-nav > * {
@@ -127,10 +160,10 @@ first-letter가 안먹고
     text-transform: uppercase;
 }
 
-.logo{
+.brandname{
     text-transform: uppercase;
     font-weight:700;
-    color:var(--text-color)
+    /* color:var(--text-color) */
 }
 
 ul > li:hover > a{
@@ -140,17 +173,10 @@ ul > li:hover > a{
     
 }
 
-a:hover{
+.top-nav a:hover{
     color:var(--main-color);
 }
 
-section{
-    border : 2px solid blue;
-    height:30rem;
-    width:85%;
-    margin : 0;
-    padding : 0;
-}
 
 
 /* 이거 위쪽으로 어떻게 넓이를 좀 해줘야하는데.. 
@@ -178,10 +204,15 @@ section{
 
 .sns-text{
     display:block;
-    color:black;
+    color:#999;
     transform: rotate(-90deg);
     margin: 2rem 0;
+    font-weight: 700;
 }
+.sns-text::first-letter{
+    text-transform: uppercase;
+}
+
 
 .signboard_content{
     display:flex;
@@ -195,15 +226,16 @@ section{
     flex-direction: column;
     justify-content: center;
     flex:1;
-    border : 1px solid blueviolet;
+    /* border : 1px solid blueviolet; */
 }
-.content_text_container h1{
+
+.sub_highlight{
     font-size:2rem;
     font-weight:900;
     text-transform: uppercase;
     margin-bottom: 1rem;
 }
-.content_text_container p{
+.subscription{
     font-weight: 700;
     color:#999;
     margin-bottom:2rem;
@@ -215,31 +247,391 @@ section{
 }
 .price{
     color:var(--main-color);
+    font-weight:800;
+}
+.content_text_container h3{
+    margin-bottom: 3rem;
 }
 
 .btn-list{
-    
+    display:flex;
+    flex-direction: row;
+    gap:0;
+}
+
+.btn{
+    display:inline-block;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    transition: 0.2s
+}
+.btn:hover{
+    transform: scale(1.2);
+    z-index: 1;
+    box-shadow: .3rem .3rem 1rem #999;
+}
+
+.black_btn{
+    color:#fff;
+    background-color: #0f0f0f;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin:0;
+}
+.gray_btn{
+    color:#333;
+    background-color: #ccc;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin:0;
 }
 
 .content_image_container{
     flex:1;
-    border : 1px solid beige;
     background-color: var(--main-color);
     padding-top:5rem;
 }
 .content_image_container img{
-    background-position:center;
-    height:100%;
-    width: 100%;
+    height:28rem;
+    width: 23rem;
     object-fit :cover;
     overflow-x: hidden;
     overflow-y: visible;
-    position:relative;
     /* background-color: var(--main-color); */
 }
+.featured{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
 
+.thema{
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin : 1rem 0;
+    position:relative;
+}
+.thema_bar{
+    border-top: 2px solid var(--main-color);
+    position: absolute;
+    left:35%;
+    right:35%;
+    top:-.6rem;
+    margin-bottom: 1rem;
+}
 
+.watch-list{
+    display:flex;
+    flex-direction:row;
+    gap:1rem;
+}
+.watch-box{
+    background-color: #fff;
+    display:flex;
+    flex-direction:column;
+    justify-content: start;
+    align-items: center;
+    width: 17rem;
+    /* height: 20rem; */
+    border: 1px solid #eee;
+    position: relative;
+    padding : 1rem 0;
+}
+.watch-name{
+    margin-bottom:1rem;
+    text-transform: uppercase;
+}
+.watch-box .price{
+    margin-bottom: 2rem;
+}
+
+.tag{
+    background-color: var(--main-color);
+    color:#fff;
+    padding:0.5rem 1rem;
+    text-transform : uppercase;
+    font-weight: 700;
+    margin:0;
+}
+
+.sale-tag{
+    transform: rotate(-90deg);
+    /* position: relative; */
+    position: absolute;
+    /* position을 absolute로 주면
+    부모요소의 위치를 상속받고
+    여기서 left:0를 주면 부모요소의
+    위치정보로부터 왼쪽으로부터 0px에 위치하는줄알았는데..
+    왜.. 아니지?
+     */
+    left:-1rem;
+    top : 2.5rem;
+}
+
+.watch-list img{
+    margin: 1rem 0;
+    height:15rem; 
+    object-fit : cover;
+}
+
+.story{
+    display: flex;
+    flex-direction:row;
+    align-items: start;
+}
+
+.story_img_container{
+    position: relative;
+    flex : 1
+}
+
+.story_img_container img{
+    object-fit: cover;
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    right:0;
+    top:0;
+    box-shadow: -4rem 4rem 0 var(--main-color);
+}
+
+.story_text_container{
+    flex:1;
+    display:1;
+    padding:5rem;
+}
+
+.story_text_container .thema .thema_bar{
+    left:0;
+    width: 4.5rem;
+}
+
+.products{
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+}
+
+.products_container{
+    display:grid;
+    grid-template-columns: repeat(3 , 1fr);
+    gap : 2rem;
+}
+.products_container .thema{
+    border:1px solid black;
+}
+.products_container > .watch-box{
+    width:15rem;
+}
+.products_container > .watch-box > img{
+    margin:1rem 0;
+    height:15rem;
+    object-fit: cover;
+}
+.icon_bag{
+    background-color: #0f0f0f;
+    color:#fff;
+    padding:.3rem;
+    position: absolute;
+    bottom:0;
+    right:0;
+}
+
+.review{
+    display:flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    padding-top: 10rem;
+    position: relative;
+    /* border: 1px solid red; */
+}
+
+.review_text{
+    flex:4;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding:0 3rem;
+}
+.review-quotes{
+    display:inline;
+    margin-bottom: 2rem;
+    font-size:10rem;
+    position: absolute;
+    height: 6rem;
+    top: -7rem;
+}
+.review_info{
+    font-size: large;
+    font-weight: 600;
+    color:#999;
+    margin-bottom: 1rem;
+}
+.review_written_time{
+    font-size: larger;
+    font-weight: 600;
+    color:#4f4f4f;
+    margin-bottom: 2rem;
+}
+.reviewer{
+    display:flex;
+    gap:1rem;
+    margin-bottom:2rem;
+}
+.reviewer img{
+    border-radius: 50%;
+    height: 4rem;
+    display:inline-block;
+}
+.reviewer_info{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap:0.3rem;
+}
+.reviewer_info h3{
+    font-weight: 700;
+}
+.reviewer_info p{
+    font-weight: 600;
+    color:#999;
+}
+.review_image{
+    flex:6;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.review_image img{
+    /* position: absolute; */
+
+    /* left: 0; */
+    right:0rem;
+    /* height:60%; */
+    width:80%;
+    box-shadow:3rem -3rem 0 var(--main-color);
+}
+.review_arrow{
+    display:flex;
+    gap : 1rem;
+    margin-left:1rem;
+}
+.review_arrow .utilbutton{
+    height : 2rem;
+    width: 2rem;
+    position: relative;
+}
+.review_arrow .utilbutton span{
+    position:absolute;
+    top:.3rem;
+    bottom:.3rem;
+    left : .3rem;
+    right : .3rem;
+}
+
+.arrivals{
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.arrivals .thema_bar{
+    left:35%;
+    right:35%;
+}
+
+.arrivals_container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2rem;
+}
+
+.arrivals_container .watch-box{
+    width:15rem;
+    position: relative;
+}
+
+.watch-box img{
+    height: 15rem;
+    margin: 1.5rem 0;
+}
+.new-tag{
+    position: absolute;
+    right: 1rem;;
+    top:1rem;
+}
+
+.subscribe{
+    background-color: #fdad00;
+    display:flex;
+    flex-direction: row;
+}
+
+.sub_text_container{
+    margin:3rem 1rem;
+    margin-left:3rem;
+    flex:1;
+}
+.sub_text_container h1{
+    margin-right:3rem;
+    font-weight: 800;
+}
+.sub_text_container p{
+    font-weight:600;
+    color:#4f4f4f;
+}
+.email_submit{
+    flex:1;
+    margin:5rem 0;
+    margin-right:3rem;
+}
+.email_submit input{
+    font-weight: 700;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    padding-bottom:3rem;
+    border-bottom:1px solid #ccc;
+}
+.footer_head{
+    display:flex;
+    flex-direction: column;
+    color:#333;
+    font-weight: 900;
+    margin-bottom:1rem;
+}
+.footer_info{
+    display:block;
+    color:#999;
+    font-weight: 700;
+    margin:0.3rem 0;
+}
+.fab{
+    color:#999;
+    margin : 0 0.3rem;
+}
+
+section{
+    /* border : 2px solid blue; */
+    /* height:30rem; */
+    width:85%;
+    margin : 0;
+    margin-bottom:5rem;
+    padding : 0;
+}
 
 footer{
-    border : 2px solid yellowgreen;
+    /* border : 2px solid yellowgreen; */
+    
+    color:#999;
 }

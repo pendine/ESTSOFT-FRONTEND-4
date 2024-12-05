@@ -7,17 +7,24 @@
     <link rel="stylesheet" href="css/2.css">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=dark_mode" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
     <div class="container">
+        <a href="#" class="utilbutton gotop"><span class="material-symbols-outlined">arrow_upward</span></a>
+
         <header class="head">
             <nav class="top-nav"> <!-- 탑메뉴중 왼쪽 오른쪽 메뉴 나누기-->
                 <div class="top-menu-left">
                         <!-- 각 메뉴 클릭시 해당 섹션으로 이동 할 아이디 부여 
                         메뉴는 전부 소문자하고. 의사클래스로 첫글자는 대문자로 변경 할 것-->
                     
-                    <a class="menu-element logo" href="#"><span class="material-symbols-outlined">watch</span>rolex</a><!--로고 클릭시 최상단-->
+                        <!--로고 클릭시 최상단-->
+                    <!-- <a class="menu-element logo" href="#"><span class="material-symbols-outlined">watch</span>rolex</a> -->
+                    <a class="menu-element brandname" href="#">
+                        <img class="favicon" src="과제2번/img/favicon.png" alt="logo">
+                        rolex</a>
                     <a class="menu-element" href="#home">home</a>
                     <a class="menu-element" href="#featured">featured</a>
                     <a class="menu-element" href="#products">products</a>
@@ -41,12 +48,12 @@
             </div>
             <div class="signboard_content">
                 <div class="content_text_container">
-                    <h1>new watch collections b720</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit perspiciatis nostrum quis ipsum velit nemo ut iste.</p>
+                    <h1 class="sub_highlight">new watch collections b720</h1>
+                    <p class="subscription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit perspiciatis nostrum quis ipsum velit nemo ut iste.</p>
                     <h3 class="price">1245</h3>
                     <div class="btn-list">
-                        <div class="btn">discover</div>
-                        <div class="btn"><a href="#">add to cart</a></div>
+                        <a class="btn gray_btn" href="#">discover</a>
+                        <a class="btn black_btn" href="#">add to cart</a>
                     </div>
                 </div>
                 <div class="content_image_container">
@@ -58,43 +65,223 @@
         
 
         <section class="featured" id="featured">
-
+            <h2 class="thema">
+                <div class="thema_bar"></div>
+                feature
+            </h2>
+            <div class="watch-list">
+                <div class="watch-box">
+                    <div class="tag sale-tag">sale</div>
+                    <img src="과제2번/img/featured1.png" alt="">
+                    <h4 class="watch-name">jazzmaster</h4>
+                    <p class="price">1050</p>
+                </div>
+                
+                <div class="watch-box">
+                    <div class="tag sale-tag">sale</div>
+                    <img src="과제2번/img/featured2.png" alt="">
+                    <h4 class="watch-name">ingersoll</h4>
+                    <p class="price">250</p>
+                </div>
+                
+                <div class="watch-box">
+                    <div class="tag sale-tag">sale</div>
+                    <img src="과제2번/img/featured3.png" alt="">
+                    <h4 class="watch-name">rose gold</h4>
+                    <p class="price">890</p>
+                </div>
+            </div>
         </section>
 
         
         <section class="story">
+            <div class="story_img_container">
+                <img src="과제2번/img/story.png" alt="watch">
+            </div>
+
+            <div class="story_text_container">
+                <h2 class="thema">
+                    <div class="thema_bar thema_story"></div>
+                    our story
+                </h2>
+
+                <h1 class="sub_highlight">Inspirational Watch of this year</h1>
+
+                <p class="subscription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi impedit illo, ipsam, fugiat consequuntur maiores fugit debitis quam modi dolorum tempore. Perferendis maxime officia veritatis ullam nulla alias molestias accusantium!</p>
+
+                <a href="#" class="btn black_btn">discover</a>
+
+            </div>
 
         </section>
         
 
         <section class="products" id="products">
-
+            
+            <h2 class="thema">
+                <div class="thema_bar"></div>
+                products
+            </h2>
+            <div class="products_container">
+                <div class="watch-box">
+                    <img src="과제2번/img/product1.png" alt="">
+                    <h4 class="watch-name">spirit rose</h4>
+                    <p class="price">1500</p>
+                    <a href="#" class="icon_bag"><span class="material-symbols-outlined">shopping_bag</span></a>
+                </div>
+                
+                <div class="watch-box">
+                    <img src="과제2번/img/product2.png" alt="">
+                    <h4 class="watch-name">spirit rose</h4>
+                    <p class="price">1500</p>
+                    <a href="#" class="icon_bag"><span class="material-symbols-outlined">shopping_bag</span></a>
+                </div>
+                
+                <div class="watch-box">
+                    <img src="과제2번/img/product3.png" alt="">
+                    <h4 class="watch-name">spirit rose</h4>
+                    <p class="price">1500</p>
+                    <a href="#" class="icon_bag"><span class="material-symbols-outlined">shopping_bag</span></a>
+                </div>
+                
+                <div class="watch-box">
+                    <img src="과제2번/img/product4.png" alt="">
+                    <h4 class="watch-name">spirit rose</h4>
+                    <p class="price">1500</p>
+                    <a href="#" class="icon_bag"><span class="material-symbols-outlined">shopping_bag</span></a>
+                </div>
+                
+                <div class="watch-box">
+                    <img src="과제2번/img/product5.png" alt="">
+                    <h4 class="watch-name">spirit rose</h4>
+                    <p class="price">1500</p>
+                    <a href="#" class="icon_bag" ><span class="material-symbols-outlined">shopping_bag</span></a>
+                </div>
+            </div>
         </section>
         
         
         <section class="review">
-
+            <div class="review_text">
+                <div class="utilbutton review-quotes">
+                    <!-- <img src="과제2번/img/" alt=""> -->
+                    &ldquo;
+                </div>
+                <p class="review_info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aliquam dolor iusto tenetur velit! Officia, impedit neque tempora minima temporibus cupiditate deleniti necessitatibus tempore est dicta! Cupiditate officia tenetur libero!</p>
+                <h4 class="review_written_time">March 27.2021</h4>
+                <div class="reviewer">
+                    <img src="과제2번/img/testimonial1.jpg" alt="reviewer_pic">
+                    <div class="reviewer_info">
+                        <h3>Lee Doe</h3>
+                        <p>Director of a company</p>
+                    </div>    
+                </div>
+                <div class="review_arrow">
+                    <a href="#" class="utilbutton"><span class="material-symbols-outlined">arrow_back</span></a>
+                    <a href="#" class="utilbutton"><span class="material-symbols-outlined">arrow_forward</span></a>
+                </div>
+            </div>
+            <div class="review_image">
+                <img src="과제2번/img/testimonial.png" alt="">
+            </div>
         </section>
         
         
         <section class="arrivals" id="new">
 
+            <h2 class="thema">
+                <div class="thema_bar"></div>
+                new arrivals
+            </h2>
+
+            <div class="arrivals_container">
+                <div class="watch-box">
+                    <div class="tag new-tag">new</div>
+                    <img src="과제2번/img/new1.png" alt="">
+                    <h4 class="watch-name">longines rose</h4>
+                    <p class="price">980</p>
+                </div>
+                
+                <div class="watch-box">
+                    <div class="tag new-tag">new</div>
+                    <img src="과제2번/img/new2.png" alt="">
+                    <h4 class="watch-name">longines rose</h4>
+                    <p class="price">980</p>
+                </div>
+                
+                <div class="watch-box">
+                    <div class="tag new-tag">new</div>
+                    <img src="과제2번/img/new3.png" alt="">
+                    <h4 class="watch-name">longines rose</h4>
+                    <p class="price">980</p>
+                </div>
+                
+                <div class="watch-box">
+                    <div class="tag new-tag">new</div>
+                    <img src="과제2번/img/new4.png" alt="">
+                    <h4 class="watch-name">longines rose</h4>
+                    <p class="price">980</p>
+                </div>
+                
+            </div>
         </section>
         
         
         <section class="subscribe">
-
+            <div class="sub_text_container">
+                <h1>Subscribe Our Newsletter</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="email_submit btn-list">
+                <input type="email" placeholder="Enter your email">
+                <a href="#" class="btn black_btn">subscribe</a>
+            </div>
         </section>
         
         
         <section class="footer">
-
+            <div class="footer_list">
+                <div class="footer_head">Our information</div>
+                <a href="#" class="footer_info">1234 - peru</a>
+                <a href="#" class="footer_info">La Libertad 43210</a>
+                <a href="#" class="footer_info">123-456-789</a>
+            </div>
+            <div class="footer_list">
+                <div class="footer_head">About Us</div>
+                <a href="#" class="footer_info">Support Center</a>
+                <a href="#" class="footer_info">Customer Support</a>
+                <a href="#" class="footer_info">About Us</a>
+                <a href="#" class="footer_info">Copy Right</a>
+            </div>
+            <div class="footer_list">
+                <div class="footer_head">Product</div>
+                <a href="#" class="footer_info">Road bikes</a>
+                <a href="#" class="footer_info">Mountain bikes</a>
+                <a href="#" class="footer_info">Electic</a>
+                <a href="#" class="footer_info">Accesories</a>
+            </div>
+            <div class="footer_list">
+                <div class="footer_head">Social</div>
+                <!-- <a href="#" class="footer_info social"></a>
+                <a href="#" class="footer_info social">La Libertad 43210</a>
+                <a href="#" class="footer_info social">123-456-789</a> -->
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
         </section>
         
         <footer class="copyright">
-
+            <p class="">
+                &copy; sooo long time spend. All rights reserved
+            </p>
         </footer>
     </div>
-    
+<!-- 
+와.. 생각보다 너무 오래 걸렸다.
+비율맞추는것도 그렇고
+안쪽 바깥쪽 여백맞추는게 너무 어렵다
+-->
+
 </body>
 </html>
