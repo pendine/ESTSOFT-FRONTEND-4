@@ -1,0 +1,129 @@
+alias 별칭
+
+from Table_name as A
+
+view 테이블
+ 특정 사용자에게 테이블 전체가 아닌 필요한 속성만을 보여줄 수 있음.
+복잡한 sql 을 단순화해서 사용할 수 있다는 장점이 있음.
+재사용성 증가.
+
+단점
+1. 뷰는 한번 만들면 수정하기 까다로움
+2. 변경이 힘들다.
+ - 삽입 삭제 갱신에 많은 제약이 생길수잇음.
+3. 자신만의 인덱스가 없음.
+ - 일반테이블보다 속도 느림.
+
+CREATE OR REPLACE VIEW 뷰이름 AS 뷰 생성조건(SELECT문)
+
+CREATE OR REPLACE VIEW V_TEST7 AS
+SELECT EMPNO, ENAME, JOB, DEPTNO 
+FROM EMP
+WHERE JOB='MANAGER' AND DEPTNO = 30;
+
+시험때 뷰 테이블을 요구한것 아니라면 미사용 권장
+ => 시험때 사용시 감점
+
+조회관련 유용한 함수
+내장 함수, 외부함수, 사용자 정의함수.
+1. 숫자형
+abs : 절대값
+    select abs*(-1111);
+     => 1111
+CEIL : 해당값보다 큰 정수값(올림)
+    select CEIL(1234.567);
+     => 1235
+FLOOR : 해당값보다 작은 최대정수(버림)
+    select FLOOR(1234.567);
+     => 1234
+MOD(N,M) : N을 M으로 나눗 나머지
+    SELECT MOD(22, 4);
+     => 2
+POW(N,M) : N의 M승
+    SELECT POW(2,4);
+     => 16
+RAND : 0~1사이의 난수를 뽑아내는 함수
+    SELECT RAND();
+ROUND(A,B): A를 소수점 이하 B자리까지 반올림.
+    SLEECT ROUND(12.34567 , 2)
+     => 12.35
+SIGN(N) : N이 0보다 크면 1, 0이면 0, 0보다 작으면 -1
+         (양수면 1, 음수면 -1, 0이면 0)
+    SELECT SIGN(1)
+     => 1
+SQRT() : 제곱근(루트)
+    SELECT SQRT(4)
+     => 2
+TRUNCATE(A,B) : A를 소수점이하 B자리에서 잘라내기
+    SELECT TRUNCATE(0.871923, 2)
+     => 0.87
+
+2. 문자형
+LENGTH(STRING) : 문자열의 길이를 반환함.
+    SELECT LENGTH('STRING')
+     => 6
+CONCAT : 문자열 통합
+    SELECT CONCAT('A','B','C')
+     => ABC
+CONCAT_WS('A' , 'B','C') : A를 다음 문자열들의 사이에 붙임
+    SELECT CONCAT_WS('-','010','1111','1111')
+     => 010-1111-1111
+FORMAT(N,M) : 정수부분 3자리마다 콤마추가 => 결과값 문자
+              M의 숫자만큼 소수점이하 0 삽입
+    SELECT FORMAT(123456789,3)
+     => 123456789.000
+INSTR('N','M' ) : 문자열 N에서 M문자(열)를 찾아 시작위치 리턴
+LOWER('N') : 문자열을 소문자로 반환
+UPPER('M') : 문자열을 대문자로 반환
+LOCATE('A','B') : 문자열 B에서 문자열 A의 시작위치값을 반환
+LOCATE('A','B',C) : 문자열 B의 C 위치부터 문자열 A과 일치하는 값을 반환
+POSITION('A' IN 'B') : 문자열 'B'에서 문자열 A와 일치하는 값을 반환
+LPAD('A',길이,'패딩문자') : 문자열 A가 길이보다 작다면 왼쪽을 패딩문자를 채움
+RPAD('A',길이,'패딩문자') : 문자열 A가 길이보다 작다면 오른쪽을 패딩문자를 채움
+TRIM('A') : 양쪽공백 제거(문자열내 공백제거x)
+LTRIM('A') : 왼쪽공백 제거(문자열내 공백제거x)
+RTRIM('A') : 오른쪽공백 제거(문자열내 공백제거x)
+LEFT('A' , 정수(범위)) : 왼쪽에서 정수 범위만큼만 문자열 반환
+RIGHT('A', 정수(범위)) : 오른쪽에서 정수 범위만큼만 문자열 반환
+REPEAT(컬럼, 반복횟수) : 
+REPLACE('A' , 'B', 'C') : 문자열 A에서 문자열 B를 찾아 문자열 C로 변경
+REVERSE('A') : 문자열 A를 역순으로 출력(뒤집음)
+SUBSTR('A', N, M) : 문자열 A를 N부터 M까지 자름 (N을 시작점으로 M개만큼 자름)
+
+3. 날짜형
+-- 오라클과 다르게 SELECT문에 FROM DUAL을 안붙여써도됨. 
+CURDATE() => 현재 일자 (YYYY-MM-DD)
+CURTIME() => 현재 시간 (HH24MISS)
+CURRENT_TIMESTAMP() , NOW() => 현재 일자, 현재 시간을 출력.
+DAY_NAME( 일자 ) => 해당 일자의 요일 반환
+DAY( 일자 ) =>  해당 일자의 일자 반환(DD)
+DAYOFMONTH( 일자 ) => 해당 일자의 일자 반환(DD)
+DAYOFWEEK( 일자 ) => 해당 일자의 요일의 정수값 반환
+                    일요일 기준 +1
+365-DAYOFYEAR( 일자 ) => 1년 365일 기준으로 몇번째 날일가를 출력
+LAST_DAY(일자값) => 일자의 월의 마지막날짜 반환
+YEAR(일자값) => 일자의 년도 반환
+MONTY(일자값) => 일자의 월 반환
+DAY(일자값) => 일자의 일 반환
+QUARTER(일자값) => 일자값의 분기 반환(1~3 : 1, 4~6:2, 7~9:3, 10~12:4) 
+WEEKOFYEAR(일자값)=> 입력한 일자의 년도의 주차
+DATE_ADD( 일자, INTERVAL 14 DAY ) => 일자 더하기 계산 함수 
+ADDDATE( 일자, INTERVAL 14 DAY ) 
+DATE_SUB : 일자 빼기 계산함수
+SUBDATE : 상동
+# EXTRACT(단위 FROM 날짜) : 날짜에서 특정한 단위만 추출한 결과를 리턴.
+# UNIT 값 
+# YEAR, MONTH, QUARTER, WEEK, DAY, HOUR, MINUTE, SECOND
+# YEAR_MONTH, DAY_HOUR, DAY_MINUTE, DAY_SECOND, HOUR_MINUTE
+# HOUR_SECOND, MINUTE_SECOND
+SELECT extract(YEAR_MONTH FROM CURDATE());
+DATE_FORMAT( 일자 , 출력포맷 ) => 입력한 일자를 출력포맷에 맞게 반환함
+NOW() : 실행이 되고난 후를 기준을 현재 날짜와 시간을 출력
+SYSDATE() : 실행을 명령했을때 시점으로 현재 날짜와 시간을 출력
+
+
+4. 형변환
+5. 기타
+조건문 IF THEN ELSE
+
+6. 집계 (Group by)
