@@ -127,7 +127,7 @@ SYSDATE() : 실행을 명령했을때 시점으로 현재 날짜와 시간을 �
 조건문 IF THEN ELSE
 SELECT IF(15>=10, "A", "B") 조건이 참이면 A, 거짓이면 B
      1. IFNULL(A,B) : A가 NULL아니면 A, NULL이면 B
-     2. NULLIF(A,B) : 
+     2. NULLIF(A,B) : A == B 인 경우 null 반환하고 A!=B 이면 A 반환
      3. CASE(A,B) : 
                CASE WHEN ~~ THEN ~~
                     WHEN ~~ THEN ~~
