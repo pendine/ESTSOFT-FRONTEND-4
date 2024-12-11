@@ -1,0 +1,25 @@
+join
+두개 이상의 테이블을 결합하여 데이터를 검색
+데이터베이스 내의 여러 테이블에서 튜플을 조합하여 하나의 테이블이나 결과 집합으로 표현
+
+INNER JOIN : 해당 테이블의 만족하는 데이터만 가져오는 조인
+ - 내부 조인이라고도 부름
+ - 양쪽 테이블에 모두 내용이 있을 경우에만 결과가 검색
+OUTER JOIN : 양쪽 테이블의 모든 데이터를 가져오는 조인
+ - LEFT, RIGHT 
+ - 외부 조인이라고도 부름
+ - 둘중 한쪽의 테이블에 데이터가 있어도 검색 가능.
+CROSS JOIN : WHERE 절 필요 없음.
+             조건을 걸지않고 A, B 테이블을 검색한것과 같은결과 나옴(카티션 곱)
+             (연산곱)
+NATURAL JOIN : 공통된 속성을 찾아 같은 값을 갖는 항목끼리 결합 시키는 조인
+ -> GROUP BY 등으로 대체 가능
+SELF JOIN : 테이블이 자기 자신을 조인함
+ -> 활용도가 조금 있지만 활용도가 더 높은 서브쿼리를 사용하는것을 권장.
+
+
+JOIN 활용 예시
+SELECT E.ENAME, E.SAL, D.DNAME, E.SAL
+FROM EMP AS E LEFT JOIN DEPT AS D ON E.DEPTNO=D.DEPTNO, SALGRADE AS S 
+WHERE E.SAL BETWEEN S.LOSAL AND S.HISAL
+;
