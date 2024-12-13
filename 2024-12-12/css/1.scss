@@ -1,0 +1,11 @@
+$test1 : crimson;
+$test2 : white;
+$size1: 55px;
+$width1 : 550px;
+
+
+body{
+    font-size: $size1;
+    color : $test2;
+    background-color: $test1;
+}

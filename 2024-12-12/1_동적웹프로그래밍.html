@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/1.scss">
+</head>
+<body>
+    SASS : Syntactically Awesome StypleSheet
+
+sass/ scss는 프로젝트에 따라서 형상관리 내용에서 제외되는 경우도 있음
+scss : sass 의 단점을 개선
+ - 둘의 차이는 {} , ; 유무
+ - 기본 규칙은 css를 따라가지만 추가된 문법들이 있다고 생각하면 편함
+ - 데이터 종류(변수)
+ - 조건문
+ - 반복문
+ - 전용 내장함수
+
+ nesting 선언 중첩
+  - 남용할 경우 코드의 복잡도 증가
+
+  .test클래스에 font 관련 속성 지정시
+  .test{
+    font: { (공백 필요함)
+        size:30px;
+        weight : bold;
+    }
+  }
+
+-연산가능
+  css는 calc()함수ㅜ 기반으로만 동작함
+   - #{}<- 의 형태로 값을 감싸두면 연산 가능
+   
+</body>
+</html>
