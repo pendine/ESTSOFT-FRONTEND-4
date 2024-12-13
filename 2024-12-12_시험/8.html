@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container{
+            width: 300px;
+            max-width: 300px;
+            display:flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .profile__img{
+            object-fit: cover;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin: 10px 0;
+        }
+        .profile__name{
+            margin:10px 0;
+        }
+        .profile__job{
+            margin: 10px 0;
+        }
+        .button{
+            background-color: #3498db;
+            color:white;
+            margin:10px 0;
+            border: none;
+            padding:10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./8번profile.jpg" alt="프로필사진" class="profile__img">
+        <h1 class="profile__name">홍길동</h1>
+        <p class="profile__job">웹 개발자</p>
+        <button type="button" class="button">연락하기</button>
+    </div>
+</body>
+</html>

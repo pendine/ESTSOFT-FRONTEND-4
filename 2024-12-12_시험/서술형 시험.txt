@@ -1,0 +1,122 @@
+2번문제 답
+사용자 접근성이 높아짐(다양한 장치를 통한 접근 가능)
+접근하는 장치에 따른 가독성 향상
+1. 미디어쿼리
+2. grid
+3. flex
+- flex-shrink
+- flex-grow
+4. device-height, device-width
+5. orientation
+6. resolution
+
+3번문제 답
+CREATE TABLE student{
+	STUDENT_ID INT NOT NULL PRIMARY KEY,
+	STUDENT_NAME VARCHAR(30) NOT NULL ,
+	AGE INT,
+	MAJOR VARCHAR(30) NOT NULL ,
+	ADMISSION_DATE DATE_TIME NOT NULL 
+}
+
+
+9번 , 10번 문제
+https://github.com/pendine/quiz09
+
+
+14번 문제
+개체 무결성(Entity Integrity)
+테이블은 특수한 목적이 있지 않다면 기본키를 지정하고 기본키에 따른 무결성 원칙을 지켜야한다
+중복되지 않는 고유한 아이디값을 갖는 키값을 설정함.
+
+참조 무결성(Referential Integrity)
+외래키가 참조하는 테이블의 기본키 값이 존재해야함
+부모 테이블에 존재하지 않는 값을 자식 테이블의 외래키로 참조는 불가
+
+도메인 무결성(Domain Integrity) 
+각 속성은 미리 정의된 도메인 값만 가질수 있다
+숫자타입으로 선언된 컬럼에 문자가 들어갈 수 없음
+
+
+15번 답
+git : 로컬 - 작업 결과가 내 PC에만 있기 때문에 다른곳에서 접근 불가
+github : 인터넷 - 작업 결과가 인터넷에 있기 때문에 환경이 구성되어있다면 다른곳에서 접근 가능
+
+
+16번 문제 답
+1. 트랜잭션은 하나의 쿼리가 실행되서 결과과 수행되기까지의 단위
+2. ACID
+원자성 : 트랜잭션이 반영되거나, 반영이 되지 않는것
+일관성 : 작업처리의 일관성. 작업이 수행중인경우 완료되기전까지는 작업전 결과를 보여주고, 작업이 완료된 경우에는 작업 후 결과를 보여줌
+독립성 : 작업이 진행중에는 다른 작업이 진행중인 작업에 영향을 줄수 없음
+지속성 : 하나의 작업이 완료됐을때, 결과물에 대해서 다른 작업이 이루어지 지지 않는한 해당 결과는 영구적으로 지속되어야함.
+3. commit;
+rollback;
+
+
+17번 문제 답
+a) 속성 선택자 (예: [attribute^="value"])
+   1. 선택자[속성명]
+    정확한 설명: 지정된 속성을 가진 모든 요소를 선택합니다. 속성값은 상관없이 해당 속성이 존재하기만 하면 됩니다.
+    예: input[type]은 type 속성을 가진 모든 input 요소를 선택합니다.
+    2. 선택자[속성명="속성값"]
+    정확한 설명: 지정된 속성명과 속성값이 정확히 일치하는 요소를 선택합니다.
+    예: input[type="text"]는 type 속성이 "text"인 input 요소를 선택합니다.
+    3. 선택자[속성명~="속성값"]
+    정확한 설명: 지정된 속성값을 단어로 포함하는 요소를 선택합니다. 속성값은 공백으로 구분된 단어 목록 중 하나와 정확히 일치해야 합니다.
+    예: [class~="highlight"]는 class 속성에 "highlight"라는 단어를 포함하는 요소를 선택합니다 (예: class="highlight" 또는 class="text highlight box").
+    4. 선택자[속성명|="속성값"]
+    정확한 설명: 지정된 속성값과 정확히 일치하거나, 지정된 속성값 뒤에 하이픈(-)이 오는 요소를 선택합니다.
+    예: [lang|="en"]은 lang="en" 또는 lang="en-US"와 같은 요소를 선택합니다.
+    5. 선택자[속성명^="속성값"]
+    정확한 설명: 지정한 속성값으로 시작하는 요소를 선택합니다. 속성값의 시작 부분만 일치하면 됩니다.
+    예: [class^="btn-"]는 class 속성이 "btn-"로 시작하는 모든 요소를 선택합니다 (예: class="btn-primary", class="btn-secondary").
+    6. 선택자[속성명$="속성값"]
+    정확한 설명: 지정한 속성값으로 끝나는 요소를 선택합니다. 속성값의 끝 부분만 일치하면 됩니다.
+    예: [href$=".pdf"]는 href 속성이 ".pdf"로 끝나는 모든 요소를 선택합니다.
+    7. 선택자[속성명*="속성값"]
+    정확한 설명: 지정한 속성값을 포함하는 요소를 선택합니다. 속성값 내에 지정된 문자열이 어디에 위치하든 상관없이 포함되어 있으면 해당 요소를 선택합니다.
+    예: [title*="hello"]는 title 속성에 "hello"가 포함된 모든 요소를 선택합니다 (예: title="hello world", title="say hello to everyone").
+
+b) 가상 클래스 선택자 (예: :nth-child(), :not())
+:link (미방문 링크)
+:visited (방문 링크)
+:hover (마우스 올렸을때)
+:active (클릭된 상태)
+:focus (포커스 상태)
+:checked (선택된 상태)
+:enabled (선택 가능한 상태)
+:disabled(선택 불가능한 상태)
+:first-child : 셀렉터에 해당한 모든 요소중 첫번째 자식 요소 선택
+:last-child : 셀렉터에 해당한 모든 요소중 마지막자식(html구조에서)을 선택
+:nth-child(n) : 앞에서 n번째의 자식요소 선택
+:nth-last-child(n) : 뒤에서 n번째 자식요소 선택
+:vaild : 정합성 검증에 성공한 input 요소나 form 요소를 선택
+:invaild : 정합성 검증에 실패한 input 요소나 form 요소를 선택
+c) 가상 요소 선택자 (예: ::before, ::after)
+::first-letter : 컨텐츠의 첫글자 선택
+::first-line : 컨텐츠의 첫 줄 선택 (블록요소만 적용가능)
+::after : 컨텐츠 뒤에 위치하는 공간 선택 / 일반적으로 컨텐츠 프로퍼티와 함께 사용
+::before : 컨텐츠 앞에 위치하는 공간 선택 / 일반적으로 컨텐츠 프로퍼티와 함께 사용
+::selection : 드래그한 컨텐츠를 선택
+
+
+
+18번 문제 답
+SELECT c.name, count(c.name)as film_count
+FROM category c, film f, film_category fc
+WHERE fc.film_id = f.film_id
+  AND fc.category_id = c.category_id
+GROUP BY c.name
+ORDER BY c.name
+;
+
+
+19번 문제 답.
+1. 추출을 원하는 이미지를 선택.
+2. 좌측 하단의 레이어 트리뷰를 확인하고 원하는 이미지를 정확히 선택했는지 확인.
+3. 우측하단의 asset을 클릭하여 PNG파일을 이용하여 파일을 추출.
+
+
+20번 문제
+우측하단의 볼륨버튼 모양의 inspect settings를 클릭하여 유닛(단위) 을 rem으로 변환한다.

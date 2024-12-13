@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .inputForm{
+            display: flex;
+            flex-direction: column;
+        }
+        .inputTxt{
+            width: 100%;
+            border-radius: 5px;
+            margin : 10px 0;
+            border : 3px solid gainsboro;
+        }
+        .inputTxt:focus{
+            outline: none;
+            border:3px solid #3498db;
+        }
+        .submit_btn{
+            margin-top:10px;
+            background-color:  #3498db;
+            color:white;
+            border-radius: 5px;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form class="inputForm" action="">
+            <input class="inputTxt" type="text" placeholder="이름">
+            <input class="inputTxt" type="email" placeholder="이메일">
+            <button type="submit"class="submit_btn">제출</button>
+        </form>
+    </div>
+</body>
+</html>
