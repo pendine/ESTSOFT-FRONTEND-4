@@ -1,0 +1,66 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="container__header">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </h1>
+        <textarea class="textinputer" name="" id=""placeholder="input text" cols="30" rows="10"></textarea>
+        <div class="tags"></div>
+    </div>
+</body>
+-->
+    <!-- 내 코드와 강사님 코드 구분용 주석추가후.
+     라이브 서버로 인해서 추가한 주석 구분
+<script> 
+let tagsEl = document.querySelector('.tags');
+let textarea = document.querySelector('.textinputer');
+
+textarea.addEventListener('keyup' , function(){
+    createTag(event.target.value);
+})
+
+function createTag(param1){
+    console.log('키보드 이벤트 감지');
+    const tags = param1.split(',').filter(tag => tag.trim() !=='');
+
+    tagsEl.innerHTML = '';
+
+    tags.forEach(tag =>{
+        console.log("tag : " + tag);
+        const tagEl = document.createElement('span');
+        tagEl.classList.add('tag');
+        tagEl.innerHTML = tag;
+        tagsEl.appendChild(tagEl);
+        
+    })
+}
+</script>
+</html> 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/1_1.css" />
+    <title>해시태그?</title>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Enter all of the choices divided by a comma (','). <br> Press enter when you're done</h3>
+      <textarea placeholder="Enter choices here..." id="textarea"></textarea>
+
+      <div id="tags"></div>
+    </div>
+
+    <script src="1_1_script.js"></script>
+  </body>
+</html>
