@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" class="txt">
+  <button class="btn">학점 판독기</button>
+  <script>
+    let test1 = document.querySelector('.txt');
+    let btn = document.querySelector('.btn');
+    console.log(btn);
+    console.log(test1);
+
+    btn.addEventListener('click' , () =>{
+      if(test1.value>=95){
+        alert("A+");
+      }
+      else if(test1.value>=90){
+        alert("A");
+      }else if(test1.value>=85){
+        alert("B+");
+      }else if(test1.value>=80){
+        alert("B");
+      }else{
+        alert("F");
+      }
+    });
+  </script>
+</body>
+</html>

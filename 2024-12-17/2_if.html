@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" class="txt">
+  <button class="btn">양수 음수 판독기</button>
+  <script>
+    let test1 = document.querySelector('.txt');
+    let btn = document.querySelector('.btn');
+    let test2 = 30;
+    console.log(btn);
+    console.log(test1);
+
+    btn.addEventListener('click' , () =>{
+      if(test1.value>0){
+        alert("양수");
+      }
+      else if(test1.value<0){
+        alert("음수");
+      }else{
+        alert("0");
+      }
+    });
+  </script>
+</body>
+</html>

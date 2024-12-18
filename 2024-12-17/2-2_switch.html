@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" class="txt" 
+  placeholder="한글자만 입력해주세요 ex) 월요일 / 월">
+  <button class="btn">영어 공부 프로그램(요일편)</button>
+
+  <script>
+      let test1 = document.querySelector(".txt");
+      let btn = document.querySelector(".btn");
+      let test2 = 0;
+      console.log(btn);
+      console.log(test1);
+
+      btn.addEventListener("click", function(){
+  switch(test1.value) {
+          case "월":
+              test2 = "monday";
+              alert("월요일은 영어로 " + test2);
+              break;
+          case "화":
+              test2 = "tuesday";
+              alert("화요일은 영어로 " + test2);
+              break;
+          case "수":
+              test2 = "wednesday";
+              alert("수요일은 영어로 " + test2);
+              break;
+          case "목":
+              test2 = "thursday";
+              alert("목요일은 영어로 " + test2);
+              break;
+          case "금":
+              test2 = "friday";
+              alert("금요일은 영어로 " + test2);
+              break;
+          case "토":
+              test2 = "saturday";
+              alert("토요일은 영어로 " + test2);
+              break;
+          case "일":
+              test2 = "sunday";
+              alert("일요일은 영어로 " + test2);
+              break;
+          default:
+              alert("미쳤습니까 휴먼?");
+              break;
+          }            
+      })
+    // switch~Case
+// 조건문중 하나.
+// 주어진 조건값의 결과에 따라 프로그램이
+// 다른 명령을 수행하도록 하는 조건문
+
+// if문은 참이냐 거짓이냐를 기준으로 구문을 실행
+// switch문을 해당 변수값이 맞는가 아닌가를 기준으로 실행한다.
+//  - switch문을 포괄적으로 비교연산자를 통해 설정하는것은 불가능.
+
+// switch문이 if문 대비 제한사항이 너무 많음.
+// 제한사항은 많지만 성능상 switch문이 더 유리함.
+
+//		switch(조건값) {
+//		case 값1:
+//			조건값이 값1일때 실행되는 코드
+//			break;
+//		case 값2:
+//			조건값이 값2일때 실행되는 코드
+//			break;
+//		default:
+//			조건값이 어디에도 속하지 않으면 실행되는 코드;
+//			break;
+//		}
+var month = 11;
+var monthName;
+switch (month) {
+    case 1:
+      monthName = 'January';
+      break;
+    case 2:
+      monthName = 'February';
+      break;
+    case 3:
+      monthName = 'March';
+      break;
+    case 4:
+      monthName = 'April';
+      break;
+    case 5:
+      monthName = 'May';
+      break;
+    case 6:
+      monthName = 'June';
+      break;
+    case 7:
+      monthName = 'July';
+      break;
+    case 8:
+      monthName = 'August';
+      break;
+    case 9:
+      monthName = 'September';
+      break;
+    case 10:
+      monthName = 'October';
+      break;
+    case 11:
+      monthName = 'November';
+      break;
+    case 12:
+      monthName = 'December';
+      break;
+    default:
+      monthName = 'Invalid month';
+  }
+
+  console.log(monthName); // Invalid month
+  </script>
+</body>
+</html>
