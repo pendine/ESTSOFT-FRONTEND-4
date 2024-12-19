@@ -31,9 +31,11 @@ function createTag(param1){
         tagsEl.innerHTML ='';
     
         tags.forEach(tag =>{
+            console.log("태그내용 : " + tag);
             const tagEl = document.createElement('span');
             tagEl.classList.add('tag');
             tagEl.innerText = tag;
             tagsEl.appendChild(tagEl);
         })
+        console.log("태그's 내용 : " + tags);
 }
