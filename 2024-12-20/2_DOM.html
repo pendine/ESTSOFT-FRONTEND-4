@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red{background-color: red;}
+    .blue{background-color: blue;}
+    .green{background-color: green;}
+    li{
+      color:#242424;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+<!--   
+  DOM(Document Object Model) : html 문서에 접근하기 위한 모델
+   - 웹문서(html)를 브라우저에 렌더링 하려면 문서를 
+      브라우저가 이해할수 있는 구조로 컴퓨터에 전달해야한다
+      (메모리에 등록/ 올려야한다)
+   - 브라우저 렌더링엔진(chrome v8)의 웹 문서 로드후 파싱하여 웹 문서를
+     브라우저가 이해할 수 있는 구조로 구성하여 메모리에 적재함
+   - 모든 요소와 요소의 속석 텍스트를 각각의 객체로 만들고
+      객체를 상/하위 관계를 표현할 수 있는 트리구조로 구성한것을
+      DOM으로 부름
+      DOM+BOM = HTML 구조
+
+  헤드영역에 포함되는 데이터
+   - 메타데이터
+  
+
+  웹 브라우저에서 사용할 수 있는 기능(객체)들
+  - BOM(Borwser Object Model) : DOM외의 모든것을 제어하기위해 
+                    브라우저가 제공하는 추가 객체
+
+  window - DOM : document
+         - BOM : navigator, screen, location
+                , frames, history, XMLHttpRequest(Ajax)
+         - JS : Object, Function, Array ~~
+
+
+  DOM 관련 용어 정리
+  1. DOM Tree : 브라우저가 HTML 문서를 로드한 후 파싱하여 생성하는 모델.
+                (객체가 트리구조를 기반으로 움직이기 때문에)
+  최상위 노드는 document임 - 문서노드라고 부름
+  바로 그 아래에 있는 노드는 html
+  요소에 부여되는 css와 같은것들은 attribute(속성)노드라고 부름
+  
+  2. DOM query / Traversing : 웹페이지 조작을 위한 수단(API)
+   1개 선택 or 다중 선택
+  2-1 1개 요소 선택 dom query(편의상 document 생략)
+  - getElementById : id속성값을 기반으로 요소 노드를 선택시 사용
+      2개 이상이 선택될 경우 첫번째 요소만 반환
+  - querySelector : css의 선택자를 사용하여 요소노드를 1개만 선택
+      2개 이상이 선택될 경우 첫번째 요소만 반환
+
+  2-2 다중선택
+  - getElementByClassName
+  - getElementByName
+  - getElementByTagName
+  - querySelectAll
+ -->
+
+  <div class="">
+    <h1>세계의 도시들</h1>
+    
+    <ul>
+      <li id="one" class="red">city1</li>
+      <li id="two" class="red">city2</li>
+      <li id="tree" class="red">city3</li>
+      <li id="four" class="">city4</li>
+    </ul>
+
+    <script src="./js/2_DOM.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  사용자와 상호작용
+   - alert, prompt, confirm
+   - 브라우저에서 사용되는 최소한의 사용자 인터페이스 기능
+   - 위의 함수들은 최상위 객체에 포함되어 있는 함수 => 메서드
+   함수 != 메서드
+   - 자바스크립트는 window라는 최상위 객체가 존재
+   - window 객체 계열의 함수들의 특징은 다음과 같음
+     함수를 제대로 호출하기 위해서는 document.querySelect()와 같이
+     해당 객체.함수명 이라는 식으로 작성을 해야하지만
+     window객체들은 어차피 최상위이기 때문에 굳이 작성하지 않아도 인식함
+
+
+
+  1. alert : 사용자에게 확인 버튼을 누르기전까지 시스템의 메시지를
+              전달하는 창을 호출하는 함수
+  2. prompt : 사용자로부터 값을 입력받는 창을 호출하는 함수
+  prompt( 사용자에게 보여줄 메시지, 기본값 );
+  prompt( 사용자에게 보여줄 메시지, [def] );
+   ( 문서를 보다가 값 입력에 [] <= 이렇게 표기되어있다면 선택적 요소라는 뜻)
+    - 사용자에게 값을 입력받을때는 input을 더 자주 사용함
+  3. confirm : 사용자에게 확인이나 질문하는 창을 호출하는 함수.
+   - 메시지가 확인 취소로 나옴. 바꿀 수 있나? => 없음
+   - 사용자에게 예, 아니오 버튼으로 보여줄 방법은 없나?
+      => 모달창으로 대체함.
+  
+  DOM => event
+         function
+      -> 앞에서 배운 개념들은 계속 따라옴( 특히 연산자, 제어문 )
+  <script>
+    // let test = prompt('aaaaaa', 'ababab');  
+    // alert("test result : " + test + " . ");
+    let test = confirm("ㅁㅁㅁㅁㅁㅁ" , "yes" , "no" );
+    alert(test);
+  </script>
+</body>
+</html>
