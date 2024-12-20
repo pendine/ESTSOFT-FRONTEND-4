@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    
+    .main-layout{
+      /* border : 1px solid aqua; */
+      /* background-color: aqua; */
+      /* 현재 html에서는 main-layout의 부모요소는 body인데
+      body의 높이는 내부 요소들에 따라 동적으로 변환되기때문에 
+      100%를 사용해도 높이가 0임.
+      %를 사용하면 부모요소의 너비,높이에 대한 비율임.
+      height: 100%*/
+      height: 100vh;
+      /* width: 100%; */
+      display:grid;
+      grid-template-columns: repeat(3, calc(30%));
+      grid-template-rows: repeat(3, calc(33.33% ));
+      
+      row-gap:1rem;
+      column-gap:2rem;
+      padding : 1rem 1rem;
+    }
+
+    /*
+    레이아웃은 기본 높이가 없는듯. 
+    일반적으로 레이아웃을 위해 만든 div 태그들은 기본적으로 높이가 없습니다. 이는 HTML 요소의 기본 동작 때문입니다. div의 높이 관련 특성을 이해하기 위해 몇 가지 중요한 점을 살펴보겠습니다:
+div 태그의 기본 특성
+콘텐츠에 따른 높이: div는 기본적으로 내부 콘텐츠의 높이에 맞춰 자동으로 크기가 조정됩니다. 내용이 없으면 높이가 0이 됩니다.
+블록 레벨 요소: div는 블록 레벨 요소로, 기본적으로 가로 폭 전체를 차지하지만 높이는 내용에 따라 결정됩니다.
+부모 요소의 영향: div의 높이를 퍼센트로 지정할 경우, 부모 요소에 명시적인 높이가 설정되어 있어야 합니다.
+
+레이아웃 목적으로 div를 사용할 때 높이를 지정하지 않으면,
+내부 콘텐츠가 없는 경우 높이가 0이 되어 보이지 않을 수 있습니다.
+따라서 원하는 레이아웃 효과를 얻기 위해서는 적절한 CSS를 사용하여 높이를 명시적으로 설정하거나,
+내부에 콘텐츠를 추가해야 합니다.
+    
+    그리드 레이아웃
+ 그리드 레이아웃은 기본적으로 2차원 레이아웃 시스템입니다. 
+그리드 컨테이너의 높이를 100%로 설정하면,
+그리드 아이템들은 자동으로 컨테이너의 전체 높이를 채우도록 설계되어 있습니다1.
+
+플렉스 레이아웃
+플렉스 레이아웃은 1차원 레이아웃 시스템으로,
+기본적으로 콘텐츠의 크기에 맞춰 높이가 결정됩니다. 
+플렉스 아이템의 높이를 100%로 설정해도,
+부모 컨테이너의 높이가 명시적으로 정의되어 있지 않으면 효과가 없을 수 있습니다
+
+그리드 레이아웃과 플렉스박스 레이아웃은 높이 상속에 있어 다르게 동작합니다.
+그리드 레이아웃
+그리드 레이아웃은 2차원 레이아웃 시스템으로,
+ 부모 컨테이너의 높이와 너비를 자식 요소들이 자동으로 채우도록 설계되어 있습니다.
+  따라서 그리드 아이템은 부모의 33.33% 높이와 너비를 쉽게 상속받을 수 있습니다.
+플렉스박스 레이아웃
+반면 플렉스박스는 1차원 레이아웃 시스템으로, 
+기본적으로 콘텐츠의 크기에 맞춰 높이가 결정됩니다.
+플렉스 아이템에 높이 33.33%를 설정해도, 
+부모 컨테이너의 높이가 명시적으로 정의되어 있지 않으면 효과가 없을 수 있습니다
+
+플렉스 레이아웃에서 높이를 100%로 설정했지만 내부 아이템이 없는 경우,
+컨테이너는 기본적으로 내용물이 없기 때문에 높이가 0이 될 수 있습니다.
+플렉스 레이아웃의 동작 방식에 대해 몇 가지 중요한 점을 설명하겠습니다:
+컨테이너의 높이: 플렉스 컨테이너의 높이를 100%로 설정했다면, 
+              이는 부모 요소의 높이에 상대적입니다. 
+              부모 요소에 명시적인 높이가 없다면, 
+              100% 높이는 적용되지 않을 수 있습니다.
+내부 아이템의 영향: 플렉스 레이아웃은 기본적으로
+                내부 아이템의 크기와 콘텐츠에 따라 크기가 결정됩니다.
+                내부 아이템이 없으면, 컨테이너는 축소될 수 있습니다.
+최소 높이 설정: 내부 아이템이 없어도 높이를 유지하고 싶다면, 
+              최소 높이를 설정할 수 있습니다:
+    */
+    .main-item__grid-layout{
+      height: 100%;
+      width:100%;
+
+      display:grid;
+      grid-template-columns: repeat(3, calc(33.33%));
+      grid-template-rows: repeat(3, calc(33.33%));
+    }
+
+    .main-item__flex-layout{
+      height: 100%;
+      width:100%;
+
+      display:flex;
+      flex-direction : column;
+
+      *{
+        height: 100%;
+      }
+    }
+
+    /*  */
+    .red{
+      border:1px solid black;
+      /* height: 100%;
+      width: 100%; */
+      background-color: crimson;
+    }
+    .blue{
+      border:1px solid black;
+      /* height: 100%;
+      width: 100%; */
+      background-color: lightcyan;
+    }
+    .item{
+      border:1px solid black;
+      /* height: 100%;
+      width: 100%; */
+      background-color: gold;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div class="main-layout">
+    
+    <div class="main-item__flex-layout">
+      <div class="red"></div>
+      <div class="item"></div>
+      <div class="blue"></div>
+    </div>
+    <div class="main-item__grid-layout">
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="item"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+    </div>
+    <div class="main-item__flex-layout">
+      <div class="blue"></div>
+      <div class="item"></div>
+      <div class="red"></div>
+    </div>
+    
+    <div class="main-item__flex-layout">
+      <div class="blue"></div>
+      <div class="item"></div>
+      <div class="red"></div>
+    </div>
+    <div class="main-item__grid-layout">
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="item"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+    </div>
+    <div class="main-item__flex-layout">
+      <div class="red"></div>
+      <div class="item"></div>
+      <div class="blue"></div>
+    </div>
+
+    <div class="main-item__grid-layout">
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="item"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+    </div>
+    <div class="main-item__grid-layout">
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="item"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+    </div>
+    <div class="main-item__grid-layout">
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="item"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+      <div class="red"></div>
+    </div>
+
+  </div>
+  
+</body>
+</html>

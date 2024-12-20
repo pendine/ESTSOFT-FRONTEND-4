@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <style>
+  </style>
+</head>
+<body>
+  <p title="p태그">P태그는 단락이다.</p>
+
+  <div id="intro"></div>
+
+
+
+  <script>
+    var intro = document.getElementById('intro');
+
+    var someText = 'This is the text i want to add';
+    var textNode = document.createTextNode(someText);
+    intro.appendChild(textNode);
+  </script>
+</body>
+
+</html>

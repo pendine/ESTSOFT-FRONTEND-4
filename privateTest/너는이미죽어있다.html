@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    .death{
+      border: 3rem solid black;
+      outline: 1rem dash red;
+      opacity:0;
+      transition: opacity 1s ease-in-out;
+    
+      &.active{
+        opacity:1;
+      }
+    }
+
+    .dio{
+      width: 100%;
+      /* height: 15rem; */
+      background-color: crimson;
+      object-fit: cover;
+
+      /*
+      이미지 추가되면서
+      텍스트만 감싸는데?
+       => 부모요소에 높이를 지정하면
+          자식태그 이미지에 100%를 적용하면
+          부모요소와 동일한 높이의 이미지를 만들수 있지만
+          부모요소가 자식 요소를 감싸지 못해서
+          자식요소의 이미지가 부모요소 크기를 벗어남
+      */
+      img{
+        height: 15rem;
+        object-fit: cover;
+      }
+    }
+    .jyojyo{
+      width: 100%;
+      background-color: rgba(46, 46, 255, 0.658);
+      
+      img{
+        height: 15rem;
+        object-fit: cover;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="death">
+    너는 이미 죽어있다.<br />
+    원치 않은 죽음인가요?
+    <button type="button" class="iDonWant">네</button>
+    <button type="button" class="iWant">아니요</button>
+  </div>
+
+  <button type="button" class="playDeath">버튼을 클릭하세요</button>
+
+
+
+  <script>
+    const playDeath = document.querySelector('.playDeath');
+    const comeDeath = document.querySelector('.death');
+    const main = document.querySelector('main');
+
+    playDeath.addEventListener('click' , ()=>{
+      comeDeath.classList.add('active');
+    });
+    const iDonWant = document.querySelector('.iDonWant');
+    const iWant = document.querySelector('.iWant');
+
+    const dio = ()=>{
+      const dio = document.createElement('div');
+      // dio.classList.add('death');
+      // dio.innerHTML = `warrryyyyyyyyyyyyy`;
+
+      // 여기에서 css를 작성한다는건
+      // html에서 style 노드를 만들지 않고
+      // 전부 속성값으로 정의해서 만드는것과 같다..
+      dio.innerHTML =
+      `
+      <div class="dio">
+      코노 디오사마니와 무다다!!!!<br/>
+      무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다<br/>
+      무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다<br/>
+      무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다<br/>
+      무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다<br/>
+      무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다<br/>
+      <img src="https://opgg-com-image.akamaized.net/attach/images/20220203022856.2246439.jpg" 
+      alt="디오에게 죽었다">
+      </div>
+      `;
+      console.log(`무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다무다`);
+      
+      //자식을 추가하는것으로 인해서 계속 증가함 (내용 무한 증식)
+      //여기서 뭐 그 뭐냐 토글? 있던데 그 토글이란거 알아봐야할듯.
+      //  예상되는 문제는 토글을 사용햇을때 
+      //  각각의 버튼에 동일한내용을 보여주도록 했기때문에 
+      //  토글로 버튼을 클릭했을때 내용이 출력 되어도
+      // 두개의 버튼을 누르면 내용이 두개가 뜰수 있겠다.
+      //  그렇게되면 내용을 보여주고있는 상황인지 확인하는 flag를 세워야지.
+      // 그래서 안보여주고있으면 보여주고, 
+      // 똑같은 버튼을 누르지 않으면 계속 보여주게 해야겠지.
+      // 근데 여기서 한놈만 보이면 재미없으니까 디오 있으면 누구?
+      //  죠죠
+      comeDeath.appendChild(dio); 
+   }
+
+   const jyojyo = () => {
+    let imgSource = "./jyojyo.gif";
+    const jyojyo = document.createElement('div');
+    jyojyo.classList.add('jyojyo');
+    jyojyo.innerHTML =
+      `오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라<br/>
+      오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라<br/>
+      오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라<br/>
+      오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라<br/>
+      오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라<br/>
+      오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라오라<br/>
+      <img src="${imgSource}"
+      alt="죠죠에게 치료받았았다">
+      </div>
+      `;
+      comeDeath.appendChild(jyojyo); 
+   }
+
+  
+  iWant.addEventListener('click', dio);
+  iDonWant.addEventListener('click', jyojyo);
+
+  </script>
+</body>
+</html>

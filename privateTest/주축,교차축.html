@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      gap:0;
+      font-size: 62.5%;
+    }
+    .compare{
+      /* display:flex; */
+    }
+    
+    .grid{
+      padding : auto;
+      margin : auto;
+      box-sizing: border-box;
+      display:grid;
+      /* 
+      이렇게 쓰면 열의 너비는 1fr, 2fr , 1fr 
+      행의 높이는 1fr 반복이 되야하는데 왜 안돼냐
+        => grid-template-columns: repeat(3,1fr 2fr 1fr);
+      으로 지정해서 발생햇던 문제 이게 이렇게 되면.
+      열이 9개가 생성됨. 
+      */
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      /* 그리드 요소의 순서 바꾸기. */
+      /* grid-template-areas: 
+      "a  b  c"
+      "d  i  f"
+      "g  h  e"
+      ; */
+
+      width:100%;
+      height: 350px;
+      border : 2px solid black;
+      
+      row-gap: 1rem;
+      column-gap: 1rem;;
+      padding: 1rem;  
+    }
+
+    .cover{
+      background-color: aquamarine;
+      &:nth-child(2){background-color: azure;}
+/* 각 아이템의 위치 지정 */
+    }
+
+
+    .flex{
+      /* width 설정이 없으면 기본값 100%
+      100%일때 최대한으로 넓어짐.
+      자식요소들을 전부 담을 수 있을때까지 최대한 넓어짐. */
+      width:100%;
+      height: 300px;
+      border : 2px solid black;
+      position: relative;
+      display:flex;
+         
+      flex-wrap: wrap;
+      justify-content: space-between;
+      justify-items: center;
+      /* justify-content: stretch; */
+      align-content:space-between;
+      align-items: stretch;
+      /* align-items: ; */
+      /* gap: 20px; */
+      /* box-sizing: content-box 일때 
+      padding을 부여하면 안쪽 공간이 넓어짐. 
+      
+      box-sizing: border-box 일때 
+      padding을 부여하면 안쪽 공간이 고정됨. 
+      */
+      box-sizing: border-box;
+      padding : auto;
+      margin : auto;
+      span{
+        position: absolute;
+      }
+    }
+
+    
+    .target{
+      width: 8rem;
+      border : 2px solid red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: aliceblue;
+
+      span{
+        background-color: burlywood;
+        display:block;
+        width: 3rem;
+        aspect-ratio: 1;
+        text-align: center;
+        line-height: 3rem;
+      }
+
+      &.grid-target{
+        width: 100%;
+        height : 100%;
+        /* margin: 1rem; */
+        /* aspect-ratio: 0; */
+        &:nth-of-type(1) { grid-area: a; grid-column: 1; grid-row: 1;}
+        &:nth-of-type(2) { grid-area: b; grid-column: 2; grid-row: 1;}
+        &:nth-of-type(3) { grid-area: c; grid-column: 3; grid-row: 1;}
+        &:nth-of-type(4) { grid-area: d; grid-column: 3; grid-row: 2;}
+        &:nth-of-type(5) { grid-area: e; grid-column: 2; grid-row: 2;} /* 중앙 위치 */
+        &:nth-of-type(6) { grid-area: f; grid-column: 1; grid-row: 2;}
+        &:nth-of-type(7) { grid-area: g; grid-column: 2; grid-row: 3;}
+        &:nth-of-type(8) { grid-area: h; grid-column: 3; grid-row: 3;}
+        &:nth-of-type(9) { grid-area: i; grid-column: 1; grid-row: 3;}
+        
+      }
+
+      /* 재밌는점. order로 순서를 바꿨지만 
+      표시만 다르고 문서의 내용상 순서는 바뀌지 않았기 때문에
+      드래그를 해보면 3번부터 6번까지 드래그 해도 1,2번은 셀렉트 되지 않음*/
+      &.flex-target{
+        aspect-ratio: 1;
+        &:nth-of-type(1){
+          order : -1;
+          &::selection {
+            background-color: red;
+          }
+        }
+        &:nth-of-type(2){
+          order : -2;
+          &::selection {
+            background-color: black;
+            color:white;
+          }
+        }
+        &:nth-of-type(3){
+          order:-3;
+        }
+      }
+    }
+
+    .row{
+      background-color: aquamarine;
+    }
+    .column{
+      background-color: aqua;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <div>
+  주축과 교차축에 대한 기본 개념을 알고있어야함
+  주축의 기본값은 row
+  변경하면 column
+  </div>
+
+  <div class="compare">
+
+    <div class="cover">
+      <div class="flex row">
+        <span> 주축(기본 : row) </span>
+        <div class="flex-target target"><span>1</span></div>
+        <div class="flex-target target"><span>2</span></div>
+        <div class="flex-target target"><span>3</span></div>
+        <div class="flex-target target"><span>4</span></div>
+        <div class="flex-target target"><span>5</span></div>
+        <div class="flex-target target"><span>6</span></div>
+        <div class="flex-target target"><span>7</span></div>
+        <div class="flex-target target"><span>8</span></div>
+        <div class="flex-target target"><span>9</span></div>
+      </div>
+    </div>
+
+    <div class="cover">
+      <div class="flex column">
+        <span>주축(column)</span>
+        <div class="flex-target target"><span>1</span></div>
+        <div class="flex-target target"><span>2</span></div>
+        <div class="flex-target target"><span>3</span></div>
+        <div class="flex-target target"><span>4</span></div>
+        <div class="flex-target target"><span>5</span></div>
+        <div class="flex-target target"><span>6</span></div>
+        <div class="flex-target target"><span>7</span></div>
+        <div class="flex-target target"><span>8</span></div>
+        <div class="flex-target target"><span>9</span></div>
+<!--         
+        공간이 부족하면 flex-direct의 방향대로 부모요소의 끝부분을 뚫고 뻗어나감.
+         -->
+      </div>
+    </div>
+
+    <div class="cover">
+      <div class="grid">
+        <div class="grid-target target"><span>1</span></div>
+        <div class="grid-target target"><span>2</span></div>
+        <div class="grid-target target"><span>3</span></div>
+        <div class="grid-target target"><span>4</span></div>
+        <div class="grid-target target"><span>5</span></div>
+        <div class="grid-target target"><span>6</span></div>
+        <div class="grid-target target"><span>7</span></div>
+        <div class="grid-target target"><span>8</span></div>
+        <div class="grid-target target"><span>9</span></div>
+      </div>
+    </div>
+
+  </div>
+    
+</body>
+</html>
