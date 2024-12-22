@@ -1,0 +1,60 @@
+*{
+  padding: 0;
+  margin : 0;
+  font-size: 62.5%;
+  list-style-type: none;
+
+}
+:root{
+  --main-background-black:#333;
+  --main-white:#fff;
+}
+
+body{
+  background-color: var(--main-background-black);
+}
+
+.container{
+  background-color: var(--main-background-black);
+  /* 오호라. 패딩에서 auto속성자체를 줄수가 없다 */
+  /* padding : 0 auto; */
+}
+
+.contents-container{
+  background-color: var(--main-white);
+  min-width: 60rem;
+  max-width: 130rem;
+  /* 좌우가 좁아짐에 따라서 좌우 여백이 줄어들게 하고싶으면
+  마진에다 auto 값을 줘야하는구나 */
+  margin : 0 auto;
+}
+
+.header{
+  
+}
+
+.header-nav{
+  display:flex;
+  justify-content: space-between;
+  
+  .nav-category{
+    display:flex;
+    justify-content: space-around;
+    ul{
+      display:flex;
+      li{
+        display: inline-block;
+      }
+    }
+  }
+  .nav-icon{
+    ul{
+      display:flex;
+      justify-content: space-around;
+      li{
+        display: inline-block;
+      }
+    }
+  }
+}
+
