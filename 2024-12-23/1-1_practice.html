@@ -1,0 +1,142 @@
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>basic :: JavaScript example</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic">
+<style>
+body {
+	margin: 20px;
+	padding: 20px;
+	line-height: 1;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	background-color: #f1f1f1;
+	color: #555;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.title {
+	margin: 0;
+	margin-bottom: 35px;
+	padding: 0;
+	font-size: 1.5em;
+	font-weight: 300;
+	color: #555;
+}
+.container {
+	margin-top: 35px;
+	min-width: 440px;
+}
+nav ul {
+	margin: 16px 0 16px 0;
+	padding: 8px 0;
+	text-align: left;
+	font-weight: 400;
+	border-bottom: 1px solid #d4d4d4;
+}
+nav ul li {
+	display: inline;
+}
+nav ul li a {
+	margin-right: 0;
+	padding: 10px 20px 10px;
+	text-decoration: none;
+	font-size: 0.87rem;
+	background-color: #f1f1f1;
+	color: #333;
+	border: 1px solid #d4d4d4;
+	border-bottom: none;
+	transition: all 0.4s;
+}
+nav ul li.on a {
+	background-color: #8ac007;
+	color: #fff;
+	border-color: #8ac007
+}
+.description {
+	display: none;
+	margin: 30px 0;
+	padding: 30px 0;
+	font-size: 0.875em;
+	color: #333;
+	border-bottom: 4px solid #d4d4d4;
+}
+.description.active {
+	display: block;
+}
+</style>
+<script>
+	window.addEventListener("load" , function(){
+		let n = 0;
+		// let con = document.querySelector('.container');  // 모던
+		// let con = document.querySelectorAll('.container')[0]; // 모던+올드
+		let con = document.getElementsByClassName('container')[0]; // 올드
+		// 동일한 내용
+		console.log(con); //<- 여기 이상함. 
+		// 로그의 출력 위치상 요소의 클래스에
+		// active와 on이 추가되기전인데도 로그상에서는 추가돼있음.
+		let infoArray = [];
+
+		for(var i=0; i<con.children.length; i++){
+			if(con.children[i].tagName =="NAV") // 대문자도 문제 없음
+			{
+				var nav = con.children[i];
+
+			}
+			else{
+				infoArray.push(con.children[i]);
+			}
+		}
+		// console.log(infoArray);
+		var navLi = nav.children[0].children;
+		// console.log(navLi);
+		navLi[n].classList.add("on");
+		infoArray[n].classList.add("active");
+
+		for(let i=0; i<navLi.length; i++){
+			navLi[i].index=i;
+
+			navLi[i].addEventListener("click", function(e){
+				e.preventDefault();
+				n=e.currentTarget.index;
+
+				for(var j=0; j<nav.length; j++){
+					if(j==n){
+						navLi[j].classList.add("on");
+						infoArray[j].classList.add("active");
+					}else{
+						navLi[j].classList.remove("on");
+						infoArray[j].classList.remove("active");
+					}
+				}
+			})
+		}
+	})
+</script>
+</head>
+
+<body>
+<h1 class="title">basic :: JavaScript example</h1>
+<div class="container">
+	<nav>
+		<ul>
+			<li class="tab1"><a href="">HTML</a></li>
+			<li class="tab2"><a href="">CSS</a></li>
+			<li class="tab3"><a href="">JavaScript</a></li>
+			<li class="tab4"><a href="">jQuery</a></li>
+		</ul>
+	</nav>
+	<div class="description HTML">subject : HTML</div>
+	<div class="description CSS">subject : CSS</div>
+	<div class="description JavaScript">subject : JavaScript</div>
+	<div class="description jQuery">subject : jQuery</div>
+</div>
+</body>
+</html>

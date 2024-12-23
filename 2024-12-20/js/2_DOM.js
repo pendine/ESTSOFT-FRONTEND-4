@@ -15,6 +15,8 @@ getElementsByClassName 사용
 - DOM의 원리와 가깝게 풀면
   className은 HTMLCollection 구조로 잡고
    - HTMLCollection은 실시간으로 구조를 잡아주는 특징
+      -> 그래서 HTML 컬렉션으로 가져온 구조가 실시간으로 적용되기 때문에
+         중간에 건너뛰게됨.
   querySelectorAll 은 NodeList 구조로 잡아주는 차이점이 있음
    - 기존에 잡힌 구조에서 크게 변경하지 않음
 */ 

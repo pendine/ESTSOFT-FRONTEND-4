@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  브라우저 창 사이즈와 스크롤
+  <h1>asdf</h1>
+  <script>
+    // 스크롤바가 차지하는 영역은 미포함해서 계산
+    console.log(document.documentElement);
+    console.log(document.documentElement.clientWidth);
+    console.log(document.documentElement.clientHeight);
+
+    // 스크롤바가 차지하는 영역까지 포함해서 계산
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+
+    // 스크롤 정보 및 스크롤 상태 변경.
+    console.log(window.pageYOffset);
+    console.log(window.pageXOffset);
+  </script>
+</body>
+</html>

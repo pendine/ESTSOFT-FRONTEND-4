@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" value="test">
+  <button id="test">상태확인</button>
+  <button id="test2">입력값 초기화</button>
+
+  <input id="password" type="password" value="123">
+  <button id="showpassword">show</button>
+  <script>
+    const input = document.querySelector('input[type=text]');
+    console.log(input);
+
+    if(!input.hasAttribute('value')){
+      input.setAttribute('value' , 'hell');
+    }
+
+    console.log(input.getAttribute('value'));
+
+    // input.removeAttribute('value');
+    // console.log(input.getAttribute('value'));
+
+    const password = document.querySelector('#password');
+    const btn = document.querySelector('#showpassword');
+
+    // 내가 만든거
+    // btn.addEventListener('click' , function(){
+    //   let type = password.getAttribute('type');
+    //   console.log("type = " + type);
+    //   if( type == 'password'){
+    //     password.setAttribute('type', 'text');
+    //   }
+    //   if( type == 'text'){
+    //     password.setAttribute('type', 'password');
+    //   }
+    // });
+
+    
+    // 강사님
+    let show = false;
+    btn.addEventListener('click' , function(){
+      console.log(show);
+      // 삼항 연산자의 적절한 사용예
+      password.setAttribute('type', show ? 'password' : 'text');
+      show = show? false : true;
+    });
+
+
+  </script>
+</body>
+</html>
