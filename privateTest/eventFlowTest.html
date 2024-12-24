@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul class="list">
+    <li class="ele">ㅎㅇ</li>
+    <li class="ele">ㅎㅇ</li>
+    <li class="ele">ㅎㅇ</li>
+  </ul>
+
+  <button type="button" class="btn">element추가</button>
+
+  <script>
+    const list = document.querySelector('.list');
+    
+    const btn = document.querySelector(".btn");
+
+    const elements = document.querySelectorAll('.ele');
+    
+    // 부모요소에 이벤트 위임 안하고 자식요소에 사용.
+    elements.forEach( ele => {
+      ele.addEventListener( 'click', function(){
+        console.log('element clicked');
+      })
+    });
+
+    list.addEventListener( 'click' , function(e){
+      console.log(`e.target : ${e.target.className} element clicked`);
+    })
+
+    // elements.forEach( ele = () => {
+    //   ele.addEventListener( 'click', function(){
+    //     console.log('element clicked');
+    //   })
+    // });
+    // 이렇게 코드를 짤때도 있는데 대체 이건 뭐야?
+    
+    const addEle = function addingElement(){
+      const newEle = document.createElement('li');
+      newEle.classList.add('ele');
+      list.appendChild(newEle);
+
+      console.log('adding element');
+    }
+
+    btn.addEventListener('click' , addEle);
+
+    
+  </script>
+</body>
+</html>

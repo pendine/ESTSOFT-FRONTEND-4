@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  기타 이벤트 프로퍼티
+  
+  마우스 기준     /  event.button
+   왼쪽               0
+   가운데             1
+   오른쪽             2
+   뒤로가기            3
+   앞으로가기          4
+
+  마우스 이벤트 발생시 보조키관련 프로퍼티
+  - 쓸일이 많이 없지만 동작에 차별성을 둬야할때
+    고민해볼만한 옵션
+  - shift, alt(opt), ctrl, meta(cmd)
+  shiftKey
+  altKey
+  ctrlKey
+  metaKey 
+  -->
+
+  <button id="btn">클릭</button>
+
+  <script>
+    const btn = document.querySelector('#btn');
+
+    btn.addEventListener('click' , function(e){
+      test(e);
+    });
+    
+    function test(e){
+      console.log(e.target);
+      if(e.altKey){
+        console.log("alt 클릭 이벤트");
+      }
+      if(e.shiftKey){
+        console.log("shift 클릭 이벤트");
+      }
+      if(e.ctrlKey){
+        console.log("ctrl 클릭 이벤트");
+      }
+      if(e.metaKey){
+        console.log("meta 클릭 이벤트");
+      }
+    }
+
+  </script>
+</body>
+</html>

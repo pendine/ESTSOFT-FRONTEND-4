@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!-- 
+동적으로 추가되고 삭제되는 요소들로 인해서 HTMLCollection을 사용하기도 해야함.
+
+이벤트 위임 
+  아래와 같은 경우 li별로 이벤트를 진행하고싶다면
+  target 프로퍼티를 사용하여 처리
+  동적으로 추가되는 요소들은 이벤트로 처리가 가능 할까?
+  (추가되지 않은 요소는 DOM에 없다 => 이벤트 부여가 불가)
+  이러한 경우를 대비하여 이벤트 위임이라는것이 필요.
+
+  이벤트 위임 : 다수의 자식요소에 각각 이벤트 핸들러를 바인딩 하는 대신
+              하나의 부모요소에 이벤트 핸들러를 바인딩하는 방식
+  
+  부모요소가 이벤트의 주체 라면 자식요소에 새롭게 따로 이벤트를
+   부여할 필요가 없어진다는 장점이 있음. e.target = 이벤트 위임
+
+preventDefualt
+주의사항 남용하지 말 것
+1. form 내용을 서버단으로 넘기기전 유효성 검사가 필요한경우
+  - submit을 우선 중단한 수 데이터를 검사한 뒤 다시 submit
+preventDefualt 가 필요할때는 데이터를 무언가를 넘기기전 검사.
+
+이벤트에 대응하는 브라우저 동작
+mousedown : 마우스가 움직인곳에서 선택을 시작
+submit : 제출. 전송
+checkbox : input 선택 / 선택해제
+ - radiobutton : checkbox와 동일
+contextmenu - 마우스 우클릭시 발생하는 이벤트
+
+  -->
+  <ul class="list">
+    <li class="post">1</li>
+    <li class="post">2</li>
+    <li class="post">3</li>
+    <h1>aaaaaaaa</h1>
+    <li class="post">4</li>
+    <li class="post">5</li>
+    <li class="post">6</li>
+  </ul>
+  <div class="msg"></div>
+
+  <script>
+    const msg = document.querySelector('.msg');
+    const list = document.querySelector('.list');
+    console.log(list);
+    list.addEventListener('click' , function(e){
+      if(e.target.nodeName =="LI"){
+        console.log(e.target);
+        // li요소에만 이벤트를 적용하고 싶다면.
+        console.log(e.target.nodeName);
+        console.log(e.target.nodeType);
+      }
+      console.log(e.target.className);
+    })
+
+  </script>
+
+</body>
+</html>

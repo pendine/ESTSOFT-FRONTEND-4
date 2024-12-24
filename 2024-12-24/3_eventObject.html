@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>클릭 => 좌표 표시</p>
+  <em class="msg"></em>
+
+  <script>
+    function showCode(e){
+      const msg = document.querySelector('.msg');
+      msg.innerHTML = 'x축값 : ' + e.clientX + ', y축값 :' + e.clientY;
+    }
+
+    addEventListener( 'mouseover', showCode );
+  </script>
+</body>
+</html>

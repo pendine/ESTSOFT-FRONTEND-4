@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!--   이벤트 종류 확인법
+  <p>키를 입력하세요</p>
+  <em class="message"></em>
+   -->
+
+  <a href="https:www.naver.com">네이버</a>
+  <script>
+  /*
+  이벤트 객체를 활용하여 현 상황에서 어떤 이벤트가 동작하는지 확인가능
+  const body = document.querySelector('body');
+
+  function getEventType(e) {
+    console.log(e);
+    document.querySelector('.message').innerHTML = `${e.type} : ${e.keyCode}`;
+  }
+
+  body.addEventListener('keydown', getEventType);
+  body.addEventListener('keyup', getEventType);
+  */
+
+  const a = document.querySelector("a");
+  a.addEventListener('click' , function(e){
+    console.log('클릭됨');
+    console.log(e.cancelable);
+    e.preventDefault(); // 실행중인 이벤트 중단
+    e.stopPropagation(); //이벤트 전파 방지
+  })
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <button id="btn1">누르면 사라짐</button>
+    <button id="btn2">누르면 사라짐</button>
+    <p id="p">누르면 사라짐</p>
+  </div>
+
+  <script>
+    const container = document.querySelector('.container');
+    const btn1 = document.querySelector('#btn1');
+    const btn2 = document.querySelector('#btn2');
+    
+    function hide(e){
+      console.log(e.target);
+      // e.target.style.visibility = 'hidden';
+    }
+
+    container.addEventListener('click',hide);
+  </script>
+</body>
+</html>

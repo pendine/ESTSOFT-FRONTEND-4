@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      width: 200px;
+      height: 300px;
+      margin:15px;
+      padding : 15px;
+      border : 5px solid black;
+      /* display:inline; */
+    }
+
+    img{
+      width: 200px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 30px;
+    }
+  </style>
+</head>
+<body>
+<!--   
+  드래그앤드롭은 과거 개발자들이 직접 자바스크립트로 만들어서 처리
+  => HTML5에서는 드래그앤드롭 기능자체를 표준권고안에 추가 
+
+  드래그 이벤트
+  1.dragstart : 사용자가 객체를 드래그 하려할때 발생 (버튼을 누르기전)
+  2.dragenter : 마우스가 대상 객체(요소)위로 진입시 발생
+        => 드래그한 요소를 놓을 수 있는 요소 위에 진입했을때.
+  3.dragover : 드래그하며 마우스가 대상 객체 위에 자리잡고 있을때
+  4.drag : 대상 객체를 드래그하며 마우스로 움직일때
+  5.drop : 드래그가 끝나서 드래그하던 객체를 놓는 장소에 위치한 객체에서 발생
+  6.dragleave : 드래그가 끝나서 대상 객체 위에서 벗어날때
+  7.dragend : 버튼을 놓을때
+
+  dataTranfer
+   - 드래그 앤 드롭 이벤틀르 위한 모든 이벤트 리스너 메서드는
+   dataTranfer 객체를 리턴
+  (dnd 동작에 관한 정보 그 자체)
+  draggable : 드래그 될 수 있는 객체로 변환
+  ondragstart : 드래그 될 수 있는 요소로 만든뒤 
+                setData라는 메서드를 호출해주는 속성 
+                (대상 요소의 데이터, 타입을 설정)
+  ondragover : 드래그되는 대상 객체가 어느 요소 위에 놓일 수 있는지 설정
+  ondrop : 드래그 하던 객체를 놓으면 drop 이벤트가 발생하는데
+           drop 이벤트에 대한 동작 설정시 사용
+
+  인라인 이벤트 핸들러에서는(html) event라고 풀네임을 작성해야 
+  이벤트 객체를 전달할 수 있음
+
+
+드래그앤드롭 이벤트 구현방법
+1. 드래그앤드롭 할 요소에다가 다음의 속성들을 활성화, 콜백함수 부여
+  draggable = true, ondragstart = 콜백함수
+  - 콜백함수에는 드롭으로 넘겨줄 요소의 정보를 넘긴다(id, class);
+2. 드래그앤드롭을 받아줄 요소들에게 다음의 속성들을 활성화, 함수부여
+ - ondrop, ondragover
+ ondrap : 드래그되고 있던 요소가 떨어졌을때
+ ondragover : 드래그되는 요소가 들어왔을때
+3. 요소를 주고 받을때는 id, class 값을 기준으로만 
+  중복이 안되도록 처리하면 끝
+  
+  -->
+  <div class="aaa" ondrop="drop(event)" ondragover="dragEnter(event)">
+    <img src="./img.gif" alt="" id="boom" draggable="true" ondragstart="drag(event)">
+  </div>
+  <div class="aaa" ondrop="drop(event)" ondragover="dragEnter(event)">
+  </div>
+
+  <script>
+    function drag(e){
+      // console.log("drag");
+      console.log(e.target.id + " drag");
+      e.dataTransfer.setData("text" , e.target.id);
+    }
+    function dragEnter(e){
+      // console.log("drag Enter");
+      e.preventDefault();
+      /*
+
+기본적으로, data/elements는 다른 elements에 놓을 수 없습니다.
+놓기를 허용하려면 element의 기본 처리를 방지해야 합니다.
+
+event.preventDefault()이는 ondragover 이벤트에 대한 메서드를 호출하여 수행됩니다.
+출처 : https://www.w3schools.com/html/html5_draganddrop.asp
+      */
+    }
+    function drop(e){
+      console.log("drop");
+      // e.preventDefault();
+      let data = e.dataTransfer.getData("text"); //1. 드래그한 요소의 아이디값을 획득해오고
+      console.log( data );
+      e.target.appendChild(document.getElementById(data)); //2.드래그한 요소의 아이디값을 붙여넣는데
+      // 3. 이미 있던 요소는 삭제를 안해도 돼? dataTrasnfer 가 뭔갈 해주나?
+       
+    }
+  </script>
+</body>
+</html>
