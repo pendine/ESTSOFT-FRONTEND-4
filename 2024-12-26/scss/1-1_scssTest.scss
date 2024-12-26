@@ -1,0 +1,27 @@
+$test:red;
+
+h1{
+  color:$test;
+}
+
+/* 
+1. vsCode의 좌측탭 플러그인 클릭
+2. live sass compiler에서 우측하단 톱니바퀴 settings 클릭
+3. Live Sass Compile › Settings: Formats 영역에서
+   edit in settings.json 클릭
+4. 
+"liveSassCompile.settings.formats": [  
+    {
+        "format": "expanded",
+        "extensionName": ".css",
+        "savePath": "~/../css"
+    }
+    ]
+    입력.
+    
+  ~라는 부분이 현재위치까지의 경로를 변수로 입력함
+  저장경로를 ~/../css 로 작성하면 현재위치에서
+    1뎁스 올라가서 css라는 폴더를 사용한다는 것임.
+  => scss파일을 만들때마다 플러그인이 자동으로 만들어주니 얼마나 편해
+  
+*/

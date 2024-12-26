@@ -1,0 +1,19 @@
+@charset "UTF-8";
+div {
+  color: #ad3def;
+  background-color: #123;
+  width: 400px;
+  height: 8px;
+}
+div::after {
+  content: "gunchim ssak";
+}
+
+/*
+논리 연산자
+&&, || !
+*/
+/*
+@mixin
+
+*/

@@ -1,0 +1,36 @@
+@mixin alert-type($theme){
+  padding : 15px;
+  border-radius: 10px;
+  @if ($theme == 'success'){
+      background-color: #dff0d8;
+      color:#3c763d;
+      border : 3px solid #d6e9c6;
+  } 
+  @else if ($theme == 'warning') {
+      background-color:  #fcf8e3;
+      color: #8a6d3b;
+      border : 3px solid #faebcc;
+  } 
+  @else{
+      background-color:#f2dede;
+      color : #a94442;
+      border : 3px solid #ebccd1;
+  }
+}
+
+
+// .alert-success{
+//   @include alert-type('success');
+// }
+// .alert-warning{
+//   @include alert-type('warning');
+// }
+// .alert-error{
+//   @include alert-type('error')
+// }
+
+.alert{
+  &-success{ @include alert-type('success'); }
+  &-warning{ @include alert-type('warning'); }
+  &-error{ @include alert-type('error'); }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  사용빈도가 높은 내장함수 정리
+  색상관련
+   - mix(색상1, 색상2) : 두개의 색상 섞기
+   - lighten(색상, amount(비율)) : 더 밝은색 만들기
+   - darken(색상, amount(비율)): 더 어두운색 만들기
+   - saturate(색상, 비율) : 채도 올리기
+   - desaturate(색상, 비율) : 채도 낮추기
+   - grayscale(색상) : 색상을 회색으로 변환
+   - invert(색상) : 반전
+   - rgba(색상, 알파값) : 색상지정
+   - opacify(색상, 비율) / fade-in(색상, 비율) 
+     : 색상의 불투명도 하게 지정
+   - transparentize(색상, 비율) / fade-out (색상, 비율)
+     : 색상을 더 투명하게 지정
+
+  문자관련
+   - unquote(문자) : 문자에서 따옴표 제거
+   - quote(문자) : 문자에 따옴표 추가
+   - str-insert(문자,문자,숫번) : 문자의 index번째에 문자 삽입
+   - str-index(문자, 특정문자(substring)) : 문자에서 특정한 문자의 첫 index 반환
+     (ex: gunchim ssak / str-index( gunchim ssak , ssak ) = 8)
+   - str-slice(문자, 시작인덱스, [끝인덱스/없으면 끝까지] )
+     : 문자에서 특정 문자를 추철
+  숫자관련
+   - percentage(숫자) : 백분률로 변환
+   (아래는 전부 소수점)
+   - round(숫자) : 반올림
+   - cell(숫자) : 올림
+   - floor(숫자) : 버림
+   - abs(숫자) : 절대값
+   - min(숫자) : 숫자중 최소값
+   - max(숫자) : 숫자중 최대값
+   - random() : 0~1 사이의 난수
+  
+  리스트관련 : 기존 list에는 영향을 주지 않음
+             새로운 list를 반환함
+            map에서도 사용 가능
+   - length(리스트) : 리스트 길이 반환
+   - nth(list, n) : 리스트에서 n번째 요소 반환
+   - set-nth(list, n ,value): 리스트의 n번째값을 value로 변경
+   - join(list1, list2, 결합후 저장할 변수) : 두개의 리스트를 하나로 병합
+   - zip(list) : 여러리스트를 하나의 다차원 list로 병합
+   - index(list, value) : 리스트에서 특정값의 index를 반환
+  
+  Map 관련
+   - map-get(map, key) : map에서 특정 key값을 반환
+   - map-merge(map1, map2) : 두개의 맵을 병합하여 새로운 map 생성
+   - map-keys(map) : 해당맵의 모든 key를 리스트로 반환
+   - map-values(map) : 해당맵의 모든 value를 리스트로 반환
+   - 
+
+  관리함수
+   - variable-exist(name) : 변수가 현재 범위에 존재하는지 확인
+   - unit(숫자) : 숫자의 단위 출력
+   - unitless(숫자) : 숫자의 단위가 있는지 여부를 확인
+   - comparable(숫자1,숫자2) : 두개의 숫자가 연산가능한지 여부 판단
+
+</body>
+</html>

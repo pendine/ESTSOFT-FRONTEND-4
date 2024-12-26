@@ -1,0 +1,127 @@
+@charset "UTF-8";
+/*
+$theme: 'dark';
+$is-important: true;
+
+// 테마별 스타일링
+@mixin gunchimssak($theme){
+    @if ($theme == 'light'){
+        background-color: white;
+        color: black;
+    } @else if $theme == 'dark' {
+        background-color: #333;
+        color: white;
+    } @else{
+        background-color: cornflowerblue;
+        color: white;
+    }
+
+}
+
+// 버튼 스타일링
+@mixin button-style($size, $important: false){
+  padding:15px;
+  @if $size =='small'{
+    font-size:24px;
+  }@else if $size=='medium'{
+    font-size : 32px;
+  }@else{
+    font-size : 40px;
+  }
+
+  // scss 에서는 ! 사용 안됨
+  // false 체크시 false로 구분해줘야함
+  @if($important){
+    font-weight:bold;
+    border : 2px solid red;
+  }
+
+}
+
+.theme-light{
+    @include gunchimssak('light');
+}
+.theme-dark{
+    @include gunchimssak('dark');
+}
+.button-primary{
+    @include button-style('medium', $is-important);
+}
+*/
+span:nth-child(1) {
+  color: #4285f4;
+}
+
+span:nth-child(2) {
+  color: #ea4335;
+}
+
+span:nth-child(3) {
+  color: #fbbc05;
+}
+
+span:nth-child(4) {
+  color: #4285f4;
+}
+
+span:nth-child(5) {
+  color: #34a853;
+}
+
+span:nth-child(6) {
+  color: #ea4335;
+}
+
+.main {
+  width: 600px;
+  height: 600px;
+}
+
+.img-1 {
+  width: 150px;
+  height: 150px;
+  background-image: url("../img/1.png");
+}
+.img-2 {
+  width: 150px;
+  height: 150px;
+  background-image: url("../img/2.png");
+}
+.img-3 {
+  width: 150px;
+  height: 150px;
+  background-image: url("../img/3.png");
+}
+.img-4 {
+  width: 150px;
+  height: 150px;
+  background-image: url("../img/4.png");
+}
+
+.icon-40px {
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+}
+
+.icon-50px {
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+.icon-80px {
+  font-size: 80px;
+  height: 80px;
+  width: 80px;
+}
+
+.theme-pink {
+  background-color: hotpink;
+  color: white;
+}
+
+.theme-red {
+  background-color: crimson;
+  color: white;
+}

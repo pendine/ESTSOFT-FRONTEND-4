@@ -1,0 +1,19 @@
+.button-basic{
+  padding:15px;
+  border:none;
+  border-radius: 5px;
+  font-size:25px;
+  cursor: pointer;
+}
+
+.button-submit{
+  @extend .button-basic;
+  background-color: aquamarine;
+  color:white;
+}
+
+.button-cancle{
+  @extend .button-basic;
+  background-color: rebeccapurple;
+  color:aliceblue;
+}

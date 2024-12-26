@@ -1,0 +1,30 @@
+
+$themes:(
+  'light':(
+    'background':#fff,
+    'text':#333,
+    'primary':#007bff
+  ),
+  'dark':(
+    'background':#121212,
+    'text':#ffff,
+    'primary':#0d6efd
+  )
+);
+
+@mixin thema($theme){
+  background-color: map-get( map-get($map: $themes, $key: $theme), 'background' );
+  color: map-get( map-get($map: $themes, $key: $theme), 'text' );
+
+  .button{
+    background-color: map-get(map-get($map: $themes, $key: $theme),'primary' );
+  }
+
+}
+
+.light-theme{
+  @include thema('light');
+}
+.dark-theme{
+  @include thema('dark');
+}

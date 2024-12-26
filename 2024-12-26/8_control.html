@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/8_control.css">
+</head>
+<body>
+<!--   
+  조건문 + 반복문 : 제어문
+
+  // @if
+@if (조건) {
+  /* 조건이 참일 때 구문 */
+}
+
+// @if @else
+@if (조건) {
+  /* 조건이 참일 때 구문 */
+} @else {
+  /* 조건이 거짓일 때 구문 */
+}
+
+// @if @else if
+@if (조건1) {
+  /* 조건1이 참일 때 구문 */
+} @else if (조건2) {
+  /* 조건2가 참일 때 구문 */
+} @else {
+  /* 모두 거짓일 때 구문 */
+} 
+  -->
+<!-- 
+  <div class="theme-light">라이트 테마</div>
+  <div class="theme-dark">다크 테마</div>
+  <div class="button-primary">프라이머리 버튼</div> 
+  -->
+
+  
+ <!-- 
+$변수명: 기본 변수 사용
+#{$변수명}: 값 삽입 (Interpolation)
+ 정리: 언제 무엇을 사용할까?
+$변수명: 값을 그대로 사용하는 경우 (CSS 속성, 함수 내부 등)
+#{$변수명}: 변수 값을 문자열로 결합하거나 동적으로 CSS를 생성해야 할 때
+
+ sass 에서의 반복문
+ @for
+ for(초기값; 조건값; 증감값){
+ }
+
+ 1. though (주어진 값 까지 반복)
+  for( 변수 from 시작 through 종료){
+    // 내용
+  }
+  @ex) @for $i from 1 through 3{
+    .class:nth-child(#{변수값}){
+      width : 30px; 
+    }
+  }
+  .through:nth-child(1) {width:30px;}
+  .through:nth-child(2) {width:30px;}
+  .through:nth-child(3) {width:30px;}
+
+
+ 2. to (주어진 값 직전까지 반복)
+ for 변수 form 시작 to 종료{
+ }
+ -->
+
+ <!-- <div class="">
+  <span>12344</span>
+  <span>12344</span>
+  <span>12344</span>
+  <span>12344</span>
+  <span>12344</span>
+</div> -->
+
+<!-- 
+
+while(무한반복이 약점)
+존재하지만 사용 미권장
+
+-->
+<!-- 
+<div class="main">
+  <div class="img-1"></div>
+  <div class="img-2"></div>
+  <div class="img-3"></div>
+  <div class="img-4"></div>
+</div> -->
+
+<div class="icon-40px">아이콘 1</div>
+<div class="icon-50px">아이콘 2</div>
+<div class="theme-pink">핑크 테마</div>
+<div class="theme-red">레드 테마</div>
+
+</body>
+</html>

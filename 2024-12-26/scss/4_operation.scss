@@ -1,0 +1,31 @@
+$bg:#f3e1dd;
+$fc:#ad3def;
+@use "sass:math";
+div{
+  color: $fc;
+  // background-color: $bg;
+  background-color: #123; //색상 연산 가능
+  width: 200px+200px;
+  
+  $a : 800px;
+  $b : 100px;
+  // height: $a / $b; //안됨
+  // height: math.div($a , $b); // 결과값 8
+  height: math.div($a , $b) * 1px; // 결과값 8px
+  &::after{
+    content:'gunchim '+ssak;
+  }
+  //sass에서는 문자 자체를 연산하여 작성 가능
+}
+
+
+/*
+논리 연산자
+&&, || !
+*/
+$width:150px;
+
+/*
+@mixin
+
+*/

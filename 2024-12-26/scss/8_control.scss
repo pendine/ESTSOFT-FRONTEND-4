@@ -1,0 +1,110 @@
+/*
+$theme: 'dark';
+$is-important: true;
+
+// 테마별 스타일링
+@mixin gunchimssak($theme){
+    @if ($theme == 'light'){
+        background-color: white;
+        color: black;
+    } @else if $theme == 'dark' {
+        background-color: #333;
+        color: white;
+    } @else{
+        background-color: cornflowerblue;
+        color: white;
+    }
+
+}
+
+// 버튼 스타일링
+@mixin button-style($size, $important: false){
+  padding:15px;
+  @if $size =='small'{
+    font-size:24px;
+  }@else if $size=='medium'{
+    font-size : 32px;
+  }@else{
+    font-size : 40px;
+  }
+
+  // scss 에서는 ! 사용 안됨
+  // false 체크시 false로 구분해줘야함
+  @if($important){
+    font-weight:bold;
+    border : 2px solid red;
+  }
+
+}
+
+.theme-light{
+    @include gunchimssak('light');
+}
+.theme-dark{
+    @include gunchimssak('dark');
+}
+.button-primary{
+    @include button-style('medium', $is-important);
+}
+*/
+
+//반복문 활용예시
+$col_list:( #4285f4, #ea4335, #fbbc05, #4285f4, #34a853, #ea4335);
+
+$i:0;
+// 지정한 변수 호출하는게 문제임;;
+// 변수값을 저장할때 #{ ${변수명} }
+// 정리: 언제 무엇을 사용할까?
+// $변수명: 값을 그대로 사용하는 경우 (CSS 속성, 함수 내부 등)
+// #{$변수명}: 변수 값을 문자열로 결합하거나 동적으로 CSS를 생성해야 할 때
+// 
+@for $i from 1 through length( $col_list) {
+  span:nth-child( #{$i} ){
+    color: nth($col_list , $i);
+  }
+}
+
+
+$imgs:(1,2,3,4);
+
+.main{
+  width:600px;
+  height:600px;
+  // aspect-ratio:1;
+}
+.img{
+  @each $img in $imgs{
+    &-#{$img}{
+      width:150px;
+      height:150px;
+      background-image: url("../img/#{$img}.png");
+    }
+  }
+}
+
+//each활용
+$sizes : ( 40px , 50px, 80px);
+@each $size in $sizes{
+  .icon-#{$size}{
+    font-size : $size;
+    height:$size;
+    width:$size;
+  }
+}
+
+$theme-colors:(
+  "pink" : hotpink,
+  "red":crimson
+);
+
+//each에서 $theme 와 $color를 어떻게 구분하는지 문제임.
+// theme-colors의 키들을 추출해서 value를 끌어낸다는건
+// 파악은 했는데 이해랄까 기억하기 어려운 느낌.
+// 이 내용을 지금 눈돌리면 다시 이해하기
+//  어려울예정이라는게 느껴짐
+@each $theme, $color in $theme-colors{
+  .theme-#{$theme}{
+    background-color: $color;
+    color:white;
+  }
+}
