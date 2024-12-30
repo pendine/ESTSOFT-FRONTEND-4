@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://poiemaweb.com/assets/css/ajax.css">
+  </head>
+  <body>
+    <div id="content"></div>
+
+    <script>
+      // XMLHttpRequest 객체의 생성
+      var xhr = new XMLHttpRequest();
+
+      // 비동기 방식으로 Request를 오픈한다
+      // xhr.open('GET', 'data/data.json');
+
+      // 요청이 잘못된경우 html을 전부 로딩함
+      xhr.open('GET', '1-3_load.json');
+      // Request를 전송한다
+      xhr.send();
+/*
+      현재 요청에 대해서 문제가 없었던 이유
+       1. 헤더를 정확히 지정해서 JSON으로의 요청이 잘된 경우
+       2. 같은 서버에서 요청해서 (로컬)
+        - 다른도메인, 다른 포트로의 요청은 제한 될 수 있음.
+          (동일출처 원칙 / Same-origin policy)
+
+       동일 출처원칙 회피법
+       1. 웹서버 프록시 파일
+          서버에 원격 서버로 부터 데이터를 수집하는
+           별도의 기능 추가
+       2. JSONAP
+          서버 내의 함수를 만들고 놓고 다른서버에 얻고자 하는 데이터를 불러오기
+          (API 호출요청)
+*/
+      // 상태별 에러메시지 가능
+      // 1. 사용자의 실수의 경우 정확한 데이터 요구를 위해
+      // 2. 시스템의 에러라면 로그를 수집하여 빠른 대처를 위함
+      // 3. 사용자에게 보여주지 말아야할 에러는 우리 서버에 상태에러인거지
+      //    사용자가 잘못된 입력을 했을때에도 수정을 요구하지 않으면 그것도 문제
+      xhr.onreadystatechange = function () {
+        // 서버 응답 완료 && 정상 응답
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+
+        if (xhr.status === 200) {
+          console.log(xhr.responseText);
+
+          // Deserializing (String → Object)
+          responseObject = JSON.parse(xhr.responseText);
+
+          // JSON → HTML String
+          let newContent = '<div id="tours"><h1>Guided Tours</h1><ul>';
+
+          responseObject.tours.forEach(tour => {
+            newContent += `<li class="${tour.region} tour">
+                <h2>${tour.location}</h2>
+                <span class="details">${tour.details}</span>
+                <button class="book">Book Now</button>
+              </li>`;
+          });
+
+          newContent += '</ul></div>';
+
+          document.getElementById('content').innerHTML = newContent;
+        } else {
+          console.log(`[${xhr.status}] : ${xhr.statusText}`);
+        }
+      };
+    </script>
+  </body>
+</html>
