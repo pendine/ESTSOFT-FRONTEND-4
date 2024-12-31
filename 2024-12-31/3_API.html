@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  API : Application Programming Interface
+   - 소프트웨어 응용 프로그램에서 다른 소프트웨어 구성요소 또는
+     서비스와 상호작용을 하기위한 인터페이스를 제공하는 프로그래밍 기술
+
+  1. private : 내부 API (외부에 노출되지 않는 API)
+  2. public : 개방형 API (모두 접근 가능한 API)
+  3. partner : 기업이 데이터 공유에 동의하는 특정인들만 사용할 수 있는 API 
+              (허가된 사용자들만 접근 가능한 API)
+
+  REST (Representational State Transfer)
+   : 자원을 이름으로 구분하여 해당 자원의 상태를 주고 받는 것
+    1. HTTP URI를 통해 자원을 명시
+    2. HTTP METHOD 를 통해
+    3. 해당 자원에 대한 CRUD 운영을 적용하는 개념
+    요약하면 CRUD 정확하게 잘하기
+    
+  REST 구성요소
+  1. 자원(Resource /HTTP URI)
+  2. 자원에 대한 행동(Verb / HTTP Method)
+  3. 자원에 대한 행동의 내용 : HTTP Message Pay load
+
+  REST 특징
+  1. Server-Client(서버와 클라이언트 구조)
+  2. Statleless(무상태)
+  3. Cacheable(캐시 처리 가능)
+  4. 계층화(Layered System)
+  5. Uniform Interface (인터페이스 일관성)
+
+  REST API -> REST 원칙을 준수하는 API
+  RESTFul => REST API 의 설계 규칙을 올바르게 지킨 경우
+
+  REST 규칙
+  1. URI는 정보의 자원을 표현해야한다
+  2. 자원에 대한 행동은 HTTP Method 로 표현한다
+
+  세부규칙
+  1. /는 계층관계(패키지, 폴더)를 나타내는데 사용한다
+  2. URI 마지막 문자로 /는 포함하지 않음
+  3. '-'은 URI 가독성을 높이는데 사용
+  4. 밑줄(_) 는 URI에 사용하지 않음
+  5. URI 경로에 대문자를 넣으면 안된다
+    (URI경로는 소문자로 씀)
+  6. 파일 확장자는 URI에 포함하지 않음
+
+  일반적인 REST 설계 목표
+  1. 객체들간의 유연한 연동성
+   - 직관적, 사용이 간단, 어디서든지 동일하게 작동하도록 설계
+  2. 범용적인 인터페이스
+   - 어디서든지 사용 가능한 API
+    (해당 API를 쓰는 개발자는 어디에 적용할지만 고민하면됨)
+  3. 컴포넌트의 독립성(독립적배포)
+  4. 지연감소, 보안강화등의 데이터 패키지화 과정을 진행하는 중간 역할
+
+  RESTFul API 개발원칙
+  1. 자원의 식별자
+     - 위치와 종류를 (파일, 이미지 ) 식별 할 수 있어야한다.
+     - 식별, 제어가 가능해야함
+     - 서버가 제공하는 정보는 JSON, YAML, XML 형태로 body 포함하여 전송해야함
+  2. 행위는 명시적이야한다
+     - 예) 수정이면 업데이트, 삭제면 delete 사용
+     - REST 자체는 방법론이라 강제 X.
+     GET, POST로 처리 가능
+        -> REST 아키텍처 자체가 부합하지 않는건 맞으나, 강요는 해서는 안됨
+  3. 자기 서술적
+     - 데이터를 메타데이터만 가지고 어떤 데이터인지 판단이 가능해야함
+  4. HATEOS (Hyhermedia as the Engin of Application State)
+     - 하이퍼링크를 통해 전체 네트워크와 연결되며 서버가 독립적으로 상용되도록
+       분리하는 개념
+     - 요청에 대한 응답 처리시 추가적 정보를 제공하는 링크가 포함되어야함
+
+</body>
+</html>
