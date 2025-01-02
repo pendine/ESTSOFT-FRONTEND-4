@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+        .message-ball {
+          font-size: 20px;
+          line-height: 200px;
+          text-align: center;
+        }
+        .circle {
+          transition-property: width, height, margin-left,
+                               margin-top;
+          transition-duration: 2s;
+          position: fixed;
+          transform: translateX(-50%) translateY(-50%);
+          background-color: red;
+          border-radius: 50%;
+        }
+  </style>
+</head>
+<body>
+  <button type="button" class="btn">버튼누르기</button>
+
+  <script>
+    let btn = document.querySelector('.btn');
+    
+    btn.addEventListener('click', function(){
+      //try
+      // const create = createCircle(circleTransform(circleText()));
+
+      // answer
+      // let cx= 150;
+      // let cy= 150;
+      // let radius=100;
+
+      // let div = document.createElement('div');
+      // div.style.width = 0;
+      // div.style.height = 0;
+      // div.style.left = cx + 'px';
+      // div.style.top = cy + 'px';
+      // div.classList.add('circle');
+      // document.body.append(div);
+
+      // setTimeout( function(){
+      // div.style.width = radius * 2 + 'px';
+      // div.style.height = radius * 2 + 'px';
+      // },0)
+      
+      // // setTimeout( function(){
+      // div.classList.add('message-ball');
+      // div.append('hello');
+      // // } , 2000)
+
+
+//  final answer
+      showCircle(150, 150, 100, div=>{
+        div.classList.add('message-ball');
+        div.append('hello');
+      });
+      
+      
+    });
+
+
+function showCircle( cx, cy, radius, callback){
+      let div = document.createElement('div');
+      div.style.width = 0;
+      div.style.height = 0;
+      div.style.left = cx + 'px';
+      div.style.top = cy + 'px';
+      div.classList.add('circle');
+      document.body.append(div);
+      setTimeout(()=>{
+        div.style.width = radius * 2 + 'px';
+        div.style.height = radius * 2 + 'px';
+        // transitionend : 트랜지션이 종료를 알 수 있는 이벤트종류
+        // transitionend : 트랜지션이 끝난후 실행되는 이벤트
+        // transitionend의 시 핸들러 제거를 안하면 
+        // 종료 이벤트를 두번 인식하며 두번씩 작성함
+        // transitionend를 핸들러를 제거하고. 콜백 함수 사용
+      div.addEventListener('transitionend' , function handler(){
+        div.removeEventListener('transitionend' , handler );
+        callback(div);
+        
+        // div.classList.add('message-ball');
+        // div.append('hello');
+      });
+      },1);
+}
+
+
+// try
+    function createCircle( func ){
+      let circle = document.createElement('div');
+      circle.classList.add('circle');
+      circle.classList.add('message-ball');
+      let body = document.querySelector('body');
+      body.appendChild( circle );
+      setTimeout(function(){
+        func()
+      }, 1000 );
+    }
+
+    function circleTransform( func ){
+      let circle = document.querySelector('.circle');
+     
+      circle.style.height = '200px';
+      circle.style.width = '200px';
+      setTimeout(function(){
+        func()
+      }, 2000 );
+    }
+
+    function circleText(){
+      let circle = document.querySelector('.circle');
+      circle.innerHTML = "hello";
+    }
+
+  </script>
+</body>
+</html>
