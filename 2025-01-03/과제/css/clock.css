@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color-scheme: light dark;
+}
+
+:root[data-theme=light] {
+  --bg: #efefef;
+  --container: #fff;
+  --color: #111;
+  --time: #eee;
+}
+
+:root[data-theme=dark] {
+  --bg: #444454;
+  --container: #333;
+  --color: #fff;
+  --time: #6f6f6f;
+}
+
+.a11y-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: background-color 0.2s ease;
+}
+
+.container {
+  width: 600px;
+  height: 300px;
+  background-color: var(--container);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.times {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.modeBtn {
+  position: absolute;
+  background-color: var(--bg);
+  color: var(--color);
+  right: 0;
+  top: 0;
+  transform: translate(100%, 50%);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.time--container {
+  display: inline-block;
+}
+
+[class^=time--box--] {
+  margin: 5px;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  background-color: var(--time);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
