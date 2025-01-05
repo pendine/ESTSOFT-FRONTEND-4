@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise Example: Restaurant Order</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu {
+      margin-bottom: 20px;
+    }
+
+    .menu button {
+      background-color: #4caf50;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .menu button:hover {
+      background-color: #45a049;
+    }
+
+    .status {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .status.success {
+      color: green;
+    }
+
+    .status.error {
+      color: red;
+    }
+
+    .loading {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🍔 레스토랑 주문 시스템 🍕</h1>
+    <p>메뉴에서 음식을 선택하세요:</p>
+
+    <div class="menu">
+      <button onclick="orderFood('피자')">피자 주문하기</button>
+      <button onclick="orderFood('햄버거')">햄버거 주문하기</button>
+      <button onclick="orderFood('파스타')">파스타 주문하기</button>
+    </div>
+    
+    <div id="status" class="status"></div>
+  </div>
+
+  <!-- <script src="script.js"></script> -->
+   <script>
+    
+      function processOrder(food){
+        return new Promise( (resolve, reject) =>{  
+            setTimeout(()=>{
+              const success = Math.random() >0.3;
+              if(success){
+                resolve(`${food} 나옴`);
+              }else{
+                reject( (`${food} 안나옴`));
+              }
+            },2000)
+        })
+
+      }
+
+      function orderFood(food){
+        const statusEl = document.querySelector('.status');
+
+        statusEl.className = "status loading";
+        statusEl.textContent = `${food} 준비중`;
+
+        processOrder(food)
+              .then( (msg) =>{
+                statusEl.className = "status success";
+                statusEl.textContent = msg;
+              })
+              .catch((msg) =>{
+                statusEl.className = "status error";
+                statusEl.textContent = msg;
+              })
+      }
+
+
+   </script>
+</body>
+</html>

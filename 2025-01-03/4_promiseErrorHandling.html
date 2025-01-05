@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  에러 핸들링
+  .catch 메서드는 프로미스에서 발생한 모든 에러를 처리 할 수 있음
+  여러개의 catch문이 필요하다면 여러개 사용 가능
+  .catch메서드는 암묵적으로 try-catch 키워드로 처리
+  
+  <script>
+
+    
+    function loadJson(url) {
+      return fetch(url)
+        .then(response => response.json());
+    }
+
+    function loadGithubUser(name) {
+      return fetch(`https://api.github.com/users/${name}`)
+        .then(response => response.json());
+    }
+
+    function showAvatar(githubUser) {
+      return new Promise(function(resolve, reject) {
+        let img = document.createElement('img');
+        img.src = githubUser.avatar_url;
+        img.className = "promise-avatar-example";
+        document.body.append(img);
+
+        setTimeout(() => {
+          img.remove();
+          resolve(githubUser);
+        }, 3000);
+        
+      });
+
+    }
+
+    // 함수를 이용하여 다시 동일 작업 수행
+    loadJson('2-2_user.json')
+      .then(user => loadGithubUser(user.name))
+      .then(showAvatar)
+      .then(githubUser => alert(`Finished showing ${githubUser.name}`));
+  </script>
+</body>
+</html>

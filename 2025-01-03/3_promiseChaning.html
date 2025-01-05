@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  프로미스 체이닝
+    then <- 연달아서 연결해두기
+      -> then을 연결하여 처리를 분산하여 콜백헬을 예방하며
+         함수의 실행순서도 쉽게 조절하기 위해 사용
+    
+  -->
+
+  
+  <script>
+    // 프로미스 체이닝 예시
+    // 프로미스 체이닝을 통해 중첩을 최소화 할수 있음
+
+    // 1초후 resolve실행
+    // 그뒤 순서대로 then 실행 
+    // then에서 실행된 return값을 
+    // 다음 then의 인자값으로 넘김
+    new Promise(function(resolve, reject) {
+
+        setTimeout(() => resolve(1), 1000); // (*)
+      
+      }).then(function(result) { // (**)
+      
+        alert(result); // 1
+        return result * 2;
+      
+      }).then(function(result) { // (***)
+      
+        alert(result); // 2
+        return result * 2;
+      
+      }).then(function(result) {
+      
+        alert(result); // 4
+        return result * 2;
+      
+      });
+</script>
+</body>
+</html>

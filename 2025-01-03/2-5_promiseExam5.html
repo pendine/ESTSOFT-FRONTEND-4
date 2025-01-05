@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Promise Chaining</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #89f7fe, #66a6ff);
+        color: #333;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="number"] {
+        padding: 10px;
+        font-size: 16px;
+        width: calc(100% - 22px);
+        margin-bottom: 10px;
+      }
+
+      button {
+        background-color: #4caf50;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .loading {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #888;
+      }
+
+      .error {
+        color: red;
+      }
+
+      .user-info,
+      .posts {
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      .posts ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .posts li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>사용자 정보 및 게시물 검색</h1>
+      <p>사용자 ID를 입력하고 데이터를 가져오세요:</p>
+      <input type="number" id="userIdInput" placeholder="사용자 ID (1~10)" />
+      <button id="fetchDataButton">데이터 가져오기</button>
+
+      <div id="status" class="loading"></div>
+
+      <div class="user-info" id="userInfo"></div>
+      <div class="posts" id="posts"></div>
+    </div>
+    
+    <script>
+      // 사용자 아이디 인자값 추가
+      function fetchUser(userId){
+          return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+                    .then((response)=>{
+                      if(!response.ok){
+                        throw new Error("사용자 정보를 가져올 수 없음 url :" + `https://jsonplaceholder.typicode.com/users/${userId}`);
+                      }
+                      return response.json();
+                    });
+      }
+
+      function fetchPosts(userId){
+        return fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+                    .then((response)=>{
+                      if(!response.ok){
+                        throw new Error("게시물 정보를 가져올 수 없음");
+                      }
+                      return response.json();
+                    });
+      }
+
+      const btn = document.querySelector("#fetchDataButton");
+
+      btn.addEventListener('click' , ()=>{
+        const statusEl = document.getElementById("status");
+        const userInfoEl = document.getElementById("userInfo");
+        const postsEl = document.getElementById("posts");
+
+        // 사용자 아이디 호출
+        const userId = document.querySelector("#userIdInput");
+
+        statusEl.textContent = "데이터 로딩 중";
+        userInfoEl.innerHTML = '';
+        postsEl.innerHTML = '';
+        // 사용자 아이디 밸류 확인
+        // console.log('userid : ' + userId.value);
+
+        // 사용자 아이디 값 인자로 사용용
+        fetchUser(userId.value)
+              .then((user) =>{
+                statusEl.textContent = "데이터 로딩 중";
+                userInfoEl.innerHTML = `
+                                <h2>사용자 정보</h2>
+                                <p><strong>이름:</strong> ${user.name}</p>
+                                <p><strong>이메일:</strong> ${user.email}</p>
+                                <p><strong>주소:</strong> ${user.address.city}, ${user.address.street}</p>
+                                <p><strong>회사:</strong> ${user.company.name}</p>
+                                `;
+                return fetchPosts( user.id );
+
+              })
+              .then((posts)=>{
+                statusEl.textContent = "게시물 정보 로드 중";
+                const postsHtml = posts.map(
+                                          (post) => `
+                                            <li>
+                                              <h3>${post.title}</h3>
+                                              <p>${post.body}</p>
+                                            </li>`
+                                          ).join("");
+                
+                postsEl.innerHTML = `
+                      <h2>게시물 목록</h2>
+                      <ul>${postsHtml}</ul>`;
+                
+                statusEl.textContent = "";
+              })
+              .catch( (error) => {
+                statusEl.textContent = '데이터 로드 실패';
+                statusEl.className = "error";
+                console.log('에러발생 : ', error );
+              })
+      });
+    </script>
+  </body>
+</html>

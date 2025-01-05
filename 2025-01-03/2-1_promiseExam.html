@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .fetch-button {
+      background-color: #4caf50;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .fetch-button:hover {
+      background-color: #45a049;
+    }
+
+    .spinner {
+      margin-top: 20px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .data-container {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: white;
+      color: black;
+      border-radius: 10px;
+    }
+
+    .error-message {
+      margin-top: 20px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <!-- 2초뒤 데이터가 호출되는 상황을구현
+   70퍼센트 확률로 성공 -->
+  <div class="container">
+    <h1>Promise와 이벤트 연계</h1>
+    <button class="fetch-button" id="fetchDataButton">데이터 가져오기</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function fetchData(){
+      return new Promise((resolve, reject) =>{
+        const success = (Math.random() > 0.3);
+
+        setTimeout(function(){
+          if(success){
+            resolve( {title:"테스트" , body:"테스트바디"} )
+          }
+          else{
+            reject("데이터 로딩 실패");
+          }
+        }, 2000);
+
+        // let xhr = new XMLHttpRequest();
+
+      })
+    }
+
+    // {title:"테스트" , body:"테스트바디"}
+    let btn = document.querySelector(".fetch-button");
+    btn.addEventListener('click', ()=>{
+      const output = document.querySelector('#output');
+
+      output.innerHTML = '<div class="spinner"></div>'
+
+      // 프로미스 처리예정
+      // 후속처리
+      fetchData()
+          .then((data) => { output.innerHTML =
+                             `<div class="data-container">
+                                <h2>${data.title}</h2>
+                                <p>${data.body}</p>
+                              </div>`
+                            })
+            .catch( (error) => { output.innerHTML =
+                `<p class="error-message">${error}</p>`
+            })
+            .finally();
+    });
+  </script>
+  <script src="./js/2-1_promise.js"></script>
+</body>
+</html>

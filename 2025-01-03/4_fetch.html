@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!-- 
+  fetch 
+  필요시 서버에 요청을 보내고 새로운 정보를 받아올때 사용하느 ㄴ메서드
+  -> 요청응답 처리 메서드
+  fetch 사용 예시
+  let 변수명 = fetch(url, [옵션들])
+  option : 파라미터 , method, header
+
+  let res = fetch(url, {
+    body : JSON.stringify(user),
+    headers : {
+        'Content-type' : 'appliction/json'
+    },
+    method : 'get', ~
+  })
+
+  fetch의 동작원리
+  fetch를 호출하면 브라우저는 요청을 보내고 프로미스 객체를 리턴
+  리턴된 프로미스 객체는 fetch()를 호출하는 코드 내부에서 사용
+
+  응답은 흔히 2단계를 거쳐서 진행
+  서버에서 응답 헤더를 받으면 fetch호출시 리턴받은 promise가
+  내장클래스 Response의 객체와 함께 이행상태가 됨
+    -> 데이터가 도착하지 않았어도 요청이 성공적으로 처리됐는가를 확인할 수 있음.
+  네트워크 문제나 존재하지 않는 사이트에 접속하려는 경우같이
+  HTTP 요청을 보낼수 없는 상태에선 프로미스는 거부상태가 됨
+  fetch에서는 response 프로퍼티(객체)를 중심으로 움직인다.
+
+  response.text() - 응답을 읽고 텍스트를 리턴
+  response.json() - 응답을 JSON으로 파싱
+  response.formData() - 응답을 formData 객체 형태로 리턴
+  response.blob() - 응답을 blob형태로 반환(바이너리데이터 : 영상, 이미지, 멀티미디어데이터)
+  response.body - 본문 자체 불러오기
+
+  fetch('https://no-such-server.blabla') // 거부
+  .then(response => response.json())
+  .catch(err => alert(err))
+  -->
+
+  <script>
+    fetch('https://no-such-server.blabla') // 거부
+      .then(response => response.json())
+      .catch(err => alert(err))
+  </script>
+</body>
+</html>
