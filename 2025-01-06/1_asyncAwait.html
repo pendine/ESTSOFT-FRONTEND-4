@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    프로미스의 문제점
+     - 체이닝부분 -> 길어지면 가독성이 별로임(유지보수성 하락)
+     - 프로미스는 난이도 이슈도 있었음
+    
+    그렇다면 async/await는 무엇?
+     - 프로미스보다 훨씬 쉽게 비동기 전송방식 구현을 위해 나온 키워드
+
+    사용
+    1. UX관련(부드러운 페이지처리)
+    2. 비동기 처리시 프로미스 쓰기 귀찮으면
+    3. 코드 최적화
+    4. 흐름제어의 편리함
+    
+
+    <script src="1_async.js"></script>
+    <script>
+        // async/ await 예시
+        // async / await를 완벽히 이해하려면
+        // 제너레이터 개념을 알고갈 필요가 있음
+        /*async function getData(){
+            const res = await fetch('https://jsonplaceholder.typicode.com/users');
+            const data = await res.json();
+            return data;
+        }
+        console.log(getData());*/
+
+        // 제너레이터(반복자 / 이터러블)
+        // 함수의 리턴값 -> 기본적으로 하나씩 리턴.
+        // 제너레이터를 이용하면 여러개의 값을 필요에따라 뭉쳐서 보내는것도 가능.
+        //  -> 반복자를 이용한 데이터 스트림구성이 가능
+
+        // 이터러블(반복자) 객체 
+        // 배열을 일반화한 객체
+
+        // 제너레이터 함수는 호출시 코드가 실행되진 않음
+        // 다만 실행을 처리하는 제너레이터 객체가 리턴.
+        function* wtf(){
+            yield 10;
+            yield 20;
+            yield "gunchimssak";
+        }
+
+        let gunchim = wtf();
+        console.log(gunchim);
+
+        // 제너레이터와 async/await의 관계?
+        // 이터러블 객체를 비동기적으로 만든것이 async/await
+
+        // 그래서 async/await는 무엇인가?
+        // 프로미스를 좀더 편하게 사용하는 특별한 문법.
+        // 후속처리(then, catch)만 따로 진행해도될정도?
+
+        // 키워드 사용법
+        // 1. 함수 앞에 async 키워드를 붙인다.
+        //  - async 키워드를 쓰는 순간 해당함수는 항상 프로미스 객체를 리턴함.
+        //  - 물론 내부에 명시적으로 프로미스 객체 리턴 처리도가능.
+        // 2. await를 통해 대기(async)를 처리해줌.
+        //  - await는 프로미스가 처리될떄까지 기다린다는 키워드
+        //  - 실행을 잠시 중단했다가 프로미스 처리시 실행 재개.
+        //  - async를 써두지 않으면 처리 불가.
+
+        // async
+        // - 프로미스 객체를 상시 리턴하도록 처리
+        // - 프로미스의 요약본(명시또한 가능)
+        // await 
+        // - then을 쓰지않고 resolve, reject의 결과를
+        //   가져오는것 또한 가능.
+
+
+
+        /*async function test(){
+           const response =  await fetch("https://jsonplaceholder.typicode.com/users");
+           const data = await response.json();
+           console.log(data);
+           return data; 
+        }*/
+        //console.log(test().response);
+        // 아래의 코드는 프로미스를 통해 작업을 처리한 코드
+        /*function loadJson(url) {
+            return fetch(url)
+              .then(response => response.json());
+          }
+          
+          function loadGithubUser(name) {
+            return fetch(`https://api.github.com/users/${name}`)
+              .then(response => response.json());
+          }
+          
+          function showAvatar(githubUser) {
+            return new Promise(function(resolve, reject) {
+              let img = document.createElement('img');
+              img.src = githubUser.avatar_url;
+              img.className = "promise-avatar-example";
+              document.body.append(img);
+          
+              setTimeout(() => {
+                img.remove();
+                resolve(githubUser);
+              }, 3000);
+            });
+          }
+          
+          // 함수를 이용하여 다시 동일 작업 수행
+          loadJson('user.json')
+            .then(user => loadGithubUser(user.name))
+            .then(showAvatar)
+            .then(githubUser => alert(`Finished showing ${githubUser.name}`));
+            // ...8
+*/
+    </script>
+
+
+</body>
+</html>

@@ -1,2 +1,4 @@
 *.zip
 *.map
+node_modules
+package*.*
