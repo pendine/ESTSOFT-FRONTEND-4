@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>pow 함수 개선하기</h1>
+  <script>
+    // 제곱 결과 구하기
+    function pow ( x, n ) {
+      let result = 1;
+
+      for (let i = 0; i < n; i++) {
+        result *= x;
+      }
+
+      return result;
+    }
+    
+    function alram( getVal ){
+      return prompt("0보다 큰 값 " + getVal + "을 입력하세요." , ''); 
+    }
+
+    function retry( getVal ){
+      // return prompt(getVal + "값이 0이하 입니다. 다시 입력하세요. \n (취소하기 : 0이하 입력)" , ''); 
+      return prompt(getVal + "값이 0이하 입니다. 다시 입력하세요." , ''); 
+    }
+
+
+    // user input 부분
+    let x = alram("밑수 x");
+    let n = alram("지수 n");
+    let stop = false;
+
+
+    // 왜 밑수에 대한 처리는 없는가...
+    // 원하는 값을 입력받을때까지 무한반복 vs 취소하기
+    while (x <= 0 || n <=0 ){
+      if( x <= 0 ){
+        x = retry("밑수 x");
+      }
+
+      if( n <= 0 ){
+        n = retry("지수 n");
+      }
+
+      // if( x <= 0 || n <= 0 ){
+      //   stop = true;
+      //   break;
+      // }
+    }
+
+    // 결과 출력
+    // 에러 : 지수가 0이하
+    if (stop) {
+      alert(`제곱 결과 구하기가 중단 되었습니다.`);
+    }
+    // 정상 : 지수가 0 이상
+    else {
+      alert( pow( x, n ) )
+    }
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+// 변수 리스트 활용
+// map-get( $map:리스트이름, $key:리스트의키값)
+//  리턴 -> 키의 값
+$colors: (
+  blue: #2a2a72,
+  purple: #4c2885,
+  white: #fff,
+  black : #000,
+  placeholder: #bbb,
+  userinfo:#eee,
+  shadow: rgba(154, 160, 185, 0.05),
+  opacity: rgba(0, 0, 0, 0.1)
+);
+
+$radius: (
+  small: 10px,
+  large: 20px
+);
+
+$font-family: 'Poppins', sans-serif;
+
+// Mixin 활용
+@mixin shadow($color1, $color2) {
+  box-shadow: 0 5px 10px $color1, 0 15px 40px $color2;
+}
+
+// 전역 설정
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: map-get($colors, blue);
+  color: map-get($colors, white);
+  font-family: $font-family;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+// User form
+.user-form {
+  width: 100%;
+  max-width: 700px;
+
+  input {
+    width: 100%;
+    display: block;
+    background-color: map-get($colors, purple);
+    border: none;
+    border-radius: map-get($radius, small);
+    color: map-get($colors, white);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    font-family: inherit;
+    font-size: 1rem;
+    @include shadow(map-get($colors, shadow), map-get($colors, opacity));
+
+    &::placeholder {
+      color: map-get($colors, placeholder);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+// Card
+.card {
+  max-width: 800px;
+  background-color: map-get($colors, purple);
+  border-radius: map-get($radius, large);
+  @include shadow(map-get($colors, shadow), map-get($colors, opacity));
+  display: flex;
+  padding: 3rem;
+  margin: 0 1.5rem;
+}
+
+
+.avatar {
+  border-radius: 50%;
+  border: 10px solid map-get($colors, blue);
+  height: 150px;
+  width: 150px;
+}
+
+.user-info {
+  color: map-get($colors, userinfo);
+  margin-left: 2rem;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    max-width: 400px;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      strong {
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
+
+
+.repo {
+  text-decoration: none;
+  color: map-get($colors, white);
+  background-color: map-get($colors, blue);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+
+@media (max-width: 500px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user-form {
+    max-width: 400px;
+  }
+}
