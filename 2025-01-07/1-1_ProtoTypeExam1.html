@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype Event Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>프로토타입 기반 버튼 클릭 이벤트</h1>
+  <button class="button" data-message="버튼 A를 클릭했습니다!">버튼 A</button>
+  <button class="button" data-message="버튼 B를 클릭했습니다!">버튼 B</button>
+  <button class="button" data-message="버튼 C를 클릭했습니다!">버튼 C</button>
+
+  <script>
+    // 버튼 함수 (객체함수 / 생성자함수)
+    function Button(element){
+      this.element = element; // 누른 요소 정보 가져오기
+      this.message = element.dataset.message;
+      // data-message 속성에서 값 가져오기
+      // dataset이란게 있음
+      // dataset 프로퍼티가 data-message 의 정보를 갖고있음
+    }
+
+    // 프로토 타입을 이용한 공통메서드화
+    Button.prototype.handleClick = function(){
+      alert(this.message);
+    }
+
+    // 
+    function initButtons(){
+      const btnEls = document.querySelectorAll('.button');
+      btnEls.forEach( btnEl => {
+        const btn = new Button(btnEl); // button 객체 생성;
+
+        btnEl.addEventListener('click' , ()=> btn.handleClick());
+      })
+    }
+
+    initButtons();
+
+  </script>
+</body>
+</html>

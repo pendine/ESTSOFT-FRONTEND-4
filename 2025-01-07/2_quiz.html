@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    class Animal{
+      constructor(name, speed){
+        this.name = name;
+        this.speed = speed;
+      }
+
+      run(){
+        console.log(this.name + "(가)이 속도 " + this.speed +"km/h 로 달림")
+      }
+
+      stop(){
+        console.log(this.name + "(가)이 속도 " + this.speed +"km/h 로 달리다 멈춤")
+      }
+    }
+
+    
+    // extends로 확장
+    class Whale extends Animal{
+      swim(){
+        console.log(this.name + "(가)이 속도 " + this.speed +"km/h 로 헤엄침");
+      }
+    }
+
+    // 상속구조는 프로토타입으로 연결이 되지만
+    // Syntatic Sugar (문법적 설탕)에 의해
+    // 프로토타입을 쓰지 않는것처럼 보임
+
+    let cheater = new Animal("치타" , "500");
+    let cat = new Animal("고양이" , "5");
+    let whale= new Whale("고래" , "70");
+    
+
+    cheater.run();
+    cat.run();
+    cheater.stop();
+    cat.stop();
+    whale.swim();
+  </script>
+  
+</body>
+</html>

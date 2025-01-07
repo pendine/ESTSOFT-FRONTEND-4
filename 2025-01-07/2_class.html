@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  타 언어에서의 클래스 : 객체를 설계하는 청사진
+
+  JS에서는 클래스 없이 모든 프로그램을 소화할 수 있으나
+  클래스를 사용하면 편하게 제작 가능
+   - 프로토타입기반 언어라 클래스는 필수가 아닌 선택의 영역
+
+  JS는 캡슐화 또한 클로저라는 개념으로 처리 가능
+  클로져 예시 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures
+  
+  function init() {
+    var name = "Mozilla"; // name은 init에 의해 생성된 지역 변수이다.
+    function displayName() {
+      // displayName() 은 내부 함수이며, 클로저다.
+      console.log(name); // 부모 함수에서 선언된 변수를 사용한다.
+    }
+    displayName();
+  }
+  init();
+
+
+  <script>
+
+// 클래스 사용 이유 : 프로토타입과 클로저가 복잡
+// 클래스를 사용하지않고 객체지향을 구현 가능
+//    -> 프로토타입 및 클로저 사용
+    class User{
+      // 클래스는 기본적으로 생성자와 메서드
+      // 객체의 속성과(프로퍼티) 메서드를 정의
+
+      // 생성자 : 속성을 받아 객체 정의시 사용
+      // 속성 : 클래스에서 필드라고도 불림
+      constructor(name){
+        this.name = name; // 속성 정의. 
+        // 따로 속성을 안만들어도 속성의 이름을 만들어버림
+      }
+
+      attack(){
+        alert(`다른유저 공격`);
+      }
+      
+      hello(){
+        alert( `안녕하세요. ${this.name}님` );
+      }
+
+      // getter setter
+      // 객체에 접근을 제한하기 위해 사용
+      // getter,setter메소드를 사용하여
+      // 내부 동작 후 결과만을 받아볼 수 있도록 캡슐화(은닉).
+      get name(){
+        // 객체 내부에서 사용하는 
+        // private, protect 속성을 나타내는 표기법
+        // 관례적으로 객체의 변수명에 접근할때
+        // '_변수명' 으로 사용 (this.name 충돌방지)
+        return this._name;
+      }
+
+      set name(name){
+        this._name = name;
+      }
+      
+    }
+
+    let user = new User("testUsr");
+    let user2 = new User("testUsr2");
+    // user.hello();
+    // user2.hello();
+    // user.attack();
+
+    console.log(user.name);
+    console.log(user2.name);
+    
+
+  </script>
+
+
+</body>
+</html>

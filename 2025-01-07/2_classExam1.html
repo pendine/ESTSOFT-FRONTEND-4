@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function => class 변환
+    class Clock{
+      // this가 필요한 변수
+      // 객체에서 가져온 속성(필드)
+
+      constructor( {template} ){
+        console.log(this.timer);
+        this.template = template;
+      }
+
+      // let timer;
+
+      render() {
+        // console.log(this.timer);
+        let date = new Date();
+
+        let hours = date.getHours();
+        if (hours < 10) hours = '0' + hours;
+
+        let mins = date.getMinutes();
+        if (mins < 10) mins = '0' + mins;
+
+        let secs = date.getSeconds();
+        if (secs < 10) secs = '0' + secs;
+
+        let output = this.template
+          .replace('h', hours)
+          .replace('m', mins)
+          .replace('s', secs);
+
+        console.log(output);
+      }
+
+      stop(){
+        clearInterval(this.timer);
+      }
+
+      start(){
+        // this.render();
+        console.log( " before start : " + this.timer);
+        this.timer = setInterval( () => this.render(), 1000);
+        // this.timer = setInterval( () => this.render().bind(this), 1000);
+        console.log( " after start : " + this.timer);
+      }
+
+    }
+
+    let clock = new Clock({ template: 'h:m:s' });
+    clock.start();
+  </script>
+</body>
+
+</html>

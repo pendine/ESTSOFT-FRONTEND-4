@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box{
+      width: 300px;
+      height: 300px;
+      background-color: yellowgreen;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- <button id="btn">button</button>
+
+  <h1 id="text"></h1> -->
+
+  <div class="" id="box"></div>
+  <button id="toggleBtn">토글구현</button>
+  
+  <script>
+    /*
+    document.querySelector('#btn').addEventListener('click' , (e)=>{
+      alert("alram");
+    })
+      */
+    
+    // jQuery("#btn").on('click', function(e){
+    //   alert("alram");
+    // })
+
+    // jQuery("#btn").on('click', function(e){
+      
+    // });
+
+    // jQuery("#btn").click( function(e){
+      
+    // });
+    // jQuery("#btn").bind('click', function(e){
+      
+    // });
+
+    // 이벤트를 바인딩
+    // 복수의 이벤트를 바인딩 할 수 있음
+    // $('body').on({
+    //   click:function(){
+    //     $('.text').append("버튼 클릭<br />");
+    //   },
+    //   mouseenter:function(){
+    //     $('.text').append("마우스 진입<br />");
+    //   },
+    //   mouseleave:function(){
+    //     $('.text').append("마우스 떠남<br />");
+    //   }
+    // }, "#btn"); //아이디가 btn 요소에 이벤트 핸들러 등록
+    // 
+    // $('body').on('click', "#btn", function(e){
+    //   // 파라미터로 등록할 요소를 btn으로 전달
+    // })
+
+    // => js로 변환
+    // const body = document.querySelector('body');
+    // const text = document.querySelector("#text");
+    // const btn = document.querySelector("#btn");
+    // btn.addEventListener('click' , function(e){
+    //   text.innerHTML += "버튼클릭 <br />"
+    // })
+    // btn.addEventListener('mouseenter' , function(e){
+    //   text.innerHTML += "마우스 진입 <br />"
+    // })
+    // btn.addEventListener('mouseleave' , function(e){
+    //   text.innerHTML += "마우스 탈출 <br />"
+    // }) 
+
+    //토글 기능 구현
+    $('#toggleBtn').click(function(){
+      // toggle 에 사용 가능한 효과
+      // slow , fadein , fadeout
+      $('#box').toggle("slow");
+    })
+
+    /*
+    jQuery 기반으로 이벤트 생성시 
+    JS보다 코드가 짧음
+
+    이벤트를 연결함
+     => $(selector).bind(eventName, function(event){} );
+     => $(selector).bind(object);
+
+
+    unbind()
+      bind() 메서드를 사용한 이벤트 연결 제거
+        => $(selector).unbind();
+        => $(selector).unbind(eventName);
+        => $(selector).unbind(eventName, function);
+
+
+    delegate()
+      현재 또는 미래에 존재하는 문서 객체에 이벤트를 연결함 (version:1.4.3)
+
+
+    undelegate()
+      delegate() 메서드를 사용해 연결한 이벤트를 제거함 (version:1.4.3)
+
+
+    live()
+      현재 또는 미래에 존재하는 문서 객체에 이벤트를 연결함
+
+
+    die()
+      live() 메서드를 사용해 연결한 이벤트를 제거함
+        => $(selector).die()
+        => $(selector).die(eventName)
+        => $(selector).die(eventName , function)
+
+
+    one()
+      이벤트를 한번만 연결함
+
+
+    on()
+      이벤트를 연결함, 아래 이벤트연결을 대체함 ( delegate 대체함 version:1.7 )
+      => bind() : $(selector).on(eventName , eventHandler)
+      => live() : $(document).on(eventName , selector, eventHandler)
+      => delegate() : $(selector).on(eventName , selector , eventHandler)
+
+
+    off()
+      이벤트를 제거함
+        => unbind() : $(selector).off(eventName[, eventHandler])
+        => die() : $(document).off(eventName , selector[, eventHandler])
+        => undelegate() : $(selector).off(eventName , selector[, eventHandler])
+
+
+    toggle(function(event){},... , function(event){} )
+      click 이벤트를 여러 이벤트 핸들러를 번갈아가며 실행할 수있게 연결함
+
+
+    hover(mouseenter , mouseleave)
+      mouseenter 이벤트와 mouseleave 이벤트를 동시에 연결함
+
+
+    trigger()
+      이벤트를 강제 발생
+        => $(selector).trigger(eventName)
+        => $(selector).trigger(eventName, data)
+
+    */
+
+  </script>
+</body>
+
+</html>

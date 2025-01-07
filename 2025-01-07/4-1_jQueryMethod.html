@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      background-color: aquamarine;
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- <div></div> -->
+
+  <!-- 
+  <img src="../img/1.jpg" alt="">
+  <img src="../img/2.jpg" alt="">
+   -->
+
+  <!-- <select>
+    <option value="1">개</option>
+    <option value="2" selected>괭</option>
+    <option value="3">돼</option>
+    <option value="4">소</option>
+  </select> -->
+
+  <ul id="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+  <h1 class="cloneTest">cloneTest 대상</h1>
+
+  <script>
+    // 값 확인
+    // let width = jQuery('div').width();
+    // let height = jQuery('div').height();
+    // 값 수정
+    // let width = jQuery('div').width(300);
+    // let height = jQuery('div').height(300);
+    // console.log(width , height);
+
+    // img태그의 src 속성 값 확인 (get)
+    // console.log( jQuery('img').attr('src') );
+    // img태그의 src 속성 값 수정 (set)
+    // console.log( jQuery('img').attr('src' , '../img/2.jpg') );
+
+    // let a = jQuery('select > option:selected').val();
+    // console.log(a);
+
+  /*  
+  jquery 유용한 메서드
+    .html : innerHTML
+    .text : textContent
+    .width : 선택한 요소중 첫번째 요소의 넓이를 픽셀단위의 정수로 리턴 / 값 입력시 변경
+    .height : 선택한 요소중 첫번째 요소의 높이를 픽셀단위의 정수로 리턴 / 값 입력시 변경
+    .attr : (get,set)Attribute
+            인수가 1개 = getAttribute, 2개 = setAttribute
+    .val : form 태그의 value를 가져오거나 설정할때 사용
+
+    요소 추가 관련 메서드
+    append : 선택한 요소의 마지막에 새로운 요소나 컨텐츠 추가
+    prepend : 선택한 요소의 처음에 새로운 요소나 컨텐츠 추가
+    appendTo : 선택한 요소를 해당요소 마지막에 추가
+     - 동작은 append와 같지만 선언 방식은 다름(소스/타겟위치가 반대)
+    prependTo : 선택한 요소를 해당요소 처음에 추가
+
+    jQuery('#list').append("<li>append 로 신규요소 추가</li>");
+    jQuery('#list').prepend("<li>prepend 로 신규요소 추가</li>");
+    jQuery('<li>appendTo 로 신규요소 추가</li>').appendTo("#list");
+    jQuery('<li>prependTo 로 신규요소 추가</li>').prependTo("#list");
+
+
+    요소 추가 ( 외부 )
+      append는 자식으로 추가
+      before, after는 동등요소로 추가
+    before : 선택한 요소의 바로 앞에 새로운 요소나 컨텐츠 추가
+    after : 선택한 요소의 바로 뒤에 새로운 요소나 컨텐츠 추가
+    
+    jQuery("#list").before('<h1>before로 h1추가</h1>');
+    jQuery("#list").after('<h1>after로 h1추가</h1>');
+
+
+    요소 복사
+    clone : 선택한 요소를 복사하여 새로운 요소 생성
+    remove : 선택한 요소 삭제
+
+    jQuery('.cloneTest').clone().appendTo('#list');
+    jQuery('h1').remove(".cloneTest"); 
+      - h1태그에서 class이름 cloneTest삭제
+      삭제되는 요소와 연관된 데이터나 이벤트도 전부 삭제
+  */
+  
+    
+
+  </script>
+</body>
+</html>

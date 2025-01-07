@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .testLi{
+      background-color: crimson;
+    }
+    
+  </style>
+<!-- 1번방법 : 파일 직접 호출-->
+  <script src="../jquery-3.7.1.min.js"></script>
+<!-- 2번방법 : CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+<!--   
+  jQuery : 설치
+  1. 라이브러리 파일을 우리파일로 가져오기
+  2. CDN 링크 적용 (더 느려짐)
+    - head 영역의 링크 참조 
+
+  jQuery 공부 방법
+  1. 자주쓰는 함수나 개념 정리
+  2. 실습 예제 코드 jQuery로 바꾸는 연습
+  3. jQuery Ajax, plugin
+
+
+    -->
+  <div class="query" id="test"></div>
+
+  <button id="b1" class="btn">1번</button>
+  <button id="b2" class="btn">2번</button>
+  <button id="b3" class="btn">3번</button>
+  <button id="b4" class="btn">4번</button>
+ 
+  <ul id="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+
+  <ul id="nav">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li class="testLi">4</li>
+    <li>5</li>
+    <li>6</li>
+  </ul>
+
+  <script>
+    // 동일한 동작 -------------------------------------------------
+    // $('#test').html('jQuery 테스트').css('border', '1px solid blue');
+    // $('#test') == jQuery('#test')
+
+    // let test = document.querySelector('#test');
+    // test.innerHTML = "jQuery 테스트";
+    // test.style.border = '1px solid blue';
+    // 동일한 동작 -------------------------------------------------
+
+
+    // jQuery 기본문법
+    // $ / jQeury( 'css 선택자' ).함수1.함수2
+    //  => 선택자를 이용해 원하는 요소를 선택하고
+    //  동작함수를 정의하여 선택된 요소에 원하는 동작을 설정
+
+    // $(jQeury) 객체 : jQuery 를 사용하기위한 객체 생성 방법.
+    //  -> document.querySelector 대체 가능
+
+    // addEventListner 대체
+    /* 여러개의 요소들을 처리할때도 편함
+    $('.btn').on('click' , function(){
+      alert('test');
+    })
+    */
+
+    //새로운 요소 집어넣기
+    $('<p id="tst">요소 삽입 테스트</p>').appendTo('body');
+
+    //  jQuery와 js를 별개는 아님
+    // js문법과 어느정도 조합 가능
+    var test111 = {
+      "title" : 'testT',
+      "body" : 'testB'
+    }
+
+    // prop : 지정한 선택자를 가진 첫번째 요소의 속성값을 가져오거나 속성값을 추가할때 사용
+    var $result = $(test111);
+    console.log($result.prop('title'));
+    console.log($result.prop('body'));
+
+    // jQuery 체이닝
+    $('#list').find("li").eq(1).html("jQuery 체이닝");
+
+
+    // jQuery 로 .nav 요소 클릭한것만 백그라운드 바꾸기.
+    // 클래스 제거 : removeClass
+    // 클래스 추가 : addClass
+    // 
+    // try
+    // $('.nav').on('click' , function(){
+    //   $('nav').find("li").removeClass('.testLi');
+    //   // e.target.addClass('.testLi');
+    // })
+    // 
+    // answer
+    // jQuery는 this가 잘 동작하는 편. e.target과 거의 비슷하게 동작.
+    jQuery('#nav li').on('click' , function(){
+      jQuery('#nav li').removeClass('testLi');
+      jQuery(this).addClass('testLi');
+    })
+    
+    /*
+    jquery 유용한 메서드
+    .html : innerHTML
+    .text : textContent
+    .width : 선택한 요소중 첫번째 요소의 넓이를 픽셀단위의 정수로 리턴
+    .height : 선택한 요소중 첫번째 요소의 높이를 픽셀단위의 정수로 리턴
+    .attr : (get,set)Attribute
+            인수가 1개 = getAttribute, 2개 = setAttribute
+    .val : form 태그의 value를 가져오거나 설정할때 사용
+    
+    */
+  </script>
+</body>
+</html>

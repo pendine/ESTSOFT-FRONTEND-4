@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  프로토타입 : 객체간 메서드와 속성을 상속하기 위한 개념
+    - 객체들의 공유 저장소
+  
+  프로토타입의 장점
+   1. 메모리 효율성
+   2. 확장성, 재사용성이 뛰어남
+     (상속을 통한 코드의 재사용,
+      새로운 메서드 추가가 용이)
+   
+  프로토타입의 단점
+    너무 많이 연결하면 오히려 성능 저하
+
+  프로토타입을 잘 사용하면 유리한부분
+    - 재사용성 측면에서 유리함
+
+  JS의 모든 객체는 자신의 부모역할을 담당하는 객체와 연결되어있음
+   - 상속처럼 부모객체나 프로퍼티나 메서드를 가져다 사용 할 수 있음
+   - 부모객체를 프로토타입이라고함
+
+  프로토타입 특징
+   - 읽기 전용(수정시 객체에 자체에 직접 걸어야함 
+              / 외부에서 접근해서 삭제 등은 불가 )
+   [[ProtoType]] : JS의 모든 객체들이 가지는 내부 프로퍼티
+     -> 이 프로퍼티를 통해 부모 객체로 접근 가능
+   __proto__ : 획득자 + 설정자 ( getter / setter )
+     -> 최근 js에서는 안씀
+        ( Object.getPrototypeOf / Object.setPrototypeOf )
+   
+  
+  프로토타입 체인
+    - 객체의 특정 속성이나 메서드에 접근하려고 할때
+      해당 객체에 존재하지 않으면 
+      프로토타입 체인을 따라 올라가며 탐색
+    - 이론상 Object 객체까지 타고 올라가 검색
+
+  <script>
+    /*
+    프로토타입 장점
+    ex) 강아지 100마리를 객체로 표현
+        강아지별로 짖는 코드 작성
+    */
+
+    // function Dog ( name){
+    //   this.name = name;
+    // }
+
+    // Dog.prototype.bark = function(){
+    //   console.log(`${this.name} / 멍멍하고 짖음`);
+    // }
+    // const dog1 = new Dog('누렁이');
+    // const dog2 = new Dog('깜둥이');
+    
+    // dog1.bark();
+    // dog2.bark();
+
+    const animal = {
+      sleep:true,
+      eat(){
+        console.log("와그작와그작");
+      }
+    }
+
+    console.dir( animal );
+
+
+    let rabbit = {
+      __proto__:animal // animal의 프로퍼티와 메서드를 활용하기위함
+    }
+    // 자바스크립트는 오버라이딩이 없음 = 재정의를 함
+    rabbit.eat = function(){
+      console.log("토끼 먹는다");
+    }
+    console.log("line 81 " + rabbit.sleep);
+    console.log("line 82 " + rabbit.eat());
+    console.log(rabbit.toString()); // 출력 : [object Object]
+    // rabbit에 toString메서드는 없음
+    // 프로토타입체이닝에 따라 Object 까지 타고 올라간 결과
+
+    // animal 객체를 프로토타입으로 가지는 강아지만들기
+    // animal 객체의 eat 메소드를 상속받음
+    // 프로토타입의 존재 자체가 자바스크립트의 상속구현을 위함
+    const dogO = Object.create(animal);
+    const catO = Object.create(animal);
+
+    dogO.bark = function(){ 
+        console.log("멍멍");
+    }
+    catO.bark = function(){ 
+        console.log("냥냥");
+    }
+    dogO.아파 = function(){ 
+        console.log("컹컹");
+    }
+
+    dogO.eat();
+    dogO.bark();
+    dogO.아파();
+    catO.eat();
+    catO.bark();
+    catO.아파(); // 오류
+
+    // 모던 JS에서는 (react,vue포함) 프로토타입을 직접사용하지는 않음
+    //  -> 필요하다면 class문법을 사용하는것이 더 효율적
+    //  -> class 는 사실 자바 개발자들이 js를 어려워하여 나온것이지만
+    //     오히려 프로토타입을 더 쉽게 쓸 수 있는 장점 
+    //     (문법적 설탕 / Syntatic Sugar)
+    
+  </script>
+  
+</body>
+</html>

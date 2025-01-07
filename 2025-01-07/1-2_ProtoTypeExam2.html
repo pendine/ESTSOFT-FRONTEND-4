@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype-Based Modal System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .modal {
+      display: none; /* 숨김 처리 */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+
+    .modal-header {
+      padding: 10px;
+      background-color: #f4f4f4;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .modal-body {
+      padding: 20px;
+    }
+
+    .modal-footer {
+      padding: 10px;
+      text-align: right;
+    }
+
+    .close-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<h1>Prototype-Based Modal System</h1>
+
+<!-- 모달을 열기 위한 버튼 -->
+<button class="button" data-modal-content="모달 창 A 내용">모달 A 열기</button>
+<button class="button" data-modal-content="모달 창 B 내용">모달 B 열기</button>
+<button class="button" data-modal-content="모달 창 C 내용">모달 C 열기</button>
+
+<!-- 모달 창 -->
+<div id="modal" class="modal">
+  <div class="modal-header">
+    <h2>Modal Title</h2>
+  </div>
+  <div class="modal-body">
+    <p id="modal-content">내용이 여기에 표시됩니다.</p>
+  </div>
+  <div class="modal-footer">
+    <button class="close-btn">닫기</button>
+  </div>
+</div>
+
+<script>
+  function Modal(modalElement){
+    this.modalElement = modalElement; // 클릭한 요소 받아오기
+  }
+  // 공통메서드 정의(open/close)
+  Modal.prototype.open = function(content){
+    const modalContent = this.modalElement.querySelector('#modal-content');
+
+    modalContent.textContent = content;
+
+    this.modalElement.style.display = 'block';
+  }
+
+  Modal.prototype.close = function(){
+    this.modalElement.style.display = 'none';
+  }
+
+  function initModal(){
+    const modalEl = document.querySelector('#modal');
+
+    const modal = new Modal(modalEl);
+    const btns = document.querySelectorAll('.button');
+    
+    btns.forEach( btn => {
+      btn.addEventListener( 'click' , ()=>{
+        const content = btn.dataset.modalContent;
+        modal.open(content);
+      })
+    })
+
+    const closeBtn = modalEl.querySelector('.close-btn');
+
+    closeBtn.addEventListener('click', ()=>{
+      modal.close();
+    })
+  }
+
+  initModal();
+</script>
+</body>
+</html>
