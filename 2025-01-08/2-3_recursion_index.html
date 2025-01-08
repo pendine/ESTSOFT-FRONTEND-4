@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" style="width: 50px; height: 50px; background-color: red; position: absolute;"></div>
+    <div>
+        <button id="stopBtn">Stop</button>
+        <button id="startBtn">Start</button>
+    </div>
+
+    <script>
+        let animationRunning = true; // 애니메이션 실행 상태
+
+        // 박스 움직임 초기값
+        let positionX = 0;
+
+        // 박스 움직임 함수
+        function moveBox() {
+            if (!animationRunning) return; // 애니메이션 중단 조건
+
+            const box = document.getElementById("box");
+            positionX += 2; // 박스를 오른쪽으로 이동
+            box.style.transform = `translateX(${positionX}px)`; // 위치 업데이트
+
+            if (positionX < window.innerWidth - 100) {
+                requestAnimationFrame(moveBox); // 다음 프레임 요청 (재귀 호출)
+            }
+        }
+
+        // 사용자 인터랙션 처리
+        document.getElementById("stopBtn").addEventListener("click", () => {
+            animationRunning = false; // 애니메이션 중단
+        });
+
+        document.getElementById("startBtn").addEventListener("click", () => {
+            if (!animationRunning) {
+                animationRunning = true;
+                moveBox(); // 애니메이션 다시 시작
+            }
+        });
+
+        // 초기 실행
+        moveBox();
+
+    </script>
+</body>
+
+</html>
