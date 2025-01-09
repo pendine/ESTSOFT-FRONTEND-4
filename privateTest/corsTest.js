@@ -17,7 +17,7 @@ btn.addEventListener("click", async (e)=>{
   let jsondata = await test.then( res => { return res.json() })
                      .then( res => {
                       console.log( " btn : res : " + res.index);
-                      return res.index //문자열로 넘기게 해놨는데 여기도 프로미스객체로 리턴하네
+                      return res.index
                      } )
                      .catch(error => {return error.message} );
 
@@ -28,26 +28,16 @@ btn.addEventListener("click", async (e)=>{
   result.appendChild(addEl);
 });
 
-// fetch는 promise객체를 반환하고
-// fetch로부터 반환받은 promise객체의 json() 메서드를 사용해야
-// promise객체의 promise객체를 받환받을수있고
-// promise객체의 promise객체에서 then을 사용해야 반환된 인자를 json문자열. js 객체로 활용할수음..
-
 indexBtn.addEventListener("click" , async (e)=>{  // 함수에 async 추가
   e.preventDefault();
   console.log("버튼의 value값으로 API 호출 테스트");
-  // let addUrl = indexBtn.value;
 
   let res = await getData( API_URL + e.target.value );  // await 추가
   
-  console.log("indexBtn : " ,res); //분명히 getData에서는 문자열로 반환을 하게 해놨는데
-                                    //받아보니 promise객체야.
-                                    // 익명함수에 async 추가와 getData 사용시 await추가로
-                                    // 정상동작
+  console.log("indexBtn : " ,res);
 
   let addEl = document.createElement('p');
   addEl.textContent = "결과 : " + res;
-
   result.appendChild(addEl);
 })
 
@@ -60,7 +50,6 @@ async function getData( url = "" ){
       throw new Error("응답코드 오류 : " + response.status);
     }
 
-    // .json() 메서드는 Promise 객체를 반환함
     let res = await response.json()
                       .then( res => {
                         console.log(res);
@@ -68,7 +57,7 @@ async function getData( url = "" ){
                         return res.index;
                       });
                       
-    console.log("res : " + res); // 문자열로 리턴을 제대로 받았는데 왜 리턴이 안넘어가냐
+    console.log("res : " + res);
     console.log(res);
     return res;
   } catch ( error ){

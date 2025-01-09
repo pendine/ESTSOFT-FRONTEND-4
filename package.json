@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "standard": "^17.1.2"
+  },
+  "dependencies": {
+    "formidable": "^3.5.2",
+    "node-emoji": "^2.2.0"
   }
 }
