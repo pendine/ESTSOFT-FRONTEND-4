@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo 리스트</title>
+    <!-- 템플릿이 이미 경로를 인지하고 있기 때문에 ../static을 안써도 됨.
+     static이용해서 이미 경로를 잡아줬으니 static으로 잡아준 경로내의 파일들을 잡아주는거지-->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1><%= title %></h1>
+        <p>Todo 리스트 <%= title %></p>
+        <form class="todo-form">
+            <input 
+                type="text" 
+                class="form-control"
+                id="new_todo"
+                placeholder="새로운 할 일 입력" 
+            >
+            <button type="button" class="btn btn-primary">추가</button>
+        </form>
+
+        <table class="todo-table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>할 일</th>
+                    <th>상태</th>
+                    <th>액션</th>
+                </tr>
+            </thead>
+            <tbody id="todo-list">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/todo.js"></script>
+</body>
+</html>
