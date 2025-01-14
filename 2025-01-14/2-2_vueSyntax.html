@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* div {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid black;
+    }
+
+    .mansColor {
+      background-color: hotpink;
+    } */
+
+    /* #app {
+      border: dashed black 1px;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    #app > button {
+      display: block;
+      margin: auto;
+    } */
+
+    #lightDiv {
+      position: relative;
+      width: 150px;
+      height: 150px;
+    }
+
+    #lightDiv>img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    #lightDiv>div {
+      position: absolute;
+      top: 00%;
+      left: 00%;
+      width: 40%;
+      height: 40%;
+      border-radius: 100%;
+      background-color: yellow;
+    }
+
+    #app {
+      border: dashed black 1px;
+      width: 130px;
+      padding-left: 20px;
+      font-weight: bold;
+      background-color: lightgreen;
+    }
+    .show{
+      width: 250px;
+      aspect-ratio: 1;
+      background-color: blue;
+    }
+    .showDiv{
+      width: 150px;
+      aspect-ratio: 1;
+      background-color: yellowgreen;
+      margin:auto;
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+
+  <!--vue.js에서 자주 사용되는 문법들
+        v-model : form 의 input, textarea, select에서 사용하는 바인딩
+        v-on : 이벤트 관련 속성
+         - 이벤트 발생시 실행되는 다양한 코드에 적용 가능
+         - 다음과 같이 축약이 가능 : @
+        v-bind : class, id, style등을 바인딩할때 사용
+        v-for : vue를 활용한 반복문
+        v-if : vue를 활용한 조건식
+        v-show : 조건부 가시성
+    -->
+
+  <!--  v-bind 예시 -->
+  <!-- 
+    <div class="test">
+      <h1>what is v-bind</h1>
+      <h1 v-bind:class="vueClass">알아보기</h1>
+    </div> -->
+
+  <!-- v-model 예시 -->
+  <!-- <div class="model">
+       <input type="text" v-model="inputTxt">
+       <p>{{ inputTxt }}</p>
+    </div> -->
+
+  <!-- v-on 예시 -->
+  <!-- <div id="app">
+      <div class="" id="lightDiv">
+        <div v-show="lightOn"></div>
+        <img src="2-etc.svg" alt="">
+      </div>
+      <button v-on:click="lightOn = !lightOn"> 토글버튼 </button>
+    </div> -->
+
+  <!-- v-if 예시 -->
+  <!-- <div id="app">
+      <p v-if="stock">
+        막대기
+      </p>
+      <p v-else>
+        막대기 아님
+      </p>
+    </div> -->
+
+  <!-- v-for 예시 
+      임시 변수 in 배열변수 명-->
+  <!-- <div id="app">
+    <ol>
+      <li v-for="x in animal"> {{x}}</li>
+    </ol>
+  </div> -->
+  
+  <!-- v-for 예시2 -->
+  <!-- <div id="app">
+    <div>
+      <figure v-for="i in foods"> --> <!-- 이미지 목록이 있는 시멘틱 태그 -->
+        <!-- <img v-bind:src="i.url" alt="">
+        <figcaption> {{i.name}} </figcaption>
+      </figure>
+    </div>
+  </div>  -->
+
+  <div class="show">
+    <p>div tag 보일까 사라질까</p>
+    <div v-show="showDiv" class="showDiv">조건부 보이기</div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    //vue 인스턴스 생성방법은 이것뿐만 아니라 또 다른방법도 있음
+    /*
+    new Vue({
+      과거문법. vuejs의 2버전은 지원 종료
+    })
+    */
+    // v-bind 예시
+    // const app = Vue.createApp({
+    //   data(){
+    //     return {
+    //       vueClass: "mansColor"
+    //     }
+    //   }
+    // })
+    // app.mount('.test');
+
+    // v-model 예시
+    // const app = Vue.createApp({
+    //   data(){
+    //     return {
+    //       inputTxt: "what?"
+    //     }
+    //   }
+    // })
+    // app.mount('.model'); //querySelector 로 나온 변수에 달아준다고 생각하기
+
+    // v-on 예시
+    // const app = Vue.createApp({
+    //   data(){
+    //     return {
+    //       lightOn: false
+    //     }
+    //   }
+    // })
+    // app.mount('#app'); //요소의 최상위 부모에 달아주기
+
+    // v-if 예시
+    // const app = Vue.createApp({
+    //   data(){
+    //     return {
+    //       stock : false
+    //     }
+    //   }
+    // })
+    // app.mount('#app'); //요소의 최상위 부모에 달아주기
+
+    // v-for 예시
+    // const app = Vue.createApp({
+    //   data() {
+    //     /*
+    //     return {
+    //       animal:[
+    //         '개'
+    //         , '괭'
+    //         , '소'
+    //         , '말'
+    //       ]
+    //     }
+    //     리턴 타입도 객체로 가능
+    //     */
+    //     return{
+    //       foods: [
+    //        {name:'aFood' , url:'img_burrito.svg'},
+    //        {name:'bFood' , url:'img_cake.svg'},
+    //        {name:'cFood' , url:'img_salad.svg'},
+    //       ]
+    //     }
+    //   }
+    // })
+    // app.mount('#app'); //요소의 최상위 부모에 달아주기
+
+    // v-show 예시
+    const app = Vue.createApp({
+      data(){
+        return {
+          showDiv:true
+        }
+      }
+    });
+    app.mount('.show');
+
+  </script>
+</body>
+
+</html>

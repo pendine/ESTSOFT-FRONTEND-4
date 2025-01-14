@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!-- CBD 란?
+  화면을 여러 단위로 쪼개서 개발
+  HTML, css, js는 서로다른 영역이 아닌 한몸으로 인식
+
+  -->
+  
+  <!-- 컴포넌트 예시 -->
+  <div id="compo">
+    <compo-exam></compo-exam>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#compo"
+      , components: {
+        // 컴포넌트는 자주 활용되는 속성들을 미리 담아뒀다
+        // 필요할때마다 불러서 사용
+        "compo-exam":{
+          template: "<h1>component example</h1>"
+        }
+      }
+    })
+
+  </script>
+
+</body>
+</html>
