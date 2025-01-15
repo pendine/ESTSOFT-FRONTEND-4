@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+  vue를 활용한 form 이벤트 처리
+  -->
+
+  <div class="form">
+    <form @submit.prevent="addItem">
+      <p>
+        필요한 물품
+        <input type="text" placeholder="상품명 입력" v-model="itemName">
+      </p>
+      <p>
+        갯수
+        <input type="number" placeholder="" v-model="itemNumber">
+      </p>
+      <button type="submit">Add item</button>
+    </form>
+    <div>
+      <p>쇼핑 리스트</p>
+      <ul>
+        <li v-for="item in shoppingList"> 상품명 : {{item.name}} , 구매 갯수 : {{item.number}} </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const form = Vue.createApp({
+      data() {
+        return {
+          itemName: null
+          , itemNumber: null
+          , shoppingList: [
+            // {name:'테스트', number:3}
+          ]
+        }
+      }
+      , methods: {
+        addItem() {
+          let item = {
+            name: this.itemName,
+            number: this.itemNumber
+          }
+
+          this.shoppingList.push(item);
+          this.itemName = null;
+          this.itemNumber = null;
+        }
+      }
+    });
+    form.mount(".form");
+  </script>
+
+</body>
+
+</html>

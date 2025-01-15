@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .pos{
+      border:1px dashed black;
+      display: inline-block;
+      padding: 10px;
+      &>div{
+        width: 300px;
+        padding : 30px;
+        border : 1px dashed black;
+        background-color: aquamarine;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+  vue 연산 프로퍼티
+    속성에 따라 변환하기 때문에 연산프로퍼티라 부름
+    복잡한 논리적 데이터에 사용됨
+    - computed : 이전에 계산된 결과 자체를 즉각적으로 반영
+    - method : 새로고침(리렌더링)이 발생할때마다 재호출
+
+    watchers : 특정 데이터의 변화를 감시하고 그에 따른 작업을 수행하는 기능
+    (자바스크립트의 콜백함수) -> vue 객체의 예약어
+      이전 값을 기억하여 새로운값과 매칭시킬 수 도 있음
+       - 이전 속성 값을 자동으로 watcher메서드의 입력 인수로 활용 가능
+
+    -->
+
+  <!-- 예시 1 computed : 체크박스가 활성/비활성 상태에 따른 메시지 부여 -->
+  <!-- <div class="prop">
+      <form>
+        <label for="">
+          <input type="checkbox" v-model="chkbox">
+          {{ msg }}
+        </label>
+      </form>
+    </div> -->
+
+  <!-- <div class="range">
+    <input type="range" step="1" max="100" min="0" start="50" v-model="rangeVal">
+    <p> {{rangeVal}}</p>
+  </div> -->
+
+  <!-- watcher 저장 이전값을 인수로 사용 예시  -->
+  <div class="pos">
+    <div v-on:click="updatePos"></div>
+    <p>{{ xDiff }}</p>
+  </div>
+
+  <div id="app">
+    <h2>과일 목록</h2>
+    <ul>
+      <li v-for="item in items" :key="item.id">
+        {{ item.text }}
+        <button @click="removeItem(item.id)">삭제</button>
+      </li>
+    </ul>
+    <input v-model="newItem">
+    <button @click="addItem">추가</button>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    // 예시 1 computed
+    // const prop = Vue.createApp({
+    //   data(){
+    //     return{
+    //       chkbox:false
+    //     }
+    //   }
+    //   , computed : { // 메서드를 자동으로 호출해서 적용해주나?
+    //     // isImportant(){
+    //     msg(){
+    //       if(this.chkbox){ 
+    //         return '체크박스 선택됨';
+    //       }else{
+    //         return '체크박스 선택안됨';
+    //       }
+    //     }
+    //   }
+    //   , methods: {
+    //   }
+    // });
+    // prop.mount(".prop");
+
+
+    // const range = Vue.createApp({
+    //   data() {
+    //     return {
+    //       rangeVal: 50
+    //     }
+    //   }
+    //   , watch: {
+    //     rangeVal(val) {
+    //       // watch의 주목적은 속성값이 변경될때
+    //       // 자동으로 호출되는 특징이 있어서
+    //       // 속성의 영향을 받는다.
+    //       // 새로운 속성값은 항상 watch메서드의 입력인수로 사용됨
+
+    //       // 값의 활용 예시 : 20에서 40사이일때 적용안되게하기
+    //       if( 20< val && val <40){
+    //         if(20< val && val <30)
+    //           this.rangeVal = 20;
+    //         else{
+    //           this.rangeVal = 40;
+    //         }
+    //         // or
+    //         // alert('설정 불가능한 값입니다.');
+    //       }
+    //     }
+    //   }
+    // });
+    // range.mount(".range");
+
+    // <!-- watcher 저장 이전값을 인수로 사용 예시  -->
+    const prop = Vue.createApp({
+      data(){
+        return{
+          xPos:0
+          , xDiff:0
+        }
+      }
+      , watch: {
+        xPos(newVal, oldVal){
+          this.xDiff = newVal - oldVal;
+        }
+      }
+      , methods : {
+        updatePos(evt){
+          this.xPos = evt.offsetX; // 원래 돔에 존재하는 프로퍼티
+        }
+      }
+    });
+    prop.mount('.pos');
+
+    const frute = Vue.createApp({
+      data() {
+        return {
+          items: [
+            { id: 1, text: '사과' },
+            { id: 2, text: '바나나' },
+            { id: 3, text: '오렌지' }
+          ]
+        }
+      }
+      , methods: {
+        removeItem(id) {
+          let list = [];
+
+          for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].id === id) {
+              continue;
+            }
+            list.push(this.items[i]);
+          }
+        }
+        , addItem(textEl) {
+          this.items.push({ "id": this.items.length, "text": textEl });
+        }
+      }
+    });
+    frute.mount("#app");
+
+
+
+  </script>
+</body>
+
+</html>

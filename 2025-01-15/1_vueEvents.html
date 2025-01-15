@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .change {
+      width: 250px;
+      border: 1px solid black;
+      padding: 25px;
+      box-sizing: border-box;
+      background-color: bisque;
+      border-radius: 20px;
+
+      &>div {
+        width: 150px;
+        padding: 15px;
+        cursor: pointer;
+        font-weight: bolder;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- vue 이벤트 수정자
+    - 이벤트가 메서드를 실행하는 방식을
+      효율적으로 간단하게 처리하는 방식
+    (v-on)
+    v-on:once : 이벤트를 한번만 사용하고 싶을때 사용하는 프로퍼티
+      ex) v-on:click.once
+    
+  -->
+  <!--   
+  <div class="evt">
+    <button v-on:click="createAlert">버튼</button>
+    <button v-on:click.once="createAlert">한번만 동작하는 버튼</button>
+    <button @click="createAlert2">엣 룰 선언 버튼</button>
+  </div>
+   -->
+
+  <!-- <div class="app">
+    <h1>글을 입력해라</h1>
+    <input type="text" v-on:keydown="getKey" cols="5" rows="3" >
+    <p id="result">{{ keyValue }} </p>
+  </div> -->
+
+  <!-- <div class="result"> -->
+  <!-- 키보드 g키를 누르면 발생하는 이벤트 -->
+  <!-- <input type="text" @keydown.g="createAlert"> -->
+  <!-- 컨트롤키와 c키를 동시에 누르면 나오는 이벤트 
+      특수키들은 같이 눌렀을때만 이벤트가 발생 하도록 하는것이 바람직-->
+  <!-- <input type="text" @keydown.ctrl.c="createAlert">
+  </div> -->
+
+  <!-- 우클릭시 색상 변경 
+  hsl : 밝기, 명도 , 색의 정도를 표현하는 메서드
+  색조, 채도, 밝기 순. 
+  -->
+  <div class="change">
+    <div v-on:click.right.prevent="changeColor" 
+    v-bind:style="{ backgroundColor:'hsl('+bgColor+' , 80%, 80% )'}">
+      <p>우클릭시 배경색 변경</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    // v-on click 예시
+    //   const app = Vue.createApp({
+    //     methods : {
+    //       createAlert(){
+    //         alert('버튼 클릭');
+    //       }
+    //       , createAlert2(){
+    //         alert('다른 선언 버튼 클릭');
+    //       }
+    //     }
+    //   });
+    //  app.mount('.evt');
+
+    // ------------------------------------------------
+    // const keyboard = Vue.createApp({
+    //   data(){
+    //     return { 
+    //       keyValue : ''
+    //     }
+    //   }
+    //   , methods: {
+    //     getKey(evt){
+    //       this.keyValue = evt.key
+    //     }
+    //   }
+    // })
+    // keyboard.mount(".app");
+
+    // 위의 vue 코드와 동일한 동작
+    // let txt = document.querySelector('input');
+    // let returnP = document.querySelector('#result');
+    // txt.addEventListener('keyup' , (e) => {
+    //   returnP.innerHTML =  txt.value.slice( txt.value.length-1 );
+    // });
+    // ------------------------------------------------
+
+    // const app = Vue.createApp({
+    //   methods:{
+    //     createAlert(evt){
+    //       alert("g키를 눌렀다");
+    //     }
+    //   }
+    // })
+    // app.mount(".result");
+
+    // <!-- 우클릭시 색상 변경 -->
+    const changeColor = Vue.createApp({
+      data() {
+        return {  // 리턴값을 객체로 주는구나.
+          bgColor: 0
+        };
+      }
+      , methods: {
+        changeColor() {
+          this.bgColor += 50;
+          console.log("bg Color : " + bgColor);
+        }
+      }
+
+    })
+    changeColor.mount(".change");
+  </script>
+
+</body>
+
+</html>

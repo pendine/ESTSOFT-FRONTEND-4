@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+  Vue template  뷰 템플릿
+   Vue 앱의 html 파트
+   
+  
+  <template></template> 태그를 통해 .vue라는 확장자를 가진 파일에서
+  vue 코드를 작성한 후
+  해당 코드의 내용을 붙여넣을 것.
+
+  - vue 인스턴스에서 템플릿을 구성 옵션으로 사용하고
+    그 안에 html 코드를 넣는 것 도 가능
+  -->
+
+  <div class="app">
+    <!-- <compo></compo> -->
+  </div>
+  
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      template:
+        `
+        <h1> {{msg}} </h1>
+        <p> 이것도 출력 </p>
+        `
+        ,
+        data(){
+          return{
+            msg:"hello"
+          }
+        }
+    })
+    app.mount('.app');
+  </script>
+</body>
+
+</html>

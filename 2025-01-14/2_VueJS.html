@@ -55,6 +55,8 @@
     데이터 관련 옵션 : data, computed, methods
       data : 뷰 인스턴스 내부의 변수 관리
       computed, method : 좀더 유동적으로 변수를 관리할때 사용하는 프로퍼티.
+       - computed : 이전에 계산된 결과 자체를 즉각적으로 반영
+       - method : 새로고침(리렌더링)이 발생할때마다 재호출
     */
     new Vue({
       el: "#test" // 요소 선택
