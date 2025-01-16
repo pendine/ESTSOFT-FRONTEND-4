@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input class="searchMovie" type="text" placeholder="movie title" aria-describedby="영화제목">
+  <p class="movie-info" aria-details="영화 정보"></p>
+
+  <script>
+    API_URL = 'http://www.omdbapi.com/?';
+    API_KEY = '&i=tt3896198&apikey=4003a262';
+    SEARCH_TITLE = 't=';
+    SEARCH_ID = 'i=';
+
+    async function requestMovieInfo( title ){
+      title = title.replace(" " , "+");
+      let requestURL = API_URL + SEARCH_TITLE + title + API_KEY;
+      console.log( requestURL );
+      let fetchResult = await fetch ( requestURL );
+      let resultJson = await fetchResult;
+      return resultJson.json();
+    }
+
+    let search = document.querySelector(".searchMovie");
+    let movieInfo = document.querySelector(".movie-info");
+
+    search.addEventListener( 'keyup' , async (e) => { 
+    //   console.log(e); 
+    // });
+    
+      console.log( 'event : ' ,e );
+
+      let result = await requestMovieInfo(search.value);
+      movieInfo.innerHTML = `<p>
+          ${JSON.stringify(result)}
+        </p>`
+    })
+
+  </script>
+</body>
+</html>

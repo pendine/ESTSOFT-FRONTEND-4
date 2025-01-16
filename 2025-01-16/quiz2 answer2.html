@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="price-display">
+        <p>원래 가격: {{ formatPrice(price) }}</p>
+        <p>할인율: {{ discount }}%</p>
+        <p>할인된 가격: {{ formatPrice(discountedPrice) }}</p>
+      </div>
+      <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+      <script>
+        const priceDisplay = Vue.createApp({
+           data() {
+            return{
+              price: {
+                type: Number,
+                default: 1000,
+                validator: (value) => value >= 0
+              },
+              discount: {
+                type: Number,
+                default: 0,
+                validator: (value) => value >= 0 && value <= 100
+              }
+            }
+            },
+            computed: {
+              discountedPrice() {
+                return this.price * (1 - this.discount / 100)
+              }
+            },
+            methods: {
+              formatPrice(value) {
+                // Date.toLocalString()
+                // 자바스크립트 함수
+                // 숫자나 날짜 형식으로 변환할때 사용
+                // 단위를 맞출 때 사용
+                return `₩${value.toLocaleString()}`
+              }
+            }
+          })
+          priceDisplay.mount('.price-display');
+      </script>
+</body>
+</html>

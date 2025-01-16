@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    // 문제: 입력 필드의 값이 변경될 때마다 
+    // message를 업데이트하는 메서드를 작성하세요
+    <div id="quiz">
+        <input @input="updateMessage" :value="message">
+        <p>입력된 메시지: {{ message }}</p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                  message: ''
+                }
+              },
+              methods: {
+                updateMessage(event) {
+                  this.message = event.target.value
+                }
+              }
+        })
+        app.mount('#quiz');
+
+     /*   const app = Vue.createApp({
+            data() {
+              return {
+                items: [
+                  { id: 1, text: '사과' },
+                  { id: 2, text: '바나나' },
+                  { id: 3, text: '오렌지' }
+                ]
+              }
+            },
+            template: `
+              <ul>
+                <li v-for="item in items" :key="item.id">
+                  {{ item.text }}
+                </li>
+              </ul>
+            `
+          })
+          app.mount('#app')
+          */
+
+/*        
+동적 Props와 유효성 검사
+상품 가격을 표시하는 컴포넌트를 만드세요.
+요구사항:
+가격은 숫자만 입력 가능
+최소 가격은 0원
+할인율을 props로 받아 할인된 가격도 표시
+가격이 없을 경우 기본값 1000원
+*/  
+    </script>
+</body>
+</html>

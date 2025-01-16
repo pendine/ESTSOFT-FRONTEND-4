@@ -1,42 +1,35 @@
-<!-- 컴포넌트를 큰단위로 처리 -->
-
 <template>
-  <div class="app-container">
-    <h1>Todo List</h1>
-    <TodoList />
-  </div>  
+  <h1>동적 컴포넌트 예시</h1>
+  <button @click="toggleValue=!toggleValue">컴포넌트 스위치</button>
+  <component :is="activeComp"></component>
 </template>
 
 <script>
-import TodoList from "./components/todolist.vue";
-
-export default {
-  name: 'App',
-  component: {
-    TodoList
+// 동적 컴포넌트 예시
+export default{
+  data(){
+    return{
+      toggleValue:true
+    }
   }
-}
+  ,computed:{
+    activeComp(){
+      if(this.toggleValue){
+        return 'comp-one';
+      }else{
+        return 'comp-two';
+      }
+    }
+  }
 
+}
 </script>
 
 <style>
-.app-container {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  background-color: #fff;
-}
-
-h1 {
-  color: #2c3e50;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
-}
+div{
+    width : 300px;
+    margin: 15px;
+    padding :15px;
+    border : 3px solid black;
+  }
 </style>
