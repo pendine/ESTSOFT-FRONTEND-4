@@ -11,13 +11,18 @@ import { createApp } from 'vue'
 // import CompTwo from './components/CompTwo.vue'
 
 // import SlotComp from './components/SlotComp.vue'
-import Teleport from './App-Teleport.vue';
-import App from './AppQuiz.vue';
+// import Teleport from './App-Teleport.vue';
+// import Tel from './teleport/Tel.vue';
+// import App from './AppQuiz.vue';
+import App from './App-http.vue'
+
 
 // createApp(App).mount('#app')
 
-// const app = createApp(App);
-const app = createApp(Teleport);
+const app = createApp(App);
+// const app = createApp(Teleport);
+
+
 //app.component('item-list', ItemList);
 // app.component('props-exam', PropsExam); // 불러온 컴포넌트를 
                                         // 어떤 태그에 할당할건지 정의
@@ -26,6 +31,8 @@ const app = createApp(Teleport);
 // app.component('comp-two', CompTwo);
 
 // app.component('slot-comp' , SlotComp);
+
+// app.component('tel', Tel);
 
 
 

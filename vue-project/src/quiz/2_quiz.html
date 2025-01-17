@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블로그 게시판</title>
+    <link rel="stylesheet" href="2_styles.css">
+</head>
+<body>
+    <div class="blog-app">
+        <!-- 게시물 작성 폼 -->
+        <div class="post-form">
+            <input id="postTitle" type="text" placeholder="제목">
+            <textarea id="postBody" placeholder="내용"></textarea>
+            <button id="createPostBtn">게시물 작성</button>
+        </div>
+
+        <!-- 로딩 표시 -->
+        <div id="loadingIndicator" class="loading hidden">로딩 중...</div>
+
+        <!-- 에러 메시지 -->
+        <div id="errorMessage" class="error hidden"></div>
+
+        <!-- 게시물 목록 -->
+        <div id="postsList" class="posts">
+            <!-- 게시물들이 여기에 동적으로 추가됨 -->
+        </div>
+    </div>
+
+    <!-- 게시물 템플릿 -->
+    <template id="post-template">
+        <div class="post-item">
+            <h3 class="post-title"></h3>
+            <p class="post-body"></p>
+            <div class="post-actions">
+                <button class="edit-btn">수정</button>
+                <button class="delete-btn">삭제</button>
+            </div>
+        </div>
+    </template>
+
+    <script src="2_app.js"></script>
+</body>
+</html>
+
