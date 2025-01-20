@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1번문제</title>
+</head>
+<body>
+  <button id="toggleImageButton">Toggle Image</button>
+  <img id="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQagd9yIqp_c6EnsKrijZWIwKkzRGGlf1QInw&s" alt="Placeholder Image" style="display: block; margin-top: 10px;" />
+
+  <script>
+    let visible = true;
+
+    const imageBtn = document.querySelector("#toggleImageButton");
+    const image = document.querySelector("#image");
+    imageBtn.addEventListener('click' , () => {
+      visible = !visible
+      console.log("클릭됨 visible : " , visible);
+      if( visible ){
+        image.style.display= "block";
+      }else{
+        image.style.display = "none";
+      }
+    })
+  </script>
+</body>
+</html>

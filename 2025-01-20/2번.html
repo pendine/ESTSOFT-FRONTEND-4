@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Input</title>
+</head>
+<body>
+  <input type="text" id="inputField" placeholder="무언가 입력해보세요." />
+  <p id="displayText">입력한대로 내용이 나와요 입력하는순간 이건 지워져요</p>
+
+  <script>
+    let text = document.querySelector('#inputField');
+
+    let display = document.querySelector('#displayText');
+
+    text.addEventListener('keyup', ()=>{
+      if(text.value.length === 0 ){
+        display.innerHTML = '입력한대로 내용이 나와요 입력하는순간 이건 지워져요';
+      }else{
+        display.innerHTML = text.value;
+      }
+    })
+  </script>
+</body>
+</html>

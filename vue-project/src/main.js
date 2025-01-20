@@ -14,8 +14,14 @@ import { createApp } from 'vue'
 // import Teleport from './App-Teleport.vue';
 // import Tel from './teleport/Tel.vue';
 // import App from './AppQuiz.vue';
-import App from './App-http.vue'
+// import App from './App-http.vue'
+import App from './App-lifecycle.vue'
 
+// import lifeCycle1 from './components/beforeCreate.vue';
+// import lifeCycle2 from './components/beforeMount.vue';
+// import lifeCycle3 from './components/beforeUpdate.vue';
+// import lifeCycle4 from './components/beforeDelete.vue';
+import lifeCycle5 from './components/render.vue';
 
 // createApp(App).mount('#app')
 
@@ -33,6 +39,11 @@ const app = createApp(App);
 // app.component('slot-comp' , SlotComp);
 
 // app.component('tel', Tel);
+// app.component('comp-one', lifeCycle1);
+// app.component('comp-one', lifeCycle2);
+// app.component('comp-one', lifeCycle3);
+// app.component('comp-one', lifeCycle4);
+app.component('comp-one', lifeCycle5);
 
 
 

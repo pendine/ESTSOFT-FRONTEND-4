@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6번문제</title>
+  <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Quiz App</h1>
+    <!-- 질문 -->
+    <p>{{ question }}</p>
+
+    <!-- 보기 -->
+    <ul>
+      <li v-for="(option, index) in options" :key="index">
+        <button @click="checkAnswer(option)">{{ option }}</button>
+      </li>
+    </ul>
+
+    <!-- 결과 메시지 -->
+    <p v-if="result !== null">{{ result }}</p>
+  </div>
+
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          question: "What is the capital of France?",
+          options: ["Berlin", "Madrid", "Paris", "Rome"],
+          correctAnswer: "Paris",
+          result : ''
+        }
+      }, 
+      methods: {
+        checkAnswer(index) {
+          if( index === this.correctAnswer ){
+            this.result="correct!";
+            return this.result;
+          }else{
+            this.result="wrong!"
+            return this.result;
+          }
+        }
+      }
+    });
+    app.mount("#app");
+    
+  </script>
+
+      
+</body>
+</html>

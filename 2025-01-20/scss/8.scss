@@ -1,0 +1,42 @@
+$card-bg: #f9f9f9;
+$hover-bg: #e0e0e0;
+$text-color: #333;
+
+$breakpoint:768px;
+
+$card-width:400px;
+$card-small-width:300px;
+
+
+.card{
+  background-color: $card-bg;
+  color : $text-color;
+  padding : 20px;
+  transition : width 0.3s ease;
+  
+  &:hover{
+    background-color: $hover-bg;
+    transition : all 0.3s ease;
+  }
+}
+
+@mixin laptop($maxWidth , $cardWidth){
+  @media only screen and (max-width: #{$maxWidth}) {
+    .card{
+      width : $cardWidth;
+    }  
+  }
+}
+
+
+@mixin desktop($minWidth , $cardWidth){
+  @media only screen and (min-width: #{$breakpoint}){
+    .card{
+      width : $cardWidth;
+    }
+  }
+}
+
+
+@include laptop ( $breakpoint , $card-small-width );
+@include desktop ( $breakpoint , $card-width );
