@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ractengle{
+      width:150px;
+      height:150px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="ractengle"></div>
+
+  <script>
+    const nemo = document.querySelector('.ractengle');
+
+    nemo.addEventListener('click' , ()=>{
+      nemo.style.transform.rotateX(+160);
+    });
+  </script>
+</body>
+</html>
