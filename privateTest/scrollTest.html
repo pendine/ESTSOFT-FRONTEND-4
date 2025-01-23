@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: gray;
+    }
+    .scroll {
+      position: relative;
+      /* 자식 요소를 기준으로 배치 */
+      overflow-y: scroll;
+      /* 세로 스크롤 활성화 */
+      padding-right: 1rem;
+      /* 스크롤바 영역 확보 (스크롤바 너비) */
+      box-sizing: border-box;
+      /* 패딩이 영역에 포함되지 않도록 설정 */
+      height: 600px;
+    }
+
+    .scroll::-webkit-scrollbar {
+      width: 0.5rem;
+      /* 스크롤바 너비 */
+    }
+
+    .scroll::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      /* 스크롤바 핸들 색 (투명도 조절 가능) */
+      border-radius: 999px;
+      /* 둥근 모서리 */
+    }
+
+    .scroll::-webkit-scrollbar-track {
+      background-color: transparent;
+      /* 트랙은 완전히 투명하게 설정 */
+    }
+
+    .scroll .scroll-overlay {
+      content: '';
+      display:inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 1rem;
+      /* 스크롤바 영역 너비 */
+      height: 100%;
+      background-color: white;
+      /* 스크롤바 배경 (요소들과 같은 배경색) */
+      pointer-events: none;
+      /* 클릭 방지 */
+      z-index: 10;
+      /* 리스트 위에 보이도록 설정 */
+    }
+
+    .list-item {
+      border: 1px solid black;
+      /* 각 리스트 항목의 테두리 */
+      padding: 10px;
+      /* 내용물 여백 */
+      margin-bottom: 5px;
+      /* 항목 간격 */
+      background-color: white;
+      /* 항목 배경색 */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll">
+    <div class="scroll-overlay">
+    </div> <!-- 스크롤바 영역 위에 오버레이 -->
+      <div class="list-item">Item 1</div>
+      <div class="list-item">Item 2</div>
+      <div class="list-item">Item 3</div>
+      <div class="list-item">Item 4</div>
+      <div class="list-item">Item 5</div>
+  </div>
+</body>
+
+</html>
