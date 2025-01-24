@@ -1,5 +1,9 @@
 /*
 typescript의 모든 필기는 여기
+
+추상화
+
+
 타입스크립트 세팅
 준비물 : node.js
 npm i -g typescript
