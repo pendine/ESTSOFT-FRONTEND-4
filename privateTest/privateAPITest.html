@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .userTable{
+      display:none;
+
+      td{
+        border : 1px solid black;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button id="getUsers">click</button>
+
+  <div class="userTable">
+    <table class="users">
+      <tr class="tableHead">
+        <td>index</td>
+        <td>id</td>
+        <td>password</td>
+        <td>description</td>
+        <td>deleted</td>
+        <td>init_date</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    let btn = document.querySelector("#getUsers");
+    let table = document.querySelector(".users");
+    btn.addEventListener('click' , async () =>{
+      let response = await fetch("http://127.0.0.1:8080/test/AllUser");
+      let result = await response.json();
+      console.log(result);
+      // console.log(result.json());
+      
+      document.querySelector(".userTable").style.display = "block";
+
+      // table.removeChild( tableData );
+
+      result.forEach( data => {
+        console.log(data);
+
+        let row = `
+          <tr class='tableData'>
+            <td>${data.user_index}</td>
+            <td>${data.id}</td>
+            <td>${data.password}</td>
+            <td>${data.user_description}</td>
+            <td>${data.del_yn}</td>
+            <td>${data.init_date}</td>
+          </tr>
+        `
+        table.innerHTML+=row;
+      });
+    })
+  </script>
+</body>
+</html>

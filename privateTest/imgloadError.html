@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Error Handling Test</title>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.js"></script> -->
+  <link
+  href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+  <i class='bx bxs-image-alt'></i>
+  <h3>1️⃣ 이미지 태그가 아이콘으로 대체됨</h3>
+  <img src="잘못된_이미지_URL.jpg" 
+    alt=""
+    onerror="this.innerHTML='<i class=bx bxs-image-alt></i>'">
+  
+  <h3>2️⃣ 이미지 로드 실패 시 기본 이미지로 변경</h3>
+  <img src="잘못된_이미지_URL.jpg" 
+    alt="영화 포스터"
+    onerror="this.outerHTML='<i class=\'bx bxs-image-alt\'></i>'">
+</body>
+</html>
