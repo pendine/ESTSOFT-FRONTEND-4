@@ -1,0 +1,30 @@
+Redux
+react 라이브러리
+-여러 컴포넌트가 공유하는 상태를 관리하기위한 라이브러리
+-예측 가능, 일관된 방식으로 상태를 관리하는것이 특징
+
+redux 핵심원칙(특징)
+1. single source of truth (단일 진실 공급원)
+2. state is read-only (상태는 읽기전용)
+3. changes are made with pure functions (순수 함수로의 변경)
+
+redux 기본 구성요소
+1. 액션
+2. 액션 생성함수(Action Creator)
+3. 리듀서(Reducer)
+4. 스토어
+5. 디스패치
+6. 구독
+
+redux 설치
+npm install redux react-redux @reduxjs/toolkit
+
+
+redux를 사용하기 위해서는 Provider 컴포넌트 필요
+provider에 store props를 필수로 전달해야함
+
+
+redux toolkit
+  - toolkit이 없어도 redux구현 가능하나
+    toolkit이 있다면 편하게 redux 사용가능
+
