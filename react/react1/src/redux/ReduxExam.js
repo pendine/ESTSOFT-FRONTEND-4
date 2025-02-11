@@ -137,6 +137,9 @@ Redux 공식 상태 관리 도구 모음
 2. 유연하지못한 코드 -> 요구사항 변경시 어려워짐
 
 toolkit 핵심 기능
+toolkit 없이 redux구현 가능
+toolkit이 있다면 편하게 redux 사용 가능
+
 1. configureStore() : 스토어 설정 간소화
 - 개발환경 상태에서 상태 변이 검사 미들웨어 자동추가
 예시
@@ -219,9 +222,48 @@ const booksSlice = createSlice({
 6. createAsyncThunk : redux toolkit에서 제공하는
                       비동기 작업 처리 함수
 
+const fetchUser = createAsyncThunk(
+    'users/fetchUser',
+    async () => {
+      const response = await fetch('/api/users');
+      return response.json();
+    }
+  );
 
-toolkit 없이 redux구현 가능
-toolkit이 있다면 편하게 redux 사용 가능
+리듀서 처리(extraReducer처리)
+const slice = createSlice({
+    name: 'users',
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+      builder
+        .addCase(fetchUser.pending, (state) => {
+          state.loading = 'pending';
+        })
+        .addCase(fetchUser.fulfilled, (state, action) => {
+          state.loading = 'succeeded';
+          state.data = action.payload;
+        })
+        .addCase(fetchUser.rejected, (state) => {
+          state.loading = 'failed';
+        });
+    }
+  })[3]
+
+
+
+Redux 흐름 요약
+- 상태값을 전부 기억하기 어렵고
+어떻게 Redux를 접근해야할지 모르겠다면
+최소한 이 부분들이라도 기억해야함
+
+Store, Reducer, Action
+Action -> dispatch -> Reducer 호출 -> store 생성
+
+Subscribe (useSelector)
+- 스토어의 값 변경되면 호출되는 함수
+
+
 
 Redux와 비동기
 - 스토어는 기본적으로 동기적 작업 처리가 가능
@@ -248,6 +290,142 @@ Redux Thunk 사용 시기
 (비동기 로직 자체를 캡슐화 
   / Promis 기반 비동기 작업 처리시 용이)
 
+ -> 액션 객체가 아닌 함수를 디스패치 할수 있음.
 
+
+작동방식
+액션이 함수냐 객체냐에 따라 동작방식은 달라짐
+ -> 액션이 함수면 해당 함수 실행
+ -> 액션이 객체면 다음 리듀서로 전달.
+
+예시
+
+const asyncAction = createAsyncThunk(
+    'actionType',  // 액션 타입 문자열
+    async (payload, thunkAPI) => {  // 비동기 작업을 수행할 콜백 함수
+      try {
+        const response = await fetch('/api/data');
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+      }
+    }
+  );
+
+비동기 작업을 처리하기위한 표준방법.
+Promise의 세가지 상태에 따른 액션을 자동으로 생성.
+
+const slice = createSlice({
+    name: 'example',
+    initialState: {
+      data: null,
+      loading: false,
+      error: null
+    },
+    reducers: {},
+    extraReducers: (builder) => {
+      builder
+        .addCase(asyncAction.pending, (state) => {
+          state.loading = true;
+        })
+        .addCase(asyncAction.fulfilled, (state, action) => {
+          state.loading = false;
+          state.data = action.payload;
+        })
+        .addCase(asyncAction.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.error;
+        });
+    }
+  });
+
+function Component() {
+    const dispatch = useDispatch();
+    const { data, loading, error } = useSelector((state) => state.example);
   
+    useEffect(() => {
+      dispatch(asyncAction());
+    }, [dispatch]);
+  
+    if (loading) return <div>로딩 중...</div>;
+    if (error) return <div>에러 발생</div>;
+    
+    return <div>{data}</div>;
+  }
+
+REDUX와 렌덜이 성능 최적화
+성능최적화 방법
+1. 불필요한 리랜더링 방지
+  - useSelector를 사용할때 필요한 상태들만 정확하게 선택
+  - 여러 상태를 개별적으로 선택하여 사용
+  - 컴포넌트가 필요로 하는 상태 조각에만 붙도록 설정
+2. 메모제이션 활용하기
+  - useMemo, useCallback을 적재적소 활용
+3. 상태 구조 최적화
+  - 중첩 데이터 구조 지양
+  - 상태 최소 유지
+  - 정규화된 구조를 활용
+4. immer 활용
+  - 상태 업데이트 제공 라이브러리
+  - 중첩된 객체도 업데이트 가능하며 
+  상태 변경 관리를 담당
+const todoSlice = createSlice({
+  name: 'todo',
+  initialState: [],
+  reducers: {
+    add: (state, action) => {
+      state.push(action.payload);  // 직접 수정
+    },
+    remove: (state, action) => {
+      return state.filter(todo => todo.id !== action.payload);  // 새로운 상태 반환
+    }
+  }
+});
+5. 개발자 도구 활용
+  - redux Devtool을 사용한 성능 모니터링
+  - 컴포넌트 리랜더링 추적
+  - 병목현상 및 해결
+  - 패키지 설치 후 스토어 설정을 통해
+    react에서 디버깅 진행 가능
+
+
+// redux 미들웨어 : 액션이 dispatch되어 reducer에서 처리되기전에 사전작업을
+//                  처리할수 있도록 도와주는 중간자.
+// 1. 로깅 미들웨어 : npm install redux-logger
+// 2. 비동기 작업처리 : thunk 참고
+// 3. 상태 가공 : 미들웨어에서 액션이 리듀서에 도달하기전 데이터를 변형하거나 
+//                처리하는 과정
+//    장점 : 상태 변화를 캐치하는것이 어려웠던게 redux의 특징
+//          -> 상태가공을 활용함으로써 변화의 예측 가능성을 높일수 있음.
+//    -> 데이터 변형
+//       (액션과 리듀서 사이에서 데이터를 가공)
+//       (순수함수를 통한 상태 변경)
+//    상태가공과 데이터변형
+//     주의사항 : 데이터의 변형은 불변성을 지켜야한다.(원본에는 손 안댄다0)
+//      1. 배열의 변형 : 불변성 유지에 대해 신경을 쓸 필요가 있음.
+//          -> 새로운 항목을 추가시
+//          const newState = [...state, newItem];
+//          -> 삭제시 
+//          state.filter(item => item.id !== removeId);
+//          -> 수정시
+//          state.map(item => 
+//             item.id === targetId ? { ...item, value: newValue } : item
+//          );
+//      2. 객체의 변형 
+// const newState = { ...state, name: 'newName' };
+
+// 여러 속성 수정
+// const newState = { 
+//   ...state, 
+//   name: 'newName',
+//   age: 25 
+// };
+//      3. redux toolkit( 직접수정하는거 같은데 불변성은 유지.)
+//       -> 우리에게 가장 익숙한 방식.
+//       -> react 공식 권장 방법.
+
+//    -> 처리과정
+//       (액션의 정보를 가로채서 필요한 가공 작업 수행.)
+//       (특정 조건에따라 액션 수행여부 결정)
+//       (하나의 액션에서 여러 상태 변경 가능)
 */

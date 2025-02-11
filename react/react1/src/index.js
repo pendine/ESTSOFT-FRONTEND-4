@@ -24,8 +24,15 @@ import RoutingQuiz3 from './quizRouter3/App.js';
 import RoutingQuiz4 from './quizRouter4/App.js';
 
 import {Provider} from 'react-redux'
-import {store} from './redux/Store.js'
+// import {store} from './redux/Store.js'
+
 import Redux1 from './redux/Counter.js';
+import Redux2 from './reduxThunk/App.js';
+
+import ReduxQuiz2 from './reduxQuiz2/App.js';
+
+import {store} from './dataChange/store.js';
+import ReduxQuiz3 from './dataChange/App.js';
 
 // 훅전용 인덱스 파일
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -56,7 +63,10 @@ root.render(
 // store props 또한 필수적으로 전달해줄 필요가 있음
   <React.StrictMode>
     <Provider store={store} >
-      <Redux1 />
+      {/* <Redux1 /> */}
+      {/* <Redux2 /> */}
+      {/* <ReduxQuiz2 /> */}
+      <ReduxQuiz3 />
     </Provider>
   </React.StrictMode>
 );
