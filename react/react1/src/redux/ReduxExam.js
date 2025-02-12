@@ -389,43 +389,90 @@ const todoSlice = createSlice({
     react에서 디버깅 진행 가능
 
 
-// redux 미들웨어 : 액션이 dispatch되어 reducer에서 처리되기전에 사전작업을
-//                  처리할수 있도록 도와주는 중간자.
-// 1. 로깅 미들웨어 : npm install redux-logger
-// 2. 비동기 작업처리 : thunk 참고
-// 3. 상태 가공 : 미들웨어에서 액션이 리듀서에 도달하기전 데이터를 변형하거나 
-//                처리하는 과정
-//    장점 : 상태 변화를 캐치하는것이 어려웠던게 redux의 특징
-//          -> 상태가공을 활용함으로써 변화의 예측 가능성을 높일수 있음.
-//    -> 데이터 변형
-//       (액션과 리듀서 사이에서 데이터를 가공)
-//       (순수함수를 통한 상태 변경)
-//    상태가공과 데이터변형
-//     주의사항 : 데이터의 변형은 불변성을 지켜야한다.(원본에는 손 안댄다0)
-//      1. 배열의 변형 : 불변성 유지에 대해 신경을 쓸 필요가 있음.
-//          -> 새로운 항목을 추가시
-//          const newState = [...state, newItem];
-//          -> 삭제시 
-//          state.filter(item => item.id !== removeId);
-//          -> 수정시
-//          state.map(item => 
-//             item.id === targetId ? { ...item, value: newValue } : item
-//          );
-//      2. 객체의 변형 
-// const newState = { ...state, name: 'newName' };
+redux 미들웨어 : 액션이 dispatch되어 reducer에서 처리되기전에 사전작업을
+                 처리할수 있도록 도와주는 중간자.
+1. 로깅 미들웨어 : npm install redux-logger
+2. 비동기 작업처리 : thunk 참고
+3. 상태 가공 : 미들웨어에서 액션이 리듀서에 도달하기전 데이터를 변형하거나 
+               처리하는 과정
+   장점 : 상태 변화를 캐치하는것이 어려웠던게 redux의 특징
+         -> 상태가공을 활용함으로써 변화의 예측 가능성을 높일수 있음.
+   -> 데이터 변형
+      (액션과 리듀서 사이에서 데이터를 가공)
+      (순수함수를 통한 상태 변경)
+   상태가공과 데이터변형
+    주의사항 : 데이터의 변형은 불변성을 지켜야한다.(원본에는 손 안댄다0)
+     1. 배열의 변형 : 불변성 유지에 대해 신경을 쓸 필요가 있음.
+         -> 새로운 항목을 추가시
+         const newState = [...state, newItem];
+         -> 삭제시 
+         state.filter(item => item.id !== removeId);
+         -> 수정시
+         state.map(item => 
+            item.id === targetId ? { ...item, value: newValue } : item
+         );
+     2. 객체의 변형 
+const newState = { ...state, name: 'newName' };
 
-// 여러 속성 수정
-// const newState = { 
-//   ...state, 
-//   name: 'newName',
-//   age: 25 
-// };
-//      3. redux toolkit( 직접수정하는거 같은데 불변성은 유지.)
-//       -> 우리에게 가장 익숙한 방식.
-//       -> react 공식 권장 방법.
+여러 속성 수정
+const newState = { 
+  ...state, 
+  name: 'newName',
+  age: 25 
+};
+     3. redux toolkit( 직접수정하는거 같은데 불변성은 유지.)
+      -> 우리에게 가장 익숙한 방식.
+      -> react 공식 권장 방법.
 
-//    -> 처리과정
-//       (액션의 정보를 가로채서 필요한 가공 작업 수행.)
-//       (특정 조건에따라 액션 수행여부 결정)
-//       (하나의 액션에서 여러 상태 변경 가능)
+   -> 처리과정
+      (액션의 정보를 가로채서 필요한 가공 작업 수행.)
+      (특정 조건에따라 액션 수행여부 결정)
+      (하나의 액션에서 여러 상태 변경 가능)
+
+커스텀 미들웨어의 사용 예시
+1. 로깅
+2. 유효성 검사
+- 액션이 리듀서에 도착하기전 데이서의 유효성 검사
+
+store : dispatch, store의 메서드를 담고있는 객체 (getState)
+next : 그 다음에 실행할 미들웨어를 가리키는 객체
+아래와 같은 형태를 '커링 형태 함수' 라고 함
+커링 함수 : 파라미터를 나눠 받는 형태의 함수
+ - 경로 확장하거나 경로를 지시하고싶을때 사용
+
+function store(p1){
+  function next(p2){
+    function action(p3){
+      // 아래의 구조를 콜백으로 변경시
+    }
+  }
+}
+
+const validationMiddleware = store => next => action => {
+  // 액션 타입에 따른 유효성 검사
+  if (action.type === 'todos/addTodo') {
+    // 할 일 항목 유효성 검사
+    if (!action.payload || action.payload.trim().length < 2) {
+      console.warn('Todo 항목은 최소 2글자 이상이어야 합니다.');
+      return; // 유효하지 않은 경우 액션 중단
+    }
+  }
+  
+  // 유효성 검사 통과 시 다음 미들웨어로 전달
+  return next(action);
+};
+
+// 위의 코드 사용 예시
+import { configureStore } from '@reduxjs/toolkit';
+
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(validationMiddleware)
+});
+
+3. 로컬 스토리지
+4. 스토어에 미들웨어 적용시
+
+
 */

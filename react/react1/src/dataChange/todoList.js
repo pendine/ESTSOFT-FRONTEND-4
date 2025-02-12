@@ -39,9 +39,9 @@ function TodoList(){
             </form>
 
             <div>
-                <button onClick={() => dispatch(setFilter('all'))}></button>
-                <button onClick={() => dispatch(setFilter('active'))}></button>
-                <button onClick={() => dispatch(setFilter('completed'))}></button>
+                <button onClick={() => dispatch(setFilter('all'))}>전체</button>
+                <button onClick={() => dispatch(setFilter('active'))}>미완료일</button>
+                <button onClick={() => dispatch(setFilter('completed'))}>다끝난일</button>
             </div>
 
         {/*화면 랜더링*/}

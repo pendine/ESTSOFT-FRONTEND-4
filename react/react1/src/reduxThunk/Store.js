@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import postReducer from "./Slice.js";
-import {createLogger} from "react-logger";
+import {createLogger} from 'redux-logger';
 
 const logger = createLogger();
 

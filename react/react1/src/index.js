@@ -34,6 +34,8 @@ import ReduxQuiz2 from './reduxQuiz2/App.js';
 import {store} from './dataChange/store.js';
 import ReduxQuiz3 from './dataChange/App.js';
 
+import Form1 from './formNValidation/App.js';
+
 // 훅전용 인덱스 파일
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -61,12 +63,14 @@ root.render(
 // Redux를 사용할땐느 최상위 컴포넌트는
 // 반드시 Provider 컴포넌트에 감싸져야함
 // store props 또한 필수적으로 전달해줄 필요가 있음
-  <React.StrictMode>
-    <Provider store={store} >
-      {/* <Redux1 /> */}
-      {/* <Redux2 /> */}
-      {/* <ReduxQuiz2 /> */}
-      <ReduxQuiz3 />
-    </Provider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  //   <Provider store={store} >
+  //     {/* <Redux1 /> */}
+  //     {/* <Redux2 /> */}
+  //     {/* <ReduxQuiz2 /> */}
+  //     <ReduxQuiz3 />
+  //   </Provider>
+  // </React.StrictMode>
+
+  <Form1 />
 );
