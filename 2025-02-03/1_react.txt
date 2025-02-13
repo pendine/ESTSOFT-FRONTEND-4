@@ -84,7 +84,7 @@ npm install react@18.3.1 react-dom@18.3.1
    아래의 버전 설치는 전부 오류로그에서 확인 되는 요구 버전을 설치하는 명령어)
 2. npm install --save react@^18.0.0 react-dom@18.0.0
 3. npm install @testing-library/react@13.4.0
-
+4. npm i web-vitals --save-dev
 
 실행시 해당 프로젝트 폴더로 이동 후 npm start
 

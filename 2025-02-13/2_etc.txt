@@ -1,0 +1,12 @@
+서버단 : Django
+
+view : react
+
+웹개발에서 사용되는 기술스택
+
+chatUI 프로젝트 세팅
+
+npm config set legacy-peer-deps true
+npm install --legacy-peer-deps react-typing-animation
+npm i 
+npm i --save react-typing-animation
