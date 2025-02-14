@@ -56,9 +56,61 @@ const App = () =>{
     };
 
     //AI 타이핑이 종료됐을때 이 메서드를 실행.
-    const handleEndTyping = () =>{
+    const handleEndTyping = (id) =>{
+
+        // state를 활용하여 상태 업데이트를 진행.
+        // 메세지 관리
+        // id 값을 기준으로 (id를 파라미터로 받아와)
+        //  -> messages의 상태를 업데이트.
+        //  -> 상태 업데이트시에는 다음의 코드를 추가.
+        //  msg : 받아온 메세지에 대해 구분할때 map함수를 이용해서 msg 라는 단위로 나눔
+        // msg.id === id ? {...msg, isTyping:false} : msg
+
+
+        // currentTypingId값을 초기화.
+
+        //alert("handleEndTyping 실행");
+        setMessages((prevMessages) =>
+            prevMessages.map((msg) =>
+              msg.id === id ? { ...msg, isTyping: false } : msg
+            )
+          );
+        setCurrentTypingId(null);
 
     };
+
+    //useEffect는 렌더링 후에 부작용을 확인하기위해 쓰는 훅
+    // -> 렌더링후 사이드 이펙트를 실행하는 훅.
+    // side effect : 렌더링후 비동기로 처리할 부수적인 효과들
+    //  -> react 식 콜백모음.(모든작업이 끝난후 실행할수 있는 콜백모음집)
+    // 화면에 렌더링해줄거 다 해주고 실질적인 데이터는 비동기로 처리.
+    // 화면에 부를거 다 부르고 처리해야할거 같으면 추가해주면됨.
+    // 필요한 이유 : 순차적 실행이 필요할때.
+    //  -> currentTypingId가 null일수도 있잖음.
+    //  -> 조건을 만족하는 메세지를 찾아서 
+    //     다시 타이핑하도록 코드를 작성.
+    // 여기서는 이벤트 조정을 위해 사용했지만
+    // useEffect는 실행순서때문에 데이터 로딩이 안될경우 가장 많이 사용
+
+    // 아래의 예시는 이벤트와 effect를 분리하여 처리하는 case
+    useEffect(() =>{
+        // ai가 입력하는것처럼 이벤트 만들거임.
+        // ai가 입력하는이벤트는 모든 창에 적용인가?
+        // ->user가 입력한 내용은 바로 렌더링하고
+        // -> ai가 입력한 내용만 텍스트 효과를 부여
+
+        //ai가 어떻게 입력했느냐 아니냐를 구분할까???????
+        if(currentTypingId === null){ //
+            const nextTypingMessage = messages.find((msg) =>
+                !msg.isUser && msg.isTyping
+            );
+            if(nextTypingMessage){
+                setCurrentTypingId(nextTypingMessage.id);
+            }
+        }
+
+
+    }, [messages, currentTypingId]);
 
 
     return(
@@ -87,19 +139,28 @@ const App = () =>{
 
 
 };
-
-const MessageList = ({messages}) =>{
-    return(
+                  /*타이핑 애니메이션의 적용은 ai에만 적용되야함.
+                  구분을 하는 가장 편한방법 : 데이터비교 */
+const MessageList = ({messages, onEndTyping, currentTypingId}) =>{
+    return( 
         <div className='messages-list'>
-            {messages.map((message) =>(
-                <div className={message.isUser ? "user-message" : "ai-message"}>
-                  <Typing speed={100} onFinishedTyping={() => onEndTyping()}>
-                    <p>
-                        <b>{message.isUser ? "User" : "AI"}</b> : {message.text}
-                    </p>
+            {messages.map((message, index) =>
+               message.isTyping && message.id === currentTypingId ? (
+
+                  <Typing key={`typing-${message.id || index}`} speed={100} 
+                  onFinishedTyping={() => onEndTyping(message.id)}>
+                    
+                    <div className={message.isUser ? "user-message" : "ai-message"}>
+                        {message.text}
+                    </div>
                   </Typing>
-                </div>
-            ))}
+               ) : (
+                  <div key={`message-${message.id || index}`} 
+                  className={message.isUser ? "user-message" : "ai-message"}>
+                    {message.text}
+                  </div>
+                    )
+            )}
         </div>
     );
 };

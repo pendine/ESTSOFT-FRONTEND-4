@@ -5,8 +5,10 @@ import './index.css';
 // import reportWebVitals from './reportWebVitals';
 
 // import App from './quiz/0213quiz';
-import App from './chatUI/App.js';
+// import App from './chatUI/App.js';
 // import App from './chatUI/TypingExam.js';
+// import App from './chatUI/useEffectReview.js';
+import App from './conn/App.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
