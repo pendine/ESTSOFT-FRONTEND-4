@@ -8,7 +8,9 @@ import './index.css';
 // import App from './chatUI/App.js';
 // import App from './chatUI/TypingExam.js';
 // import App from './chatUI/useEffectReview.js';
-import App from './conn/App.js';
+// import App from './conn/App.js';
+// import App from './quiz/0217quiz.js';
+import App from './quiz/0217-2quiz.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
