@@ -1,0 +1,89 @@
+
+npm i -D eslint prettier eslint-plugin-react eslint-config-prettier eslint-plugin-prettier
+
+eslint : ESlint 코어 패키지
+prettier : prettier 코어 패키지
+eslint-plugin-react : react 지원 플러그인
+eslint-config-prettier : ESLint와 Prettier가 충돌이 있어서
+                         충돌 방지를 위해 나온 패키지
+eslint-plugin-prettier : 두 패키지가 규칙이 달라,
+                         ESLint 규칙에 맞추기 위한 패키지
+eslint-plugin-react-hook : Hook 사용을 강제
+
+
+2. 프로젝트 루트 경로에 설정파일을 생성하여 내용 추가
+.eslintrc.json
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "react"
+  ]
+}
+
+.prettierrc
+{
+  "semi": false,
+  "singleQuote": true,
+  "singleAttributePerLine": true,
+  "bracketSameLine": true,
+  "endOfLine": "lf",
+  "trailingComma": "none",
+  "arrowParens": "avoid"
+}
+
+vscode : shift + ctrl + p
+로 settings.json에 아래의 내용 추가
+    "[javascript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      },
+      "[scss]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      } ,
+
+vite.config.js : 파일 수정
+alias 를 통해 경로이름을 약칭으로 치환하여 사용하는것이 가능
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: [
+      { find: '@', replacement: '/src' },
+      { find: 'node_modules', replacement: '/node_modules' }
+    ]
+  }
+})
+
+
+개발자도구 : 성능 문제를 진단, 해결 도구
+
+react 기반 프로젝트의 일반적인 성능 저하 원인
+1. 불필요한 렌더링
+2. 메모리 누수
+3. 비효율적인 함수 컴포넌트 작성
+
+react가 제시하는 해결 방안
+1. 조건부 렌더링
+2. 메모이제이션 : 복잡한 함수 호출의 결과값을 저장한 후
+- 같은 입력 반복시 저장한 값을 바로 호출하도록 처리하는 기술
+3. useCallback과 useMemo 훅을 통해 리렌더링 방지
+- 일부의 경우는 복잡한 객체나 배열, 함수를 props로 전달할 수 있음
+이러한 속성이 매 렌더링시마다 변경되면 해당 속성의 하위 컴포넌트들도
+불필요한 렌더링이 진행될 수 있음
