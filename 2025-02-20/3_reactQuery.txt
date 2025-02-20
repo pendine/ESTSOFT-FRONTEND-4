@@ -1,0 +1,41 @@
+react-query
+서버의 값을 클라이언트에 가져오거나 캐싱, 값 업데이트, 에러핸들링등
+비동기 과정을 더욱 편하게 하는데 사용하는 개념
+- fetch , axios랑 비슷하거나 혹은 hook으로 할수 있는게 아닌가
+
+react 의 state는 store를 통해서 관리하는것이 일반적
+- store는 클라이언트의 상태를 유지해야함
+- store의 약점중 하나는 클라이언트의 데이터와 서버의 데이터가 공존하는 현상이 발생
+(client 데이터 : 로컬에서 직접 다루는 데이터
+server 데이터 : 서버에서 넘어오는 데이터)
+- 다루다보면 server 데이터와 client 데이터가 혼재
+  -> 서버에는 이미 저장된 데이터가 있으나
+     화면에는 저장되기전 데이터가 사용될 수 있음
+- react-query는 서버와 클라이언트의 데이터를 분리하는것부터 시작
+
+react-query는 FE개발자가 구현하기 귀찮은 일도 수행함
+- 받아온 데이터(get 한 데이터를 update시 자동으로 get 수행)
+- 데이터가 오래됐다 판단되면 다시 get
+- 중복 호출 허용시간 조절 
+  / 동일데이터가 여러번의 요청이 들어오면 1번만 수행
+- 무한 스크롤 만들기
+- 구조상으로 hooks과 매우 유사
+
+react query 역사
+- 시작 이름은 react-query
+- react에서 시작했으나 다른 라이브러리(프레임워크)인
+  vue, svelte에서도 활용 가능토록 확장
+- TanStack Query 라는 이름으로 변경
+
+react-query 설치
+// npm i @tanstack/react-query
+// yarn add @tanstack/react-query-devtools
+npm i @tanstack/react-query-devtools
+
+ESlint 플러그인 추가 설치
+npm i -D @tanstack/eslint-plugin-query
+
+.eslintrc.json 파일
+extends 에 아래의 내용 추가
+"plugin:@tanstack/eslint-plugin-query/recommended"
+

@@ -1,0 +1,82 @@
+useMemo, useCallback
+useMemo : 불필요한 재계산을 방지하기위한 hooks
+- 이전에 계산해둔 값을 적어두는 개념
+useCallback : 함수의 메모이제이션
+
+대상 주체가 값인지, 함수인지만 고민하면 사용법은 같음
+
+memo : 값
+callback : 함수
+
+
+useMemo 훅의 예제를 보여줄때, 
+카운트 따로, 메모이제이션한 값 따로 보여주는데,
+메모이제이션을 사용 안하면 '리렌더링'할때 값을 재계산해서 
+보여줘야 하기 때문에 콘솔에도 찍어서 보여주는 것 임.
+
+"
+useMemo는 리렌더링 자체를 막아주는 것이 아니라, 
+리렌더링 시에도 불필요한 계산을 방지하는 역할
+"
+
+useMemo 예제 (값 메모이제이션)
+아래 예제에서는 useMemo를 사용하여 비싼 연산을 메모이제이션하고,
+값이 바뀔 때만 다시 계산되도록 한다.
+import React, { useState, useMemo } from "react";
+
+function ExpensiveComponent({ num }) {
+  // 값이 바뀔 때만 실행
+  const squaredValue = useMemo(() => {
+    console.log("🎯 무거운 계산 수행 중...");
+    return num * num;
+  }, [num]);
+
+  return <p>제곱값: {squaredValue}</p>;
+}
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const [num, setNum] = useState(2);
+
+  return (
+    <div>
+      <h2>useMemo 예제</h2>
+      <button onClick={() => setCount(count + 1)}>카운트 증가: {count}</button>
+      <button onClick={() => setNum(num + 1)}>숫자 변경: {num}</button>
+      <ExpensiveComponent num={num} />
+    </div>
+  );
+}
+✅ count를 변경해도 num * num 연산이 다시 실행되지 않는다. 
+(num이 바뀔 때만 재계산)
+
+--------------------------------------------------------
+📌 useCallback 예제 (함수 메모이제이션)
+아래 예제에서는 useCallback을 사용하여 불필요한 함수 재생성을 방지한다.
+
+import React, { useState, useCallback } from "react";
+
+function Child({ onClick }) {
+  console.log("🔄 자식 컴포넌트 렌더링됨");
+  return <button onClick={onClick}>클릭!</button>;
+}
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  // useCallback으로 함수 메모이제이션
+  const handleClick = useCallback(() => {
+    console.log("버튼 클릭!");
+  }, []);
+
+  return (
+    <div>
+      <h2>useCallback 예제</h2>
+      <button onClick={() => setCount(count + 1)}>카운트 증가: {count}</button>
+      <Child onClick={handleClick} />
+    </div>
+  );
+}
+✅ handleClick 함수가 useCallback으로 감싸져 있으므로, 
+count가 변경될 때도 Child 컴포넌트가 불필요하게 리렌더링되지 않는다.
+
