@@ -1,19 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import UseRef from './useReftest/useRef.js';
-import reportWebVitals from './reportWebVitals';
-import Form from './useReftest/Form.js';
-import InsertFormTest from './useReftest/TestForm.js';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import UseRef from "./useRefTest/useRef.js";
+import reportWebVitals from "./reportWebVitals";
+import Form from "./useRefTest/Form.js";
+import InsertFormTest from "./useRefTest/TestForm.js";
+import Parent from "./useContext/Parents.js";
+import CustomApp from "./CustomHooks/App.js";
+import Prac from "./aHooksTotal/App.js";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <UseRef /> */}
     {/* <Form /> */}
-    <InsertFormTest />
+    {/* <InsertFormTest /> */}
+    {/* <Parent inheritance={[{ id: 1, property: "대저택" }]} /> */}
+    {/* <CustomApp /> */}
+    <Prac />
   </React.StrictMode>
 );
 

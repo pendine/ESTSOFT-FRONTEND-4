@@ -1,0 +1,59 @@
+🎯 Context.Provider는 어떻게 동작할까?
+useContext와 Provider의 개념은 알겠지만,
+
+javascript
+
+<AContext.Provider value={value}>
+이렇게 .Provider를 붙이는 이유는?
+
+----------------------------------------------------------------
+🛠 1️⃣ createContext()가 반환하는 것은 객체(Object)
+
+const AContext = createContext();
+console.log(AContext);
+
+{
+  Provider: React.Provider,  // ✅ .Provider: 데이터를 제공하는 역할
+  Consumer: React.Consumer,  // ❌ .Consumer (옛날 방식, 지금은 거의 안 씀)
+  $$typeof: Symbol(react.context),
+  _currentValue: undefined,
+  ...
+}
+AContext는 일반적인 객체(Object)
+이 객체 안에 .Provider와 .Consumer라는 속성이 포함돼 있음
+----------------------------------------------------------------
+🚀 2️⃣ AContext.Provider는 "데이터를 제공하는 역할"
+우리가 Provider를 선언할 때 이렇게 쓰지?
+<AContext.Provider value={value}>
+  {children}
+</AContext.Provider>
+이건 AContext 객체 안에 있는 Provider 속성을 가져와서 JSX 요소처럼 사용한 거야.
+즉, "이 Provider가 감싸고 있는 컴포넌트들에게 value 값을 전달하겠다!" 라는 의미
+
+🔹 AContext.Provider는 특별한 React 컴포넌트!
+
+const AContext = createContext(); // AContext는 일반 객체
+
+const AContext.Provider = (props) => { 
+  /* React 내부에서 제공하는 Provider 컴포넌트 */
+};
+이렇게 생각
+AContext.Provider는 React에서 제공하는 특정한 컴포넌트
+----------------------------------------------------------------
+🎨 3️⃣ value 속성은 "공유할 데이터"
+<AContext.Provider value={myData}>
+여기서 value 속성에 넣은 값은 useContext(AContext)를 호출하는 모든 하위 컴포넌트에서 접근 가능
+Provider는 "value를 저장하는 컨테이너" 역할
+
+✔ 예제:
+
+<AContext.Provider value={{ user: "Alice" }}>
+  <Child />
+</AContext.Provider>
+→ Child 컴포넌트에서는 useContext(AContext)로 { user: "Alice" }를 가져올 수 있음.
+----------------------------------------------------------------
+🔥 정리
+1️⃣ createContext()를 호출하면 일반 객체가 반환됨.
+→ 이 객체 안에는 .Provider와 .Consumer 속성이 있음.
+2️⃣ AContext.Provider는 React 컴포넌트로 동작하며, value 값을 하위 컴포넌트들에게 공유함.
+3️⃣ value 속성에 전달한 값은 useContext(AContext)를 호출하는 하위 컴포넌트에서 사용할 수 있음.
