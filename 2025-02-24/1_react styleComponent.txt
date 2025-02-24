@@ -1,0 +1,43 @@
+스타일 컴포넌트
+
+스타일 컴포넌트 만들기
+const 컴포넌트명 = styled.태그명` 
+        css 
+`
+
+styled 사용시
+npm install styled-components 
+설치 필요
+
+shouldForwardProp
+
+스타일 컴포넌트에서 동적 스타일링 처리시 props의 경우
+이를 컴포넌트에 전달하지 않도록 설정이 필요한 경우가 있음
+- react는 기본적으로 모든 props를 dom요소에 전달하려 해서
+아래의 코드는 특정 props를 dom에 전달하지 않도록 처리하는 방법
+export const ProductCardWrapper = styled.article.withConfig({
+  shouldForwardProp: prop => prop !== '$isNew'
+})`
+
+
+특징
+1. 변수에 의해 스타일을 변경할 수 있음
+2. react의 개념도 영향을 받음 (props에 따라 스타일 변경 가능)
+
+일반 CSS vs 스타일 컴포넌트
+- 일반 CSS의 약점 중 하나는 class명의 충돌이 있음
+- 스타일컴포넌트의 최고 장점은 컴포넌트 단위로만 구현한다는점
+(CSS는 지역 개념이 없음 => 스타일 컴포넌트를 통해 자동지역을 구현)
+- 특히나 대규모 프로젝트에서 스타일 컴포넌트덕에 CSS 충돌 발생률이 매우 크게 ㅈ감소
+- SCSS에서나 가능한 반응형, 동적 스타일링을 제공
+- 성능은 일반 CSS가 15%가량 빠름
+- 스타일 컴포넌트가 성능은 별로지만 전체적인 번들(패키지)의 크기는 매우 크게 줄일 수 있음
+- ThemePrivider를 활용하면 전역형 컴포넌트의 활용도 가능
+- 스타일 컴포넌트는 개발자 경험을 향상시키는 라이브러리
+- 유지보수성에서도 스타일 컴포넌트가 우월
+(미사용 컴포넌트를 삭제할 경우 연관된 스타일을 자동 제거)
+
+sass 사용시 설치 필요.
+npm install -D sass-embedded
+
+
