@@ -1,0 +1,16 @@
+Redux 아키텍처 심층 분석
+- Redux의 컨셉중 하나는 엄격한 역할 분리를 통해 상태 변경 프로세스를 제어
+- Redux에는 DevTools 확장을 통해 일명 시간여행 디버깅이라는것이 가능
+- TS를 활용하면 타입 안정성 보장을 위해 인터에피스를 활용하여 구현하는것도 가능
+
+Redux와 미들웨어
+- 액션의 dispatch과정을 가로채 비동기 작업을 수행하려는 목적
+  (Thunk)
+- 메모이제이션을 활용하여 최적화를 진행할 수 있음
+  (CreateSelector)
+
+
+
+createSlice 
+리듀서 등록
+reducers (동기액션) : extraReducers (비동기 액션)

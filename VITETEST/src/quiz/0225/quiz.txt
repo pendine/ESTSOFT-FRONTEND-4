@@ -1,0 +1,18 @@
+퀴즈 1: 기본 스토어 구성
+요구사항
+
+quiz 상태 객체 구조:
+
+currentQuestionIndex: 현재 질문 번호 (0부터 시작)
+
+questions: 퀴즈 질문 배열
+
+answers: 사용자 답변 배열
+
+score: 총 점수
+
+리듀서 기능 요구사항:
+
+NEXT_QUESTION: 다음 질문으로 이동 (최대 질문 개수 초과 불가)
+
+SUBMIT_ANSWER: 답변 저장 및 점수 계산

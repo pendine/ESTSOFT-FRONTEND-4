@@ -15,7 +15,11 @@ import './index.css'
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 // import App from './StyleComponent/VarCss'
 // import App from './project1/App'
-import App from './Redux/ReduxExam'
+// import App from './Redux/ReduxExam'
+// import App from './Redux2/App'
+import { Provider } from 'react-redux'
+import App from './middleware/project/BookList'
+import store from './middleware/project/store'
 
 // const queryClient = new QueryClient()
 
@@ -25,6 +29,10 @@ createRoot(document.getElementById('root')).render(
       <ReactQueryDevtools initialIsOpen={true} />
       <App />
       </QueryClientProvider> */}
-    <App />
+    {/* <App /> */}
+
+    <Provider store={store}>
+      <App />
+    </Provider>
   </StrictMode>
 )

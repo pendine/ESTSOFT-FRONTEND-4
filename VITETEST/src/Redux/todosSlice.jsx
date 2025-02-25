@@ -8,10 +8,16 @@ const todosSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       state.push(action.payload)
+    },
+    toggleTodo: (state, action) => {
+      const todo = state.find(todo => todo.id === action.payload)
+      if (todo) {
+        todo.completed = !todo.completed
+      }
     }
   }
 })
 // 액션 생성자 내보내기
-export const { addTodo } = todosSlice.actions
+export const { addTodo, toggleTodo } = todosSlice.actions
 // 리듀서 내보내기
 export default todosSlice.reducer

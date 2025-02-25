@@ -1,0 +1,11 @@
+createSlice의 reducer 뿐만이 아니라
+extraReducers 라는 것도 있음
+
+extraReducers 또한 reducers에 포함되는 요소라서
+export 할때 
+export default slice.reducer 로 취급 가능
+
+🔹 왜 bookSlice.reducer인가?
+createSlice는 단일 reducer 객체를 생성합니다.
+reducers는 동기 액션을 정의하는 부분이며, 자체적으로 export하지 않습니다.
+extraReducers는 비동기 액션을 처리하는 부분이지만, bookSlice.reducer에 포함되어 export됩니다.

@@ -1,0 +1,316 @@
+createSlice
+
+Redux Toolkit에서 createSlice 이해하기
+Redux는 상태 관리를 위한 라이브러리로, 
+보통 Reducer를 통해 상태를 업데이트합니다. 
+Redux Toolkit에서는 createSlice를 사용하면 
+리듀서를 간단하게 정의하고 액션까지 자동으로 생성할 수 있습니다.
+-------------------------------------------------------
+
+import { createSlice } from '@reduxjs/toolkit'
+const todosSlice = createSlice({
+  name: 'todos',
+  initialState: [],
+  reducers: {
+    addTodo: (state, action) => {
+      state.push(action.payload)
+    },
+    toggleTodo: (state, action) => {
+      const todo = state.find(todo => todo.id === action.payload)
+      if (todo) {
+        todo.completed = !todo.completed
+      }
+    }
+  }
+})
+
+state.push(action.payload)는 뭘까?
+이 부분을 이해하려면 state가 무엇인지 먼저 파악해야 해요.
+
+initialState: []
+
+처음 상태는 빈 배열이에요. 즉, todos 리스트를 관리하는 상태입니다.
+addTodo: (state, action) => { state.push(action.payload) }
+=> 빈 객체를 초기값을 설정한다면 initialState : {} 로 하면됨.
+
+이 리듀서는 새로운 할 일을 state 배열에 추가합니다.
+action.payload는 새로운 할 일 객체입니다.
+Redux Toolkit은 immer.js를 내부적으로 사용하므로,
+직접 state.push()를 해도 안전하게 변경됩니다.
+(원래 Redux에서는 불변성을 유지해야 해서 
+  state = [...state, action.payload] 같은 방식이 필요했음.)
+✔ 즉, state.push(action.payload)는 
+state(배열)에 새 할 일 객체를 추가하는 코드!
+-------------------------------------------------------
+
+action.payload는 뭘까?
+
+Redux에서 액션은 { type: "ACTION_TYPE", payload: 값 } 형태로 전달됩니다.
+
+예를 들어, 
+addTodo({ id: 1, text: "Redux 배우기", completed: false })를 실행하면:
+
+js
+{
+  type: "todos/addTodo",
+  payload: { id: 1, text: "Redux 배우기", completed: false }
+}
+
+이렇게 payload에 새로운 할 일 데이터가 들어가요.
+-------------------------------------------------------
+
+todosSlice.actions는 왜 필요한가?
+
+createSlice를 사용하면 reducers에서 
+정의한 함수들에 대한 액션 생성자도 자동으로 만들어줘요.
+
+js
+export const { addTodo, toggleTodo } = todosSlice.actions;
+이렇게 하면 addTodo(payload)를 호출하면
+자동으로 { type: "todos/addTodo", payload } 액션이 생성됩니다.
+
+✔ 즉, todosSlice.actions는 reducers에서 
+정의한 함수들에 대한 액션을 자동 생성해주는 객체!
+
+-------------------------------------------------------
+
+결론
+state.push(action.payload)
+
+state가 배열이므로, 새로운 데이터를 추가하는 코드.
+action.payload
+
+액션을 실행할 때 전달된 데이터.
+todosSlice.actions
+
+createSlice가 자동 생성한 액션 생성자 모음.
+Redux는 상태를 직접 수정하면 안 되지만, 
+Redux Toolkit에서는 immer.js를 사용해서 
+state.push()처럼 직접 조작하는 코드도 안전하게 사용할 수 있어요.
+
+이제 addTodo({ id: 1, text: "리덕스 배우기" })를 호출하면
+상태가 이렇게 변할 거예요:
+
+js
+[
+  { id: 1, text: "리덕스 배우기", completed: false }
+]
+이제 좀 감이 잡히나요? 😃
+
+=====================================================
+=====================================================
+
+store
+캡쳐링과 버블링으로 인한 리렌더링을
+스토어를 활용함으로써 해당 컴포넌트만 리렌더링함으로
+불필요한 리렌더링을 줄일 수 있음
+
+📌 Redux에서 store란?
+store는 Redux에서 애플리케이션의 전체 상태(state) 를 관리하는 중앙 저장소 역할을 합니다.
+React의 useState가 컴포넌트별 상태 를 관리한다면, Redux의 store는 전역 상태 를 관리합니다.
+-------------------------------------------------------
+
+✅ store의 역할
+상태(State) 저장 → 애플리케이션 전체의 상태를 store에 저장
+상태 변경 요청(Dispatching Actions) → 상태를 변경하려면 반드시 dispatch(action)을 호출해야 함
+구독(Subscribe) → 상태가 변경될 때 자동으로 UI를 업데이트
+
+-------------------------------------------------------
+
+store를 만드는 과정
+store는 configureStore를 사용하여 생성할 수 있어요.
+
+🔹 1️⃣ Redux 설치 (이미 설치했다면 생략 가능)
+npm install @reduxjs/toolkit react-redux
+🔹 2️⃣ store.js 파일 생성 및 설정
+import { configureStore } from '@reduxjs/toolkit';
+import todosReducer from './todosSlice'; // 우리가 만든 slice 가져오기
+
+const store = configureStore({
+  reducer: {
+    todos: todosReducer, // 여러 개의 slice를 등록 가능
+  }
+});
+
+export default store;
+✔ configureStore는 여러 개의 리듀서를 등록할 수 있으며, Redux DevTools도 자동으로 활성화됩니다.
+-------------------------------------------------------
+📌 store를 React 앱에 적용하는 과정
+🔹 3️⃣ Provider를 사용하여 store 연결하기
+store를 React 앱에서 사용하려면 Provider로 감싸야 해요.
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import store from './store'; // 우리가 만든 store 가져오기
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+✔ Provider는 store를 하위 컴포넌트에서 사용할 수 있도록 해주는 역할을 합니다.
+-------------------------------------------------------
+
+📌 store에 접근하고 상태 변경하는 방법
+🔹 4️⃣ useSelector로 store 상태 가져오기
+컴포넌트에서 store에 저장된 데이터를 가져오려면 useSelector를 사용합니다.
+
+import { useSelector } from 'react-redux';
+
+const TodoList = () => {
+  const todos = useSelector(state => state.todos); // todos 상태 가져오기
+
+  return (
+    <ul>
+      {todos.map(todo => (
+        <li key={todo.id}>{todo.text}</li>
+      ))}
+    </ul>
+  );
+};
+✔ useSelector를 사용하면 store의 상태를 읽을 수 있습니다.
+-------------------------------------------------------
+
+🔹 5️⃣ useDispatch로 상태 변경하기
+Redux 상태를 변경하려면 useDispatch를 사용해서 액션을 dispatch해야 합니다.
+
+import { useDispatch } from 'react-redux';
+import { addTodo } from './todosSlice';
+
+const AddTodo = () => {
+  const dispatch = useDispatch();
+
+  const handleAddTodo = () => {
+    dispatch(addTodo({ id: Date.now(), text: '새로운 할 일', completed: false }));
+  };
+
+  return (
+    <button onClick={handleAddTodo}>할 일 추가</button>
+  );
+};
+✔ dispatch(addTodo(...))를 호출하면 리듀서가 실행되고 store의 상태가 변경됩니다.
+-------------------------------------------------------
+
+🔥 store의 동작 과정 한눈에 보기
+Provider로 store를 감싸 애플리케이션에 Redux를 적용
+useSelector로 store의 상태를 가져와서 화면에 표시
+useDispatch로 액션을 실행하여 store의 상태 변경
+상태가 변경되면 useSelector를 사용한 컴포넌트가 자동으로 다시 렌더링
+-------------------------------------------------------
+🎯 결론
+store는 Redux의 중앙 상태 관리소
+configureStore로 생성
+Provider로 React 앱에 연결
+useSelector로 상태 조회
+useDispatch로 상태 변경
+이제 Redux store가 어떻게 동작하는지 이해됐나요? 😃
+
+===========================================================
+✅ store와 createSlice의 관계
+store는 Redux 전체 상태를 관리하는 중앙 저장소이고,
+createSlice는 특정 상태 조각(slice)과 리듀서를 정의하는 도구입니다.
+
+Redux에서 createSlice를 사용하면, 
+해당 slice는 자동으로 store에 포함되며,
+store에서 직접 상태를 관리합니다.
+-------------------------------------------------------
+
+🎯 store와 createSlice의 상태 흐름
+📌 store는 createSlice의 상태를 저장하고 유지합니다.
+✔️ 한 번 store에 저장된 상태는 컴포넌트를 다시 로드해도 유지됩니다.
+✔️ 컴포넌트는 store에서 상태를 직접 가져와 사용합니다.
+✔️ Redux의 상태는 createSlice 내부에서 관리되며, store에서 따로 가져와 넣어주는 과정이 없습니다.
+
+즉, 컴포넌트가 로드될 때마다 store에서 값을 꺼내는 것처럼 보일 수 있지만, 
+실제로는 store가 상태를 유지하고 있으며, 
+useSelector를 통해 현재 상태를 조회하는 것입니다.
+
+-------------------------------------------------------
+✅ 예제로 이해하기
+🔹 1️⃣ store.js (Redux store 설정)
+import { configureStore } from '@reduxjs/toolkit';
+import todosReducer from './todosSlice';
+
+const store = configureStore({
+  reducer: {
+    todos: todosReducer,
+  }
+});
+
+export default store;
+✔ configureStore를 사용하면 
+todosSlice에서 만든 reducer가 
+store에 자동으로 등록됩니다.
+
+-------------------------------------------------------
+🔹 2️⃣ todosSlice.js (Slice 정의)
+import { createSlice } from '@reduxjs/toolkit';
+
+const todosSlice = createSlice({
+  name: 'todos',
+  initialState: [],  // 상태의 초기값
+  reducers: {
+    addTodo: (state, action) => {
+      state.push(action.payload);
+    }
+  }
+});
+
+// 액션 및 리듀서 내보내기
+export const { addTodo } = todosSlice.actions;
+export default todosSlice.reducer;
+✔ initialState: []를 정의하면, store는 todos 상태를 빈 배열로 시작합니다.
+✔ 상태를 업데이트하는 로직을 reducers에 정의하면 store가 이를 관리합니다.
+
+-------------------------------------------------------
+🔹 3️⃣ App.js (컴포넌트에서 store 활용)
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodo } from './todosSlice';
+
+const App = () => {
+  // store에서 상태 가져오기
+  const todos = useSelector(state => state.todos); 
+  const dispatch = useDispatch();
+
+  const handleAddTodo = () => {
+    dispatch(addTodo({ id: Date.now(), text: '새로운 할 일', completed: false }));
+  };
+
+  return (
+    <div>
+      <button onClick={handleAddTodo}>할 일 추가</button>
+      <ul>
+        {todos.map(todo => (
+          <li key={todo.id}>{todo.text}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
+✔ useSelector를 사용해 store.todos 값을 가져옵니다.
+✔ dispatch(addTodo(...))를 호출하면 store의 상태가 변경됩니다.
+✔ 상태가 변경되면, useSelector를 사용한 컴포넌트가 자동으로 다시 렌더링됩니다.
+
+-------------------------------------------------------
+🚀 결론
+createSlice는 상태(initialState)와 
+이를 변경하는 리듀서(reducers)를 정의하는 역할.
+store는 애플리케이션의 모든 상태를 저장하고 관리.
+store는 createSlice의 상태를 직접 보관하므로, 
+컴포넌트가 새로 로드될 때마다 
+매번 상태를 새로 불러와 저장하는 것이 아니라,
+store가 상태를 유지하고 필요할 때 조회.
+useSelector를 사용하면 현재 store에 저장된 상태를 가져올 수 있음.
+dispatch(action)을 호출하면 store의 상태가 업데이트되고, 
+관련된 컴포넌트가 자동으로 다시 렌더링됨.
+✔ 즉, store는 Redux의 상태를 저장하고 유지하는 역할을 하고,
+  createSlice는 그 상태를 정의하고 변경하는 역할을 합니다.
+✔ 컴포넌트는 store에서 직접 상태를 가져와 활용하며,
+  상태 변경 시 store가 자동으로 관리합니다.
+
+이제 store와 createSlice의 관계가 좀 더 명확해졌나요? 😃

@@ -1,0 +1,30 @@
+{
+  "books": {
+    "items": [
+      {
+        "id": 1,
+        "title": "Redux in Action",
+        "price": 35
+      },
+      {
+        "id": 2,
+        "title": "React Design Patterns",
+        "price": 42
+      }
+    ],
+    "status": "idle"
+  },
+  "cart": {
+    "items": [
+      {
+        "id": 1,
+        "quantity": 2
+      },
+      {
+        "id": 3,
+        "quantity": 1
+      }
+    ]
+  },
+  "error": null
+}
