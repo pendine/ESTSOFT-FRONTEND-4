@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 // import App from './App.jsx'
@@ -17,22 +16,32 @@ import './index.css'
 // import App from './project1/App'
 // import App from './Redux/ReduxExam'
 // import App from './Redux2/App'
-import { Provider } from 'react-redux'
-import App from './middleware/project/BookList'
-import store from './middleware/project/store'
+// import { Provider } from 'react-redux'
+// import App from './middleware/project/BookList'
+// import store from './middleware/project/store'
+
+// import App from './Recoil2/App'
+// import App from './Recoil3/App'
+// import App from './atomFamilly/App'
+import { StrictMode } from 'react'
+// import App from './zustandExam/ZutandExam'
+// import App from './zustandExam/Exam2'
+import App from './zustandExam2/ProductList'
 
 // const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={true} />
-      <App />
-      </QueryClientProvider> */}
+    {/* <QueryClientProvider client={queryClient}> */}
+    {/* // <ReactQueryDevtools initialIsOpen={true} /> */}
+    {/* // <App /> */}
+    {/* </QueryClientProvider> */}
+    <App />
+    {/* <Provider store={store}> */}
     {/* <App /> */}
-
-    <Provider store={store}>
-      <App />
-    </Provider>
+    {/* </Provider> */}
   </StrictMode>
+  // <RecoilRoot>
+  //   <App />
+  // </RecoilRoot>
 )

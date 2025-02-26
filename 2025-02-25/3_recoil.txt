@@ -5,3 +5,4 @@ ts환경이면 npm install @types/recoil --save-dev
 
 npm install react@latest react-dom@latest recoil@latest
 
+상태관리를 원활하게 하기위한 라이브러리

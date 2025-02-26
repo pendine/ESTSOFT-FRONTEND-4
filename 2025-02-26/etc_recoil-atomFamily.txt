@@ -1,0 +1,73 @@
+참조
+https://velog.io/@2ast/React-Recoil%EC%9D%98-atomFamily%EC%99%80-selectorFamily-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0
+
+에러 발생
+recoil.js?v=85458e1e:359 Uncaught TypeError: Cannot destructure property 'ReactCurrentDispatcher' of 'import_react.default.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED' as it is undefined.
+    at currentRendererSupportsUseSyncExternalStore (recoil.js?v=85458e1e:359:5)
+    at useRecoilValueLoadable (recoil.js?v=85458e1e:3390:26)
+    at useRecoilValue (recoil.js?v=85458e1e:3400:20)
+    at useRecoilState (recoil.js?v=85458e1e:3425:11)
+    at UserList (App.jsx:12:5)
+해결 방법
+내 프로젝트 구조에서 문제발생
+루트 경로에 react있고
+하위 폴더에 각각의 react 프로젝트 폴더 만들어놓고
+하위 폴더에 개별로 react 설치하다보니
+버전이 틀어졌음
+루트 경로의 react관련 파일 삭제하니 해결
+
+
+atomFamily
+동일한 동작을 하지만 다른 파라미터 값을 갖고있다면
+atomFamily를 사용하면됨.
+
+예 ->
+A 컴포넌트에서 랜덤한 값을 갖고와야하고
+B 컴포넌트에서도 랜덤한 값을 갖고와야한다면
+atomFamily를 사용하여 랜덤한값을 제공해줄수있다.
+이때 사용하는 키값이 동일하다면,
+A컴포넌트와 B컴포넌트가 동일한 랜덤값을 갖고
+서로 다르다면 A컴포넌트와 B컴포넌트가 다른 랜덤값을 갖는다.
+
+//store.js
+export const sampleState = atomFamily({
+  key: "sampleState",
+  default: "sample",
+});
+
+//AComponent.js
+const AComponent = () => {
+  const [sample, setSample] = useRecoilState(sampleState("same"));
+
+  return (
+    <div>
+      {sample}
+      <button onClick={() => setSample(Math.random())}>A에서 바꾸기</button>
+    </div>
+  );
+};
+export default AComponent;
+
+//BComponent.js
+const BComponent = () => {
+  const [sample, setSample] = useRecoilState(sampleState("same"));
+
+  return (
+    <div>
+      {sample}
+      <button onClick={() => setSample(Math.random())}>B에서 바꾸기</button>
+    </div>
+  );
+};
+export default BComponent;
+
+//App.js
+const App = () => {
+  return (
+    <div>
+      <AComponent />
+      <BComponent />
+    </div>
+  );
+};
+export default App;
