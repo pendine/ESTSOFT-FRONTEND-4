@@ -1,0 +1,225 @@
+function customMiddleware(store) {
+  const 여기 들어가는 값 = 스토어를 통해서 여기 들어가는 값
+  console.log(여기에 어떤 함수나 메서드를 통해 어떤 값이 들어가는지 보고싶어!)
+  return function (next) {
+    뭐 특정 동작을 더 하게 만들거야!
+    next : 원래 dispatch함수라고 했는데
+    dispatch의 어떤메서드가 동작하는지 메서드 명을 출력할 수 있어?
+    return function (action) {
+      실행될 액션 이라고 했는데 실행될 액션 이전이나 이후에
+      원하는 동작을 여기에 추가할수도 있겠네?
+      console.log('🔥 액션 실행됨:', action);
+      next(action);
+    };
+  };
+}
+
+그럼 이방식을 화살표 함수로 바꾸면
+
+
+const customMiddleware 
+=> (store) {
+  const 여기 들어가는 값 = 스토어를 통해서 여기 들어가는 값
+  console.log(여기에 어떤 함수나 메서드를 통해 어떤 값이 들어가는지 보고싶어!)
+}
+=> (next) {
+    뭐 특정 동작을 더 하게 만들거야!
+    next : 원래 dispatch함수라고 했는데
+    dispatch의 어떤메서드가 동작하는지 메서드 명을 출력할 수 있어?
+ }
+=> (action) {
+      실행될 액션 이라고 했는데 실행될 액션 이전이나 이후에
+      원하는 동작을 여기에 추가할수도 있겠네?
+      console.log('🔥 액션 실행됨:', action);
+      next(action);
+    };
+라고 하면돼?
+ChatGPT의 말:
+아니, 그건 문법적으로 틀려! 😆
+화살표 함수에서는 =>가 함수의 경계를 나타내니까
+그대로 쓰면 문법 오류가 나버려.
+
+✅ 올바르게 화살표 함수로 변환하기
+js
+const customMiddleware = store => next => action => {
+  console.log('🔥 [1] 스토어 객체:', store);
+  console.log('🔥 [1-1] store.getState():', store.getState);
+  console.log('🔥 [1-2] store.dispatch:', store.dispatch);
+
+  console.log('🔥 [2] next (원래 dispatch 함수):', next);
+
+  console.log('🔥 [3] 실행될 액션:', action);
+  console.log('🔥 [3-1] 현재 상태:', store.getState());
+
+  const result = next(action);
+
+  console.log('🔥 [3-2] 액션 실행 후 상태:', store.getState());
+
+  return result;
+};
+✅ 화살표 함수 변환 규칙
+js
+function customMiddleware(store) {
+  return function (next) {
+    return function (action) {
+      console.log(action);
+      next(action);
+    };
+  };
+}
+이걸 화살표 함수로 바꾸면
+
+js
+const customMiddleware = store => next => action => {
+  console.log(action);
+  next(action);
+};
+📌 핵심 포인트
+
+return function (next) {} → next => {} 로 바뀜
+return function (action) {} → action => {} 로 바뀜
+중괄호 {}가 없으면 return이 생략됨
+{}를 쓰면 return next(action); 필요
+{}를 안 쓰면 next(action); 만 적어도 자동으로 반환됨
+✅ 화살표 함수 버전 + console.log() 확인
+js
+const customMiddleware = store => next => action => {
+  console.log('🔥 [1] 스토어 객체:', store);
+  console.log('🔥 [2] next (dispatch 함수):', next);
+  console.log('🔥 [3] 실행될 액션:', action);
+  
+  const result = next(action);
+
+  console.log('🔥 [4] 액션 실행 후 상태:', store.getState());
+
+  return result;
+};
+이제 화살표 함수 문법도 익혔고, 내부 동작도 분석 가능! 🚀
+
+
+
+
+
+
+
+나의 말:
+마지막에 받는 함수에서는 이전에 주어졌던 모든 인자값을 사용할수있다는거네?
+ChatGPT의 말:
+정확해! 🚀
+
+✅ 미들웨어 함수 체인의 동작 원리
+js
+const customMiddleware = store => next => action => {
+  console.log('🔥 스토어:', store);  // 가장 처음 받은 store 사용 가능
+  console.log('🔥 next (dispatch 함수):', next); // 두 번째 받은 next 사용 가능
+  console.log('🔥 실행될 액션:', action); // 마지막에 받은 action 사용 가능
+
+  const result = next(action); // 액션을 다음 미들웨어(또는 리듀서)로 넘김
+
+  console.log('🔥 액션 실행 후 상태:', store.getState()); // store.getState()도 여전히 사용 가능
+
+  return result;
+};
+✅ 이전에 받은 인자값을 계속 사용할 수 있는 이유
+화살표 함수가 연속으로 중첩되어 있기 때문이야.
+이걸 **"커링 (Currying)"**이라고 해!
+
+js
+const middleware = store => next => action => { ... }
+이걸 풀어서 쓰면
+
+js
+function middleware(store) {
+  return function (next) {
+    return function (action) {
+      // store, next, action 전부 사용 가능
+    };
+  };
+}
+즉, 각 함수가 다음 함수를 반환하는 형태이기 때문에,
+나중에 실행되는 함수에서도 앞에서 받은 값(store, next)을 계속 사용할 수 있어!
+
+✅ 정리
+✔ 마지막 action을 받는 함수에서는 store, next, action 전부 사용 가능!
+✔ 커링(Currying) 패턴 덕분에 앞에서 받은 인자들이 사라지지 않고 유지됨!
+✔ 이런 구조 덕분에 미들웨어에서 액션을 가로채고, 수정하고, 로깅하는 기능을 추가할 수 있음!
+
+🔥 이제 미들웨어의 구조와 동작 원리가 완전히 이해됐을 거야! 🚀
+
+
+
+
+
+
+
+나의 말:
+내가 직접 고차함수를 선언해서 다른곳에서 그 함수를 사용할때도 가능해?
+ChatGPT의 말:
+가능해! 🚀
+고차 함수(High-Order Function, HOF)도 같은 원리로 동작해.
+즉, 커링(Currying)된 함수에서 나중에 실행되는 함수도 앞에서 받은 인자값을 계속 사용할 수 있어!
+
+✅ 고차 함수에서 같은 원리가 적용되는 예제
+js
+const multiply = a => b => c => a * b * c;
+
+const multiplyBy2 = multiply(2); // b => c => 2 * b * c
+const multiplyBy2And3 = multiplyBy2(3); // c => 2 * 3 * c
+
+console.log(multiplyBy2And3(4)); // 2 * 3 * 4 = 24
+📌 분석:
+
+multiply(2) 를 실행하면 (b => c => 2 * b * c) 이 리턴됨
+multiplyBy2(3) 을 실행하면 (c => 2 * 3 * c) 이 리턴됨
+multiplyBy2And3(4) 실행 시 2 * 3 * 4 = 24 가 됨
+➡ 각 단계에서 받은 인자값(a, b)을 계속 기억하고 있음!
+
+✅ 미들웨어랑 같은 원리로 동작하는 예제
+고차 함수를 직접 선언해서 특정 로직을 미리 만들어 두고, 나중에 원하는 곳에서 사용할 수도 있어.
+
+js
+const withPrefix = prefix => text => `${prefix} ${text}`;
+
+const warn = withPrefix("[경고]"); // text => "[경고] " + text
+const error = withPrefix("[에러]"); // text => "[에러] " + text
+
+console.log(warn("이 작업은 위험할 수 있습니다!")); 
+// 출력: [경고] 이 작업은 위험할 수 있습니다!
+
+console.log(error("파일을 찾을 수 없습니다!")); 
+// 출력: [에러] 파일을 찾을 수 없습니다!
+📌 분석:
+
+withPrefix("[경고]") 실행 후, warn = text => "[경고] " + text; 로 저장됨
+warn("이 작업은 위험할 수 있습니다!") 실행하면 "[경고] 이 작업은 위험할 수 있습니다!" 리턴됨
+error() 도 같은 방식으로 동작!
+➡ 미들웨어처럼 특정 인자(prefix)를 미리 저장하고,
+나중에 필요한 값(text)을 받아서 최종 결과를 만드는 패턴!
+
+✅ 고차 함수 + 미들웨어 스타일 응용
+고차 함수를 사용해서 특정 액션을 로깅하는 미들웨어를 만들어볼 수도 있어.
+
+js
+const createLogger = prefix => store => next => action => {
+  console.log(`${prefix} 액션 실행됨:`, action);
+  return next(action);
+};
+
+const loggerMiddleware = createLogger("[로그]"); // store => next => action => { ... }
+
+// Redux 적용 예시
+const store = createStore(reducer, applyMiddleware(loggerMiddleware));
+store.dispatch({ type: "TEST" }); 
+// 출력: [로그] 액션 실행됨: { type: "TEST" }
+📌 분석:
+
+createLogger("[로그]") 를 실행하면 store => next => action => { ... } 반환
+loggerMiddleware 는 일반 미들웨어처럼 Redux에 적용 가능
+액션 실행 시, [로그] 액션 실행됨: 로그가 남음
+✅ 결론
+✔ 미들웨어의 구조(store => next => action)는 고차 함수와 같은 원리로 동작함
+✔ 직접 고차 함수를 선언해서 미리 특정 값을 설정하고, 나중에 원하는 곳에서 사용할 수 있음
+✔ 커링 패턴을 잘 활용하면 유연한 로직을 쉽게 만들 수 있음!
+
+🔥 고차 함수도 이해했으니까, 미들웨어도 완벽하게 이해한 거야! 🚀
+

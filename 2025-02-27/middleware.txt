@@ -1,0 +1,108 @@
+1. 미들웨어의 역할
+미들웨어는 액션과 리듀서 사이에서 중간 역할을 하는 함수
+액션이 디스패치되면 → 미들웨어에서 가로채서 처리 → 그 후 리듀서로 전달하는 구조
+
+-----------------------------------------------------------
+
+2. 기본적인 미들웨어 구조
+리덕스 미들웨어는 아래와 같이 생겼어.
+
+const customMiddleware = store => next => action => {
+  console.log('액션이 디스패치됨:', action);
+  next(action); // 다음 미들웨어 또는 리듀서로 액션을 전달
+};
+
+(1) store => next => action => {} 구조
+  이건 고차 함수(함수를 반환하는 함수) 구조야.
+
+store: 리덕스 스토어 객체
+next: 다음 미들웨어를 호출하는 함수 (없으면 리듀서로 감)
+action: 현재 디스패치된 액션 객체
+
+즉, store는 전체 상태를 가지고 있고,
+next(action)을 호출하면 다음 미들웨어(또는 리듀서)로 액션을 넘길 수 있어.
+미들웨어가 여러 개라면, 체인 형태로 연결돼서 순서대로 실행돼.
+
+-----------------------------------------------------------
+
+3. 미들웨어 동작 과정
+미들웨어가 액션을 가로채서 추가 작업을 수행한 뒤, next(action)으로 넘긴다는 게 핵심이야.
+
+예제:
+const loggerMiddleware = store => next => action => {
+  console.log('[미들웨어] 액션:', action);
+  console.log('[미들웨어] 이전 상태:', store.getState());
+
+  next(action); // 다음으로 넘김
+
+  console.log('[미들웨어] 다음 상태:', store.getState());
+};
+이렇게 하면,
+
+  1. 액션이 디스패치될 때 미들웨어가 가로챔
+  2. 현재 액션과 이전 상태를 출력
+  3. next(action)을 호출해서 리듀서로 전달
+  4. 리듀서 실행 후, 업데이트된 상태를 출력
+
+-----------------------------------------------------------
+
+4. 미들웨어에서 파일에 로그 저장하기
+파일에 직접 로그를 저장하려면,
+브라우저 환경에서는 로컬 스토리지나 서버 API를 사용이 필수
+(브라우저는 파일 시스템에 직접 접근할 수 없음)
+
+예를 들어, 서버에 로그를 보낸다고 하면:
+const loggingMiddleware = store => next => action => {
+  const logEntry = {
+    time: new Date().toISOString(),
+    action,
+    prevState: store.getState(),
+  };
+
+  fetch('/log', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(logEntry),
+  });
+
+  next(action);
+};
+이렇게 하면 서버로 로그를 보내서 기록 가능함
+
+-----------------------------------------------------------
+
+
+5. 미들웨어 적용하기
+미들웨어를 사용하려면 리덕스 스토어를 생성할 때 적용해야 해.
+
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './reducers';
+
+// 미들웨어 적용
+const store = createStore(rootReducer, applyMiddleware(loggerMiddleware, loggingMiddleware));
+이렇게 하면 액션이 디스패치될 때마다 미들웨어가 동작해.
+
+-----------------------------------------------------------
+
+6. 직접 오류 추적 미들웨어 만들기
+어떤 액션에서 오류가 발생했는지 추적하려면, try-catch를 사용해서 오류를 감지할 수 있어.
+
+const errorTrackingMiddleware = store => next => action => {
+  try {
+    next(action); // 정상적으로 액션 전달
+  } catch (error) {
+    console.error('[에러 발생]', action, error);
+
+    fetch('/error-log', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action, error: error.message }),
+    });
+  }
+};
+이렇게 하면,
+
+만약 next(action) 실행 중에 오류가 발생하면 catch 블록에서 오류를 감지
+콘솔에 출력하고, 서버에 오류 로그를 보냄
+
+-----------------------------------------------------------

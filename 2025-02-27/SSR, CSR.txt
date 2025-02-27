@@ -1,0 +1,50 @@
+SSR 서버에서 그려서 보내준다
+CSR 클라이언트가 그린다
+
+라는 소리는
+HTML 내용이 다름
+SSR =
+<html>
+~~
+내용 전부 다 작성함
+</html>
+
+CSR
+index.html
+<html>
+<component />
+</html>
+
+index.js
+내용 꽉꽉~
+
+CSR방식은 js 파일이 동작해야지만 html 내용이 생성됨
+
+=> 
+SSR : html의 내용을 생성해서 전달해줌 
+CSR : html 의 뼈대와 js파일을 받아서 직접 내용을 채워야함
+
+뼈대가 무슨소린지 이제 알았네.
+굿
+GPT 덕에 같이 강의듣는 다른사람들의 시간을 뺏지 않아서 다행.
+
+===============================
+react-router-dom 를 이용하여
+url과 url에 해당하는 컴포넌트를 등록하고
+표출할때는 
+< Outlet /> 컴포넌트를 사용하는데
+{ path : '/',
+  element : <Component />,
+  children : [
+    {
+      ~
+    }
+  ]
+}
+으로 위와 같이 설정했을때
+children의 컴포넌트들은 
+위의 <Component /> 컴포넌트를 기준으로
+자식 컴포넌트에 해당하기 때문에
+<Component />의 <Outlet /> 에 렌더링된다.
+따라서 동일한 레벨에서 컴포넌트가 렌더링(교체) 되길 원하면
+children으로 선언하지말것.

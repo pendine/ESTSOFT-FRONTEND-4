@@ -26,7 +26,11 @@ import './index.css'
 import { StrictMode } from 'react'
 // import App from './zustandExam/ZutandExam'
 // import App from './zustandExam/Exam2'
-import App from './zustandExam2/ProductList'
+// import App from './zustandExam2/ProductList'
+// import App from './zustandMiddleware/Exam1'
+// import App from './zustandMiddleware/Exam2'
+// import App from './zustandMiddleware/Exam3'
+import App from './project2/App'
 
 // const queryClient = new QueryClient()
 

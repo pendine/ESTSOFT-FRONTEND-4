@@ -1,0 +1,183 @@
+react router
+- 어플리케이션에서 여러페이지를 관리하기위한 기법
+- url을 부여하여 해당 주소로 요청이 들어오면 내용을 응답
+- SPA, MPA
+- SSR, CSR
+
+SSR (Server Side Rendering)
+- 서버쪽에서 렌더링하여 화면을 보여주는 방식
+  (서버에서 완전하게 만들어진 HTML 파일을 받아와 화면을 그림)
+- 과거 웹은 대부분 서버사이드 렌더링 방식
+  (최근 웹 서비스 규모가 증대하여 SSR방식이 
+  서버의 부담으로 인해 성능상 문제 발생)
+
+CSR (Client Sid Rendering)
+- 클라이언트가 렌더링을 맡아서 하는 방식
+- 서버에서 받은 데이터를 클라이언트가 화면에 그림
+- SSR과 차이 :  대부분의 내용을 로딩해오기 때문에 
+  첫 로딩 시간이 오래 걸림
+
+SSR : 필요한 내용들만 응답
+CSR : 처음부터 한번에 서비스에 필요한 모든 내용을 로딩
+
+CSR 의 경우 처음에는 느려도 로딩 이후 
+부드러운 UI/UX 제공,성능상 SSR대비 좋음
+
+CSR은 SPA와 밀접한 연관
+
+CSR은 불필요한 새로고침 발생이 많이 줄어서
+서버에 대한 요청이 많이 줄기 때문에
+사용자 경험 측면, 관리 측면에서 CSR이 유리함
+(서버는 html 뼈대와 js만 전달)
+
+CSR 의 단점
+- 초기 데이터 로딩으로 인한 시간소요
+- 최근 CSR의 위 단점이 부각됨
+  (최근 크롤링을 이용한 정보 획득의 자동화)
+- CSR방식에서 서버는 우선 빈뼈대의 HTML만을 넘겨주는 역할을 수행하는것이 기본
+  (웹 크롤링등 검색엔진 최적화시 HTML의 요소를 읽을 수 없다는 단점
+    -> B2C, C2C 사이트. SEO 대상에 노출 안됨 )
+
+SSR과 CSR을 도입할때 고려해야할 요소
+SSR
+- 홍보나 상위 노출이 필요한 경우
+  (업데이트가 빈번해 해당 페이지 데이터가 자주 바뀌는 경우)
+- 누구에게나 같은 내용을 보여주는 경우
+
+CSR
+- 유저의 상호작용은 많되 굳이 검색 엔진에 노출될 필요가 없는 경우
+
+둘을 병합한 방식 Universal Rendering 이라는 개념도 존재
+-> 초기 렌더링은 SSR + 그 이후 CSR 방식으로 진행
+
+SEO : 검색엔진 최적화
+- CSR의 경우는 페이지의 데이터 검색이 현재로 불가능
+
+리액트는 CSR에 SPA가 아닌가?
+- next.js같은 프레임워크들을 통해 서버사이트 렌더링 지원하도록 처리
+(next.js말고도 react 관련 프레임워크가 더 있음)
+
+SPA와 라우팅
+- SPA는 서비스를 제공함에 있어서 MPA보다 유리한점들은 많음
+  (퍼포먼스 측면에서도 우위에 있음)
+- 라우팅을 구현하다보면 컴포넌트의 계층 구조가 점점 복잡해지는 현상 발생.
+  (props 드릴링문제가 대두될 수 밖에 없음)
+- 파일시스템 기반의 라우팅을 제원하는 서버-클라이언트 통합 아키텍처의 필요성이
+  대두되었고 그 기능을 next.js를 통해 활용할 수 있음
+- Next.js는 서버, 클라이언트 액션의 상호작용 통합을 관리
+
+SPA 구조에서 URL 변경의 본질과 구현
+- 기본적으로 SPA는 첫 로딩시 단일 HTML파일을 기반으로 동작
+- 사용자 상호작용시 전체 페이지를 리로드 없이 
+  필요한 부분만 동적으로 동작하는것이 특징
+- 다만 URL의 변경을 히스토리 관리 API를 통해 구현하는 특징이 있음
+
+URL 변경시 메커니즘
+- SPA 라우터 가상 페이지 전환 시스템을 구현하는 특징
+  (바닐라 JS 으로 설명하면, 이벤트 중단 -> history.pushState() 메서드를 실행)
+- 새로고침되는게 SPA가 아닌것처럼 보이지만, 자연스러운 현상
+
+function handClick(e){
+  e.preventDefault();
+  history.pushState( {}, "", href);
+  window.dispatchEvent(new PopStateEvent("popstate"));
+}
+- url 요청시 새로고침은 SPA와 무관하며
+히스토리 API 활용 여부와 전체 페이지 리로드 발생 유무가 원인
+- 새로고침을 현상을 방지하고싶다면
+  1. 레이아웃 안정화 (난이도 하)
+  (content-visibility : auto 속성을 전체에 적용)
+  2. CSR/SSR 병렬 처리 기법
+  3. 데이터 로딩시 UI 구조를 사전 확보(스켈레톤 UI 패턴법)
+  (스켈레톤 UI : 데이터가 로딩되기전 어떤식으로 표출될지 형태를 보여줌, 차트, 원형그래프 등)
+
+React의 router 사용시 버전확인 필수
+강의는 6버전 기준 / react 16.8 부터 지원
+npm 버전 덮어씌우기 명령
+npm i react-router-dom@6
+
+컴포넌트
+1. <BrowerserRouter></BrowerserRouter>
+2. <Routes> 
+    <Route>
+    <Route>
+  </Routes>
+3. <Link><NavLink></NavLink></Link>
+4. <Outlet /> : url에 할당된, 해당하는 컴포넌트로 교체함.
+
+데이터 핸들링 속성 설정
+loader, action, path, element
+loader : 라우트 진입 직전 진행할 내용들을 정의하는 속성
+action : 데이터 submit시 진행할 내용들을 정의하는 속성
+path : 컴포넌트의 url 경로 할당
+element : 렌더링할 컴포넌트
+
+예시
+const router = createBroswerRouter([
+  {
+    path : '/',
+    element : <Root />,
+    loader: async () =>{
+
+    },
+    action : async({request}) =>{
+    }
+  }
+])
+
+-----------------------------------------------
+
+프로그래밍 네비게이션
+1. useNavigate() : 프로그래밍적으로 라우팅을 
+                  수행할 수 있도록 도움을 주는 기능
+  (컴포넌트가 마운트 됐을 때 만(로딩이 끝났을때만) 사용 가능)
+ 예시)
+
+
+ 포워딩 : 요청받은 URL에 대한 처리 진행
+ 리다이렉트 : 다른 URL로 요청 전환
+2. redirect() : react에서 loader와 연계하여 사용
+예시)
+export async function loader(){
+  const user = await getUser();
+  if(!user){
+    return redirect('./login');
+  }
+  return null;
+}
+
+3. useParams() : url의 경로의 파라미터를 가져올때 사용
+예시)
+경로 : /users/:userId 
+        undefined 가능성이 높으니 항상 확인필요
+const {userId} = useParams();
+
+4. useLocation() : 현재 URL과 관련된 정보를 가져오는 hook
+예시)
+const location = useLocation();
+반환값 구조
+(location 의 내용)
+{
+  pathname : "/users/123", // 현 url 경로
+  search : "?filter=active", // url에 포함된 쿼리스트링 정보
+  hash:"#profile", // url해시 (url에서 특정한 세션을가진 html 요소를 지칭 / 이건 id가 profile)
+  state: { fromHome: true}, (이전 경로에서 전달된 상태 데이터)
+  key:"axd34f" // 라우터 고유키 (라우팅 상태 추적시 사용)
+}
+
+5. useSearchparams() : 현 url의 쿼리 파라미터를 다루는 hook
+
+
+6. setSearchparams() : 파라미터 업데이트
+
+
+데이터 렌더링시 성능 효율
+1. router > 2. redux (zustand, recoil) > 3. useEffect
+
+useEffect : 빠르게 테스트 해볼때
+ -> react Query와 조합이 좋음
+route : 성능 우선시
+(6버전부터 최신 프로젝트에 많이 활용)
+ -> Suspence 컴포넌트와 조합하면 최적의 성능
+redux는 복잡한 상태 관리시 컨트롤에 적합
+
