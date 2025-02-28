@@ -31,6 +31,8 @@ import { StrictMode } from 'react'
 // import App from './zustandMiddleware/Exam2'
 // import App from './zustandMiddleware/Exam3'
 import App from './project2/App'
+// import App from './project2/App2'
+// import App from './quiz/0228/quiz1'
 
 // const queryClient = new QueryClient()
 

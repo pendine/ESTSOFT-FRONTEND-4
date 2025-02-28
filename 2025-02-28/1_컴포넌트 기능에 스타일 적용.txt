@@ -1,0 +1,21 @@
+import {
+  Form,
+} from 'react-router-dom'
+import styled from 'styled-components'
+
+// 4. 폼 스타일
+const StyledForm = styled(Form)`
+  max-width: 500px;
+  ~~
+`
+
+참조 
+VITETEST > src > project2 > App.jsx
+
+기존에 있던 컴포넌트를 스타일링할때
+
+const 커스텀컴포넌트 = styled( 컴포넌트 )`스타일`
+
+으로 정의할것.
+=> 컴포넌트를 파라미터로 받아서 스타일링
+

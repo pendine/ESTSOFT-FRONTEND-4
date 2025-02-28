@@ -1,0 +1,128 @@
+VITETEST > src > project2 > App.jsx
+의 라우트의 action속성을 다루다 생긴 문제점
+인자값을 넘기는게 내가 별칭으로 넘기는것으로 생각해서
+생겼던 문제
+ 실제 : 파라미터값을 전달할때 별칭으로 전달하는게 아님
+
+
+나의 말:
+
+          const redirectTo =
+            new URL(params.url).searchParams.get('redirectTo') || '/'
+          return redirect(redirectTo)
+이거 뭘 잘못 쓴거야
+
+ChatGPT의 말:
+에러가 나는 이유는 params.url이 undefined이기 때문이야.
+params 객체 자체에 url 속성이 없어서 new URL(params.url)에서 오류가 발생하는 거야.
+
+해결 방법
+request.url을 사용해야 함
+params.url이 아니라 request.url을 사용해야 해.
+request 객체는 현재 요청의 URL을 포함하고 있으니까, 거기서 searchParams를 가져올 수 있어.
+
+수정된 코드:
+
+js
+action: async ({ request }) => {
+  const url = new URL(request.url) // request.url을 사용
+  const redirectTo = url.searchParams.get('redirectTo') || '/'
+  return redirect(redirectTo)
+}
+params는 경로 변수일 뿐, url을 포함하지 않음
+
+params는 <Route path="contact/:id"> 같은 경우 id 값을 가져오는 용도로 쓰여.
+params.url 같은 속성은 존재하지 않으니까, request.url을 써야 해.
+이제 이 방식대로 고치면 정상 동작할 거야! 🚀
+
+
+나의 말:
+
+        action: async ({ params }) => {
+          // const formData = await params.formData()
+          // const id = formData.get('id') // 요소의 name속성을 갖고옴
+          // const pass = formData.get('password')
+          // console.log('id:', id, 'pass:', pass)
+
+          // // const formValues = Object.fromEntries(formData)
+          // // console.log(JSON.stringify(formValues))
+
+          const redirectTo =
+            new URL(params.url).searchParams.get('redirectTo') || '/'
+          return redirect(redirectTo)
+        }
+이거랑 달라?
+ChatGPT의 말:
+응, 이 코드에서는 잘못된 객체에서 url을 가져오려고 시도하고 있어.
+
+❌ 잘못된 부분
+js
+new URL(params.url).searchParams.get('redirectTo')
+params 객체에는 url이라는 속성이 없어.
+params는 라우트 경로 변수 (예: :id) 를 담고 있을 뿐이야.
+url 정보는 request 객체에 있으므로, params.url을 참조하면 undefined가 되고 new URL(undefined)에서 오류가 발생해.
+✅ 올바른 코드
+js
+action: async ({ request }) => {
+  const url = new URL(request.url) // request.url을 사용해야 함
+  const redirectTo = url.searchParams.get('redirectTo') || '/'
+  return redirect(redirectTo)
+}
+request.url은 실제 요청된 URL을 담고 있어서 searchParams를 올바르게 가져올 수 있어.
+이렇게 수정하면 정상적으로 redirectTo 값을 가져올 수 있어.
+🚀 핵심 차이점
+
+❌ 잘못된 코드: params.url → params에는 url이 없음
+✅ 올바른 코드: request.url → 요청된 URL을 정확히 가져올 수 있음
+고쳐서 실행하면 정상적으로 리디렉션될 거야! 👍
+
+
+
+
+
+
+
+나의 말:
+어떤 객체를 받는지 내가 마음대로 별칭 지어주는게 아니야?
+이건 어떤데이터를 받을지 설정하는거야?
+폼에서 버튼 눌렀을때 데이터를 받은걸 별칭으로 지어준걸로 생각했는데
+ChatGPT의 말:
+아니, 네가 별칭을 마음대로 지어주는 게 아니라, React Router가 action 함수에 어떤 데이터를 넘겨줄지 미리 정해져 있어.
+
+💡 action({ request, params })에서 넘어오는 객체
+React Router의 action 함수는 반드시 특정 구조의 객체를 받게 돼:
+
+js
+action: async ({ request, params }) => {
+  // request: HTTP 요청 정보 (URL, body, headers 등)
+  // params: URL 경로 변수 (예: /users/:id → { id: '123' })
+}
+request: fetch API의 Request 객체와 비슷해.
+사용자가 폼을 제출하면 request.url, request.formData() 등을 통해 데이터를 가져올 수 있어.
+params: URL에서 :id 같은 동적 경로 값을 추출한 객체.
+❌ 네 코드의 문제점
+js
+action: async ({ params }) => {
+  const redirectTo =
+    new URL(params.url).searchParams.get('redirectTo') || '/'  // ❌ 오류 발생
+  return redirect(redirectTo)
+}
+🚨 params에는 url이 없어.
+
+params는 { id: '123' } 같은 라우트 경로 변수만 포함하고 있어.
+URL 정보를 얻으려면 request.url을 사용해야 해.
+✅ 올바른 코드
+js
+action: async ({ request }) => {
+  const url = new URL(request.url) // request.url을 사용해야 함
+  const redirectTo = url.searchParams.get('redirectTo') || '/'
+  return redirect(redirectTo)
+}
+📌 이렇게 해야 ?redirectTo=... 같은 쿼리 파라미터 값을 가져올 수 있어.
+
+🔥 결론: 네가 별칭을 정하는 게 아냐!
+React Router가 정해준 특정 객체 구조 ({ request, params }) 를 받아야 해.
+
+✔ request: HTTP 요청 데이터 (URL, form 데이터 등)
+✔ params: 동적 경로 변수 (예: :id)
+이걸 잘 이해하면 더 이상 헷갈리지 않을 거야! 🚀
